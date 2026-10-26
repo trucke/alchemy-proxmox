@@ -1,0 +1,64 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_wakeonlan#PostNodesByNodeWakeonlanRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_wakeonlan#PostNodesByNodeWakeonlanResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_wakeonlan#PostNodesByNodeWakeonlan": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_wakeonlan#PostNodesByNodeWakeonlanRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_wakeonlan#PostNodesByNodeWakeonlanResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/wakeonlan",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/wakeonlan",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "wakeonlan"
+      }
+    },
+    "proxmox.nodes_wakeonlan#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_wakeonlan#PostNodesByNodeWakeonlan"
+        }
+      ]
+    }
+  }
+}

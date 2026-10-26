@@ -1,0 +1,8 @@
+alchemy-proxmox
+Copyright 2026 sudokvn
+
+The Proxmox VE API client in this repository is generated from the Proxmox VE API
+schema in Proxmox's pve-docs package (Copyright Proxmox Server Solutions GmbH,
+AGPL-3.0-or-later). This repository contains only structural interface information
+derived from that schema and no Proxmox documentation text. The schema is downloaded
+and verified at build time and is not redistributed.

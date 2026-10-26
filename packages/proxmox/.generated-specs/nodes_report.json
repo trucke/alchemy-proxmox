@@ -1,0 +1,64 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_report#GetNodesByNodeReportRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_report#GetNodesByNodeReportResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_report#GetNodesByNodeReport": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_report#GetNodesByNodeReportRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_report#GetNodesByNodeReportResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/report",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/report",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "report"
+      }
+    },
+    "proxmox.nodes_report#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_report#GetNodesByNodeReport"
+        }
+      ]
+    }
+  }
+}

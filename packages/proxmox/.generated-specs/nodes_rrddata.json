@@ -1,0 +1,150 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_rrddata#GetNodesByNodeRrddataRequestCf": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AVERAGE"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MAX"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_rrddata#GetNodesByNodeRrddataRequestTimeframe": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hour"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "day"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "week"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "month"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "year"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "decade"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_rrddata#GetNodesByNodeRrddataRequest": {
+      "type": "structure",
+      "members": {
+        "cf": {
+          "target": "proxmox.nodes_rrddata#GetNodesByNodeRrddataRequestCf",
+          "traits": {
+            "smithy.api#httpQuery": "cf"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "timeframe": {
+          "target": "proxmox.nodes_rrddata#GetNodesByNodeRrddataRequestTimeframe",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpQuery": "timeframe"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_rrddata#GetNodesByNodeRrddataResultItem": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_rrddata#GetNodesByNodeRrddataResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_rrddata#GetNodesByNodeRrddataResultItem"
+      }
+    },
+    "proxmox.nodes_rrddata#GetNodesByNodeRrddataResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_rrddata#GetNodesByNodeRrddataResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_rrddata#GetNodesByNodeRrddata": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_rrddata#GetNodesByNodeRrddataRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_rrddata#GetNodesByNodeRrddataResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/rrddata",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/rrddata",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "rrddata"
+      }
+    },
+    "proxmox.nodes_rrddata#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_rrddata#GetNodesByNodeRrddata"
+        }
+      ]
+    }
+  }
+}

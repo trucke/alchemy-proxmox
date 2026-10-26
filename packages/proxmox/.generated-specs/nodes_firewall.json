@@ -1,0 +1,1911 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallResultItem": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallResultItem"
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewall": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/firewall",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/firewall",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_firewall#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_firewall#GetNodesByNodeFirewall"
+        },
+        {
+          "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallRules"
+        },
+        {
+          "target": "proxmox.nodes_firewall#PostNodesByNodeFirewallRules"
+        },
+        {
+          "target": "proxmox.nodes_firewall#DeleteNodesByNodeFirewallRulesByPos"
+        },
+        {
+          "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallRulesByPos"
+        },
+        {
+          "target": "proxmox.nodes_firewall#PutNodesByNodeFirewallRulesByPos"
+        },
+        {
+          "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallOptions"
+        },
+        {
+          "target": "proxmox.nodes_firewall#PutNodesByNodeFirewallOptions"
+        },
+        {
+          "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallLog"
+        }
+      ]
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallRulesRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallRulesResultItemLog": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "emerg"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alert"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crit"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "err"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warning"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notice"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "info"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "debug"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nolog"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallRulesResultItem": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "dest": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "dport": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "enable": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "icmp-type": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "iface": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "ipversion": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "log": {
+          "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallRulesResultItemLog",
+          "traits": {}
+        },
+        "macro": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "pos": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "proto": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "sport": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallRulesResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallRulesResultItem"
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallRulesResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallRulesResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallRules": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallRulesRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallRulesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/firewall/rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/firewall/rules",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "get_rules"
+      }
+    },
+    "proxmox.nodes_firewall#PostNodesByNodeFirewallRulesRequestLog": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "emerg"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alert"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crit"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "err"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warning"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notice"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "info"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "debug"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nolog"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#PostNodesByNodeFirewallRulesRequestType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "in"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "out"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "forward"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "group"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#PostNodesByNodeFirewallRulesRequest": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-fw-comment-spec"
+          }
+        },
+        "dest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-fw-addr-spec"
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "dport": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-fw-dport-spec"
+          }
+        },
+        "enable": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "icmp-type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-fw-icmp-type-spec"
+          }
+        },
+        "iface": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface"
+          }
+        },
+        "log": {
+          "target": "proxmox.nodes_firewall#PostNodesByNodeFirewallRulesRequestLog",
+          "traits": {}
+        },
+        "macro": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "pos": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "proto": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-fw-protocol-spec"
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-fw-addr-spec"
+          }
+        },
+        "sport": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-fw-sport-spec"
+          }
+        },
+        "type": {
+          "target": "proxmox.nodes_firewall#PostNodesByNodeFirewallRulesRequestType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#PostNodesByNodeFirewallRulesResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#PostNodesByNodeFirewallRules": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_firewall#PostNodesByNodeFirewallRulesRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_firewall#PostNodesByNodeFirewallRulesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/firewall/rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/firewall/rules",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "create_rule"
+      }
+    },
+    "proxmox.nodes_firewall#DeleteNodesByNodeFirewallRulesByPosRequest": {
+      "type": "structure",
+      "members": {
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "digest"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "pos": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#DeleteNodesByNodeFirewallRulesByPosResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#DeleteNodesByNodeFirewallRulesByPos": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_firewall#DeleteNodesByNodeFirewallRulesByPosRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_firewall#DeleteNodesByNodeFirewallRulesByPosResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/nodes/{node}/firewall/rules/{pos}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /nodes/{node}/firewall/rules/{pos}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "delete_rule"
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallRulesByPosRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "pos": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallRulesByPosResultLog": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "emerg"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alert"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crit"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "err"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warning"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notice"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "info"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "debug"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nolog"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallRulesByPosResult": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "dest": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "dport": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "enable": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "icmp-type": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "iface": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "ipversion": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "log": {
+          "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallRulesByPosResultLog",
+          "traits": {}
+        },
+        "macro": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "pos": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "proto": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "sport": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallRulesByPosResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallRulesByPosResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallRulesByPos": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallRulesByPosRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallRulesByPosResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/firewall/rules/{pos}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/firewall/rules/{pos}",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "get_rule"
+      }
+    },
+    "proxmox.nodes_firewall#PutNodesByNodeFirewallRulesByPosRequestLog": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "emerg"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alert"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crit"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "err"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warning"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notice"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "info"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "debug"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nolog"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#PutNodesByNodeFirewallRulesByPosRequestType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "in"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "out"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "forward"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "group"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#PutNodesByNodeFirewallRulesByPosRequest": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-fw-comment-spec"
+          }
+        },
+        "delete": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-configid-list"
+          }
+        },
+        "dest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-fw-addr-spec"
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "dport": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-fw-dport-spec"
+          }
+        },
+        "enable": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "icmp-type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-fw-icmp-type-spec"
+          }
+        },
+        "iface": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface"
+          }
+        },
+        "log": {
+          "target": "proxmox.nodes_firewall#PutNodesByNodeFirewallRulesByPosRequestLog",
+          "traits": {}
+        },
+        "macro": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "moveto": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "pos": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "proto": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-fw-protocol-spec"
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-fw-addr-spec"
+          }
+        },
+        "sport": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-fw-sport-spec"
+          }
+        },
+        "type": {
+          "target": "proxmox.nodes_firewall#PutNodesByNodeFirewallRulesByPosRequestType",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_firewall#PutNodesByNodeFirewallRulesByPosResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#PutNodesByNodeFirewallRulesByPos": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_firewall#PutNodesByNodeFirewallRulesByPosRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_firewall#PutNodesByNodeFirewallRulesByPosResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/nodes/{node}/firewall/rules/{pos}",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /nodes/{node}/firewall/rules/{pos}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "update_rule"
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallOptionsRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallOptionsResultLogLevelForward": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "emerg"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alert"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crit"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "err"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warning"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notice"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "info"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "debug"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nolog"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallOptionsResultLogLevelIn": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "emerg"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alert"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crit"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "err"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warning"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notice"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "info"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "debug"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nolog"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallOptionsResultLogLevelOut": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "emerg"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alert"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crit"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "err"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warning"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notice"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "info"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "debug"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nolog"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallOptionsResultSmurfLogLevel": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "emerg"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alert"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crit"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "err"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warning"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notice"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "info"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "debug"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nolog"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallOptionsResultTcpFlagsLogLevel": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "emerg"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alert"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crit"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "err"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warning"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notice"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "info"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "debug"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nolog"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallOptionsResult": {
+      "type": "structure",
+      "members": {
+        "enable": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "log_level_forward": {
+          "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallOptionsResultLogLevelForward",
+          "traits": {}
+        },
+        "log_level_in": {
+          "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallOptionsResultLogLevelIn",
+          "traits": {}
+        },
+        "log_level_out": {
+          "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallOptionsResultLogLevelOut",
+          "traits": {}
+        },
+        "log_nf_conntrack": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "ndp": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "nf_conntrack_allow_invalid": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "nf_conntrack_helpers": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-fw-conntrack-helper"
+          }
+        },
+        "nf_conntrack_max": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "nf_conntrack_tcp_timeout_established": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "nf_conntrack_tcp_timeout_syn_recv": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "nftables": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "nosmurfs": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "protection_synflood": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "protection_synflood_burst": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "protection_synflood_rate": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "smurf_log_level": {
+          "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallOptionsResultSmurfLogLevel",
+          "traits": {}
+        },
+        "tcp_flags_log_level": {
+          "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallOptionsResultTcpFlagsLogLevel",
+          "traits": {}
+        },
+        "tcpflags": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallOptionsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallOptionsResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallOptions": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallOptionsRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallOptionsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/firewall/options",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/firewall/options",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "get_options"
+      }
+    },
+    "proxmox.nodes_firewall#PutNodesByNodeFirewallOptionsRequestLogLevelForward": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "emerg"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alert"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crit"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "err"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warning"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notice"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "info"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "debug"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nolog"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#PutNodesByNodeFirewallOptionsRequestLogLevelIn": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "emerg"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alert"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crit"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "err"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warning"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notice"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "info"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "debug"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nolog"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#PutNodesByNodeFirewallOptionsRequestLogLevelOut": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "emerg"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alert"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crit"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "err"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warning"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notice"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "info"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "debug"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nolog"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#PutNodesByNodeFirewallOptionsRequestSmurfLogLevel": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "emerg"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alert"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crit"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "err"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warning"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notice"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "info"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "debug"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nolog"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#PutNodesByNodeFirewallOptionsRequestTcpFlagsLogLevel": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "emerg"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alert"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crit"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "err"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warning"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notice"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "info"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "debug"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nolog"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#PutNodesByNodeFirewallOptionsRequest": {
+      "type": "structure",
+      "members": {
+        "delete": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-configid-list"
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "enable": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "log_level_forward": {
+          "target": "proxmox.nodes_firewall#PutNodesByNodeFirewallOptionsRequestLogLevelForward",
+          "traits": {}
+        },
+        "log_level_in": {
+          "target": "proxmox.nodes_firewall#PutNodesByNodeFirewallOptionsRequestLogLevelIn",
+          "traits": {}
+        },
+        "log_level_out": {
+          "target": "proxmox.nodes_firewall#PutNodesByNodeFirewallOptionsRequestLogLevelOut",
+          "traits": {}
+        },
+        "log_nf_conntrack": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "ndp": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "nf_conntrack_allow_invalid": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "nf_conntrack_helpers": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-fw-conntrack-helper"
+          }
+        },
+        "nf_conntrack_max": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "nf_conntrack_tcp_timeout_established": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "nf_conntrack_tcp_timeout_syn_recv": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "nftables": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "nosmurfs": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "protection_synflood": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "protection_synflood_burst": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "protection_synflood_rate": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "smurf_log_level": {
+          "target": "proxmox.nodes_firewall#PutNodesByNodeFirewallOptionsRequestSmurfLogLevel",
+          "traits": {}
+        },
+        "tcp_flags_log_level": {
+          "target": "proxmox.nodes_firewall#PutNodesByNodeFirewallOptionsRequestTcpFlagsLogLevel",
+          "traits": {}
+        },
+        "tcpflags": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_firewall#PutNodesByNodeFirewallOptionsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#PutNodesByNodeFirewallOptions": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_firewall#PutNodesByNodeFirewallOptionsRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_firewall#PutNodesByNodeFirewallOptionsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/nodes/{node}/firewall/options",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /nodes/{node}/firewall/options",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "set_options"
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallLogRequest": {
+      "type": "structure",
+      "members": {
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "since": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "since"
+          }
+        },
+        "start": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "start"
+          }
+        },
+        "until": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "until"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallLogResultItem": {
+      "type": "structure",
+      "members": {
+        "n": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "t": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallLogResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallLogResultItem"
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallLogResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallLogResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_firewall#GetNodesByNodeFirewallLog": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallLogRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_firewall#GetNodesByNodeFirewallLogResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/firewall/log",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/firewall/log",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "log"
+      }
+    }
+  }
+}

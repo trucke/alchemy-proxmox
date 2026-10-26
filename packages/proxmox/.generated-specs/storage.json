@@ -1,0 +1,1459 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.storage#GetStorageRequestType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "btrfs"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cephfs"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cifs"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dir"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "esxi"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "iscsi"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "iscsidirect"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lvm"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lvmthin"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nfs"
+          }
+        },
+        "Value10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pbs"
+          }
+        },
+        "Value11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rbd"
+          }
+        },
+        "Value12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zfs"
+          }
+        },
+        "Value13": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zfspool"
+          }
+        }
+      }
+    },
+    "proxmox.storage#GetStorageRequest": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "proxmox.storage#GetStorageRequestType",
+          "traits": {
+            "smithy.api#httpQuery": "type"
+          }
+        }
+      }
+    },
+    "proxmox.storage#GetStorageResultItem": {
+      "type": "structure",
+      "members": {
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.storage#GetStorageResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.storage#GetStorageResultItem"
+      }
+    },
+    "proxmox.storage#GetStorageResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.storage#GetStorageResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.storage#GetStorage": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.storage#GetStorageRequest"
+      },
+      "output": {
+        "target": "proxmox.storage#GetStorageResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/storage",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /storage",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.storage#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.storage#GetStorage"
+        },
+        {
+          "target": "proxmox.storage#PostStorage"
+        },
+        {
+          "target": "proxmox.storage#DeleteStorageByStorage"
+        },
+        {
+          "target": "proxmox.storage#GetStorageByStorage"
+        },
+        {
+          "target": "proxmox.storage#PutStorageByStorage"
+        }
+      ]
+    },
+    "proxmox.storage#PostStorageRequestFormat": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "raw"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qcow2"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "subvol"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vmdk"
+          }
+        }
+      }
+    },
+    "proxmox.storage#PostStorageRequestPreallocation": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "metadata"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "falloc"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "full"
+          }
+        }
+      }
+    },
+    "proxmox.storage#PostStorageRequestSmbversion": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "default"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "2.0"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "2.1"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "3"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "3.0"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "3.11"
+          }
+        }
+      }
+    },
+    "proxmox.storage#PostStorageRequestType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "btrfs"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cephfs"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cifs"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dir"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "esxi"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "iscsi"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "iscsidirect"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lvm"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lvmthin"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nfs"
+          }
+        },
+        "Value10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pbs"
+          }
+        },
+        "Value11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rbd"
+          }
+        },
+        "Value12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zfs"
+          }
+        },
+        "Value13": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zfspool"
+          }
+        }
+      }
+    },
+    "proxmox.storage#PostStorageRequest": {
+      "type": "structure",
+      "members": {
+        "authsupported": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "base": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-volume-id"
+          }
+        },
+        "blocksize": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-zfs-blocksize"
+          }
+        },
+        "bwlimit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": {
+              "clone": {
+                "minimum": "0",
+                "optional": 1,
+                "type": "number"
+              },
+              "default": {
+                "minimum": "0",
+                "optional": 1,
+                "type": "number"
+              },
+              "migration": {
+                "minimum": "0",
+                "optional": 1,
+                "type": "number"
+              },
+              "move": {
+                "minimum": "0",
+                "optional": 1,
+                "type": "number"
+              },
+              "restore": {
+                "minimum": "0",
+                "optional": 1,
+                "type": "number"
+              }
+            }
+          }
+        },
+        "comstar_hg": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "comstar_tg": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-content-list"
+          }
+        },
+        "content-dirs": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-dir-override-list"
+          }
+        },
+        "create-base-path": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "create-subdirs": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "data-pool": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "datastore": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "disable": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "domain": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "encryption-key": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "export": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-path"
+          }
+        },
+        "fingerprint": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "format": {
+          "target": "proxmox.storage#PostStorageRequestFormat",
+          "traits": {}
+        },
+        "fs-name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-configid"
+          }
+        },
+        "fuse": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "is_mountpoint": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "iscsiprovider": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "keyring": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "krbd": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "lio_tpg": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "master-pubkey": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "max-protected-backups": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "mkdir": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "monhost": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-portal-dns-list"
+          }
+        },
+        "mountpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-path"
+          }
+        },
+        "namespace": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "nocow": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "nodes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-node-list"
+          }
+        },
+        "nowritecache": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "options": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-options"
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-path"
+          }
+        },
+        "pool": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "port": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "portal": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-portal-dns"
+          }
+        },
+        "preallocation": {
+          "target": "proxmox.storage#PostStorageRequestPreallocation",
+          "traits": {}
+        },
+        "prune-backups": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "prune-backups"
+          }
+        },
+        "saferemove": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "saferemove-stepsize": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "saferemove_throughput": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "server": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-server"
+          }
+        },
+        "share": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "shared": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "skip-cert-verification": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "smbversion": {
+          "target": "proxmox.storage#PostStorageRequestSmbversion",
+          "traits": {}
+        },
+        "snapshot-as-volume-chain": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "sparse": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id"
+          }
+        },
+        "subdir": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-path"
+          }
+        },
+        "tagged_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "thinpool": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-vgname"
+          }
+        },
+        "type": {
+          "target": "proxmox.storage#PostStorageRequestType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "vgname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-vgname"
+          }
+        },
+        "zfs-base-path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-path"
+          }
+        }
+      }
+    },
+    "proxmox.storage#PostStorageResultConfig": {
+      "type": "structure",
+      "members": {
+        "encryption-key": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.storage#PostStorageResultType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "btrfs"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cephfs"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cifs"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dir"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "esxi"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "iscsi"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "iscsidirect"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lvm"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lvmthin"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nfs"
+          }
+        },
+        "Value10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pbs"
+          }
+        },
+        "Value11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rbd"
+          }
+        },
+        "Value12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zfs"
+          }
+        },
+        "Value13": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zfspool"
+          }
+        }
+      }
+    },
+    "proxmox.storage#PostStorageResult": {
+      "type": "structure",
+      "members": {
+        "config": {
+          "target": "proxmox.storage#PostStorageResultConfig",
+          "traits": {}
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "proxmox.storage#PostStorageResultType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.storage#PostStorageResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.storage#PostStorageResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.storage#PostStorage": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.storage#PostStorageRequest"
+      },
+      "output": {
+        "target": "proxmox.storage#PostStorageResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/storage",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /storage",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "create"
+      }
+    },
+    "proxmox.storage#DeleteStorageByStorageRequest": {
+      "type": "structure",
+      "members": {
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.storage#DeleteStorageByStorageResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.storage#DeleteStorageByStorage": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.storage#DeleteStorageByStorageRequest"
+      },
+      "output": {
+        "target": "proxmox.storage#DeleteStorageByStorageResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/storage/{storage}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /storage/{storage}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "delete"
+      }
+    },
+    "proxmox.storage#GetStorageByStorageRequest": {
+      "type": "structure",
+      "members": {
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.storage#GetStorageByStorageResult": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.storage#GetStorageByStorageResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.storage#GetStorageByStorageResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.storage#GetStorageByStorage": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.storage#GetStorageByStorageRequest"
+      },
+      "output": {
+        "target": "proxmox.storage#GetStorageByStorageResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/storage/{storage}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /storage/{storage}",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "read"
+      }
+    },
+    "proxmox.storage#PutStorageByStorageRequestFormat": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "raw"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qcow2"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "subvol"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vmdk"
+          }
+        }
+      }
+    },
+    "proxmox.storage#PutStorageByStorageRequestPreallocation": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "metadata"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "falloc"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "full"
+          }
+        }
+      }
+    },
+    "proxmox.storage#PutStorageByStorageRequestSmbversion": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "default"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "2.0"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "2.1"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "3"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "3.0"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "3.11"
+          }
+        }
+      }
+    },
+    "proxmox.storage#PutStorageByStorageRequest": {
+      "type": "structure",
+      "members": {
+        "blocksize": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-zfs-blocksize"
+          }
+        },
+        "bwlimit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": {
+              "clone": {
+                "minimum": "0",
+                "optional": 1,
+                "type": "number"
+              },
+              "default": {
+                "minimum": "0",
+                "optional": 1,
+                "type": "number"
+              },
+              "migration": {
+                "minimum": "0",
+                "optional": 1,
+                "type": "number"
+              },
+              "move": {
+                "minimum": "0",
+                "optional": 1,
+                "type": "number"
+              },
+              "restore": {
+                "minimum": "0",
+                "optional": 1,
+                "type": "number"
+              }
+            }
+          }
+        },
+        "comstar_hg": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "comstar_tg": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-content-list"
+          }
+        },
+        "content-dirs": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-dir-override-list"
+          }
+        },
+        "create-base-path": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "create-subdirs": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "data-pool": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "delete": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-configid-list"
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "disable": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "domain": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "encryption-key": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "fingerprint": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "format": {
+          "target": "proxmox.storage#PutStorageByStorageRequestFormat",
+          "traits": {}
+        },
+        "fs-name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-configid"
+          }
+        },
+        "fuse": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "is_mountpoint": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "keyring": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "krbd": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "lio_tpg": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "master-pubkey": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "max-protected-backups": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "mkdir": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "monhost": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-portal-dns-list"
+          }
+        },
+        "mountpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-path"
+          }
+        },
+        "namespace": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "nocow": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "nodes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-node-list"
+          }
+        },
+        "nowritecache": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "options": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-options"
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "pool": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "port": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "preallocation": {
+          "target": "proxmox.storage#PutStorageByStorageRequestPreallocation",
+          "traits": {}
+        },
+        "prune-backups": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "prune-backups"
+          }
+        },
+        "saferemove": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "saferemove-stepsize": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "saferemove_throughput": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "server": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-server"
+          }
+        },
+        "shared": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "skip-cert-verification": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "smbversion": {
+          "target": "proxmox.storage#PutStorageByStorageRequestSmbversion",
+          "traits": {}
+        },
+        "snapshot-as-volume-chain": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "sparse": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "subdir": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-path"
+          }
+        },
+        "tagged_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "zfs-base-path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-path"
+          }
+        }
+      }
+    },
+    "proxmox.storage#PutStorageByStorageResultConfig": {
+      "type": "structure",
+      "members": {
+        "encryption-key": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.storage#PutStorageByStorageResultType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "btrfs"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cephfs"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cifs"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dir"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "esxi"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "iscsi"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "iscsidirect"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lvm"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lvmthin"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nfs"
+          }
+        },
+        "Value10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pbs"
+          }
+        },
+        "Value11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rbd"
+          }
+        },
+        "Value12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zfs"
+          }
+        },
+        "Value13": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zfspool"
+          }
+        }
+      }
+    },
+    "proxmox.storage#PutStorageByStorageResult": {
+      "type": "structure",
+      "members": {
+        "config": {
+          "target": "proxmox.storage#PutStorageByStorageResultConfig",
+          "traits": {}
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "proxmox.storage#PutStorageByStorageResultType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.storage#PutStorageByStorageResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.storage#PutStorageByStorageResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.storage#PutStorageByStorage": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.storage#PutStorageByStorageRequest"
+      },
+      "output": {
+        "target": "proxmox.storage#PutStorageByStorageResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/storage/{storage}",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /storage/{storage}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "update"
+      }
+    }
+  }
+}

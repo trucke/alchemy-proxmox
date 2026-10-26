@@ -1,0 +1,20 @@
+{
+  "package": "pve-docs",
+  "version": "9.2.4",
+  "repository": "http://download.proxmox.com/debian/pve/",
+  "release": {
+    "url": "http://download.proxmox.com/debian/pve/dists/trixie/InRelease",
+    "sha256": "12a8c3bfcf3669bf4080dd17bcb6fe8eb16e533446499bbe123b8a5aac77e22c",
+    "date": "Sat, 24 Oct 2026 11:34:47 +0000",
+    "verifiedWith": "gpgv",
+    "keyUrl": "https://enterprise.proxmox.com/debian/proxmox-release-trixie.gpg",
+    "keyFingerprint": "24B30F06ECC1836A4E5EFECBA7BCD1420BFE778E"
+  },
+  "indexUrl": "http://download.proxmox.com/debian/pve/dists/trixie/pve-no-subscription/binary-amd64/Packages.gz",
+  "indexSha256": "0bc65bf27a60b9d8cc7b6298c2c15cbcd2e219f668a9205a2921705884d4a831",
+  "packageUrl": "http://download.proxmox.com/debian/pve/dists/trixie/pve-no-subscription/binary-amd64/pve-docs_9.2.4_all.deb",
+  "packageSha256": "a18680e0ca4f4939846e57ebe96e76a56b00cf5d1d9ba3a5cdc7eb7c9d28a59d",
+  "apidocSha256": "9def8f13611184ee1c7d0399713130dfc4a065701d0d91a69b9c03df929344e9",
+  "schemaSha256": "5c3e8bd8f1b262486578f36b5fd32d9ea9e0973284235988b0a2b2a7483fbc5e",
+  "packageIndexEntry": "Package: pve-docs\nArchitecture: all\nVersion: 9.2.4\nPriority: optional\nSection: doc\nMaintainer: Proxmox Support Team <support@proxmox.com>\nInstalled-Size: 37022\nDepends: libjs-extjs, perl:any\nFilename: dists/trixie/pve-no-subscription/binary-amd64/pve-docs_9.2.4_all.deb\nSize: 17194880\nMD5sum: da931135980988c9babc1495ac1ff84f\nSHA256: a18680e0ca4f4939846e57ebe96e76a56b00cf5d1d9ba3a5cdc7eb7c9d28a59d\nSHA512: ddfccc77e7b62e22edbfbdb6ca9cb8cf5ffa0bb76c3c7e021ecdd2ae557501d0ca4a746c1c8391fe6cf874816ce24944bd0b5867859045adfa0646831c045ebf"
+}

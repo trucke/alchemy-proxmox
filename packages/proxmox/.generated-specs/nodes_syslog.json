@@ -1,0 +1,117 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_syslog#GetNodesByNodeSyslogRequest": {
+      "type": "structure",
+      "members": {
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "service": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "service"
+          }
+        },
+        "since": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "since"
+          }
+        },
+        "start": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "start"
+          }
+        },
+        "until": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "until"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_syslog#GetNodesByNodeSyslogResultItem": {
+      "type": "structure",
+      "members": {
+        "n": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "t": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_syslog#GetNodesByNodeSyslogResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_syslog#GetNodesByNodeSyslogResultItem"
+      }
+    },
+    "proxmox.nodes_syslog#GetNodesByNodeSyslogResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_syslog#GetNodesByNodeSyslogResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_syslog#GetNodesByNodeSyslog": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_syslog#GetNodesByNodeSyslogRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_syslog#GetNodesByNodeSyslogResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/syslog",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/syslog",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "syslog"
+      }
+    },
+    "proxmox.nodes_syslog#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_syslog#GetNodesByNodeSyslog"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,717 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_vzdump#PostNodesByNodeVzdumpRequestCompress": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "0"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gzip"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lzo"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zstd"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_vzdump#PostNodesByNodeVzdumpRequestExcludePath": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "proxmox.nodes_vzdump#PostNodesByNodeVzdumpRequestMailnotification": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "always"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failure"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_vzdump#PostNodesByNodeVzdumpRequestMode": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "snapshot"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "suspend"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stop"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_vzdump#PostNodesByNodeVzdumpRequestNotificationMode": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "legacy-sendmail"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notification-system"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_vzdump#PostNodesByNodeVzdumpRequestPbsChangeDetectionMode": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "legacy"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "data"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "metadata"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_vzdump#PostNodesByNodeVzdumpRequest": {
+      "type": "structure",
+      "members": {
+        "all": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "bwlimit": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "compress": {
+          "target": "proxmox.nodes_vzdump#PostNodesByNodeVzdumpRequestCompress",
+          "traits": {}
+        },
+        "dumpdir": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "exclude": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-vmid-list"
+          }
+        },
+        "exclude-path": {
+          "target": "proxmox.nodes_vzdump#PostNodesByNodeVzdumpRequestExcludePath",
+          "traits": {}
+        },
+        "fleecing": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "backup-fleecing"
+          }
+        },
+        "ionice": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "job-id": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "lockwait": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "mailnotification": {
+          "target": "proxmox.nodes_vzdump#PostNodesByNodeVzdumpRequestMailnotification",
+          "traits": {}
+        },
+        "mailto": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "email-or-username-list"
+          }
+        },
+        "mode": {
+          "target": "proxmox.nodes_vzdump#PostNodesByNodeVzdumpRequestMode",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "notes-template": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "notification-mode": {
+          "target": "proxmox.nodes_vzdump#PostNodesByNodeVzdumpRequestNotificationMode",
+          "traits": {}
+        },
+        "pbs-change-detection-mode": {
+          "target": "proxmox.nodes_vzdump#PostNodesByNodeVzdumpRequestPbsChangeDetectionMode",
+          "traits": {}
+        },
+        "performance": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "backup-performance"
+          }
+        },
+        "pigz": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "pool": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "protected": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "prune-backups": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "prune-backups"
+          }
+        },
+        "quiet": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "remove": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "script": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "stdexcludes": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "stdout": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "stop": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "stopwait": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-id"
+          }
+        },
+        "tmpdir": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "vmid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-vmid-list"
+          }
+        },
+        "zstd": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_vzdump#PostNodesByNodeVzdumpResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_vzdump#PostNodesByNodeVzdump": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_vzdump#PostNodesByNodeVzdumpRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_vzdump#PostNodesByNodeVzdumpResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/vzdump",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/vzdump",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "vzdump"
+      }
+    },
+    "proxmox.nodes_vzdump#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_vzdump#PostNodesByNodeVzdump"
+        },
+        {
+          "target": "proxmox.nodes_vzdump#GetNodesByNodeVzdumpDefaults"
+        },
+        {
+          "target": "proxmox.nodes_vzdump#GetNodesByNodeVzdumpExtractconfig"
+        }
+      ]
+    },
+    "proxmox.nodes_vzdump#GetNodesByNodeVzdumpDefaultsRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpQuery": "storage"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_vzdump#GetNodesByNodeVzdumpDefaultsResultCompress": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "0"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gzip"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lzo"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zstd"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_vzdump#GetNodesByNodeVzdumpDefaultsResultExcludePath": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "proxmox.nodes_vzdump#GetNodesByNodeVzdumpDefaultsResultMailnotification": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "always"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failure"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_vzdump#GetNodesByNodeVzdumpDefaultsResultMode": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "snapshot"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "suspend"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stop"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_vzdump#GetNodesByNodeVzdumpDefaultsResultNotificationMode": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "legacy-sendmail"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notification-system"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_vzdump#GetNodesByNodeVzdumpDefaultsResultPbsChangeDetectionMode": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "legacy"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "data"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "metadata"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_vzdump#GetNodesByNodeVzdumpDefaultsResult": {
+      "type": "structure",
+      "members": {
+        "all": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "bwlimit": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "compress": {
+          "target": "proxmox.nodes_vzdump#GetNodesByNodeVzdumpDefaultsResultCompress",
+          "traits": {}
+        },
+        "dumpdir": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "exclude": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-vmid-list"
+          }
+        },
+        "exclude-path": {
+          "target": "proxmox.nodes_vzdump#GetNodesByNodeVzdumpDefaultsResultExcludePath",
+          "traits": {}
+        },
+        "fleecing": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "backup-fleecing"
+          }
+        },
+        "ionice": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "lockwait": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "mailnotification": {
+          "target": "proxmox.nodes_vzdump#GetNodesByNodeVzdumpDefaultsResultMailnotification",
+          "traits": {}
+        },
+        "mailto": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "email-or-username-list"
+          }
+        },
+        "mode": {
+          "target": "proxmox.nodes_vzdump#GetNodesByNodeVzdumpDefaultsResultMode",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-node"
+          }
+        },
+        "notes-template": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "notification-mode": {
+          "target": "proxmox.nodes_vzdump#GetNodesByNodeVzdumpDefaultsResultNotificationMode",
+          "traits": {}
+        },
+        "pbs-change-detection-mode": {
+          "target": "proxmox.nodes_vzdump#GetNodesByNodeVzdumpDefaultsResultPbsChangeDetectionMode",
+          "traits": {}
+        },
+        "performance": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "backup-performance"
+          }
+        },
+        "pigz": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "pool": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "protected": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "prune-backups": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "prune-backups"
+          }
+        },
+        "quiet": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "remove": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "script": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "stdexcludes": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "stop": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "stopwait": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-id"
+          }
+        },
+        "tmpdir": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "vmid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-vmid-list"
+          }
+        },
+        "zstd": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_vzdump#GetNodesByNodeVzdumpDefaultsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_vzdump#GetNodesByNodeVzdumpDefaultsResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_vzdump#GetNodesByNodeVzdumpDefaults": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_vzdump#GetNodesByNodeVzdumpDefaultsRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_vzdump#GetNodesByNodeVzdumpDefaultsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/vzdump/defaults",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/vzdump/defaults",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "defaults"
+      }
+    },
+    "proxmox.nodes_vzdump#GetNodesByNodeVzdumpExtractconfigRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "volume": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpQuery": "volume"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_vzdump#GetNodesByNodeVzdumpExtractconfigResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_vzdump#GetNodesByNodeVzdumpExtractconfig": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_vzdump#GetNodesByNodeVzdumpExtractconfigRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_vzdump#GetNodesByNodeVzdumpExtractconfigResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/vzdump/extractconfig",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/vzdump/extractconfig",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "extractconfig"
+      }
+    }
+  }
+}

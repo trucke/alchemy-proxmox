@@ -1,0 +1,5 @@
+.local/
+node_modules/
+.alchemy/
+# Downloaded and verified by `pnpm specs:fetch`; not redistributed.
+packages/proxmox/specs/spec-mirror-proxmox/specs/api-schema.json

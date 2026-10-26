@@ -1,0 +1,654 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_scan#GetNodesByNodeScanRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanResultItem": {
+      "type": "structure",
+      "members": {
+        "method": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanResultItem"
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_scan#GetNodesByNodeScanResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScan": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/scan",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/scan",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_scan#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_scan#GetNodesByNodeScan"
+        },
+        {
+          "target": "proxmox.nodes_scan#GetNodesByNodeScanNfs"
+        },
+        {
+          "target": "proxmox.nodes_scan#GetNodesByNodeScanCifs"
+        },
+        {
+          "target": "proxmox.nodes_scan#GetNodesByNodeScanPbs"
+        },
+        {
+          "target": "proxmox.nodes_scan#GetNodesByNodeScanIscsi"
+        },
+        {
+          "target": "proxmox.nodes_scan#GetNodesByNodeScanLvm"
+        },
+        {
+          "target": "proxmox.nodes_scan#GetNodesByNodeScanLvmthin"
+        },
+        {
+          "target": "proxmox.nodes_scan#GetNodesByNodeScanZfs"
+        }
+      ]
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanNfsRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "server": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-server",
+            "smithy.api#httpQuery": "server"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanNfsResultItem": {
+      "type": "structure",
+      "members": {
+        "options": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanNfsResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanNfsResultItem"
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanNfsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_scan#GetNodesByNodeScanNfsResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanNfs": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanNfsRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanNfsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/scan/nfs",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/scan/nfs",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "nfsscan"
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanCifsRequest": {
+      "type": "structure",
+      "members": {
+        "domain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "domain"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "password"
+          }
+        },
+        "server": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-server",
+            "smithy.api#httpQuery": "server"
+          }
+        },
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "username"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanCifsResultItem": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "share": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanCifsResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanCifsResultItem"
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanCifsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_scan#GetNodesByNodeScanCifsResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanCifs": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanCifsRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanCifsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/scan/cifs",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/scan/cifs",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "cifsscan"
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanPbsRequest": {
+      "type": "structure",
+      "members": {
+        "fingerprint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "fingerprint"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpQuery": "password"
+          }
+        },
+        "port": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "port"
+          }
+        },
+        "server": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-server",
+            "smithy.api#httpQuery": "server"
+          }
+        },
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpQuery": "username"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanPbsResultItem": {
+      "type": "structure",
+      "members": {
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "store": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanPbsResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanPbsResultItem"
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanPbsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_scan#GetNodesByNodeScanPbsResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanPbs": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanPbsRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanPbsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/scan/pbs",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/scan/pbs",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "pbsscan"
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanIscsiRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "portal": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-portal-dns",
+            "smithy.api#httpQuery": "portal"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanIscsiResultItem": {
+      "type": "structure",
+      "members": {
+        "portal": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanIscsiResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanIscsiResultItem"
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanIscsiResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_scan#GetNodesByNodeScanIscsiResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanIscsi": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanIscsiRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanIscsiResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/scan/iscsi",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/scan/iscsi",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "iscsiscan"
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanLvmRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanLvmResultItem": {
+      "type": "structure",
+      "members": {
+        "vg": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanLvmResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanLvmResultItem"
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanLvmResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_scan#GetNodesByNodeScanLvmResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanLvm": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanLvmRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanLvmResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/scan/lvm",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/scan/lvm",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "lvmscan"
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanLvmthinRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "vg": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpQuery": "vg"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanLvmthinResultItem": {
+      "type": "structure",
+      "members": {
+        "lv": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanLvmthinResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanLvmthinResultItem"
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanLvmthinResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_scan#GetNodesByNodeScanLvmthinResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanLvmthin": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanLvmthinRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanLvmthinResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/scan/lvmthin",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/scan/lvmthin",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "lvmthinscan"
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanZfsRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanZfsResultItem": {
+      "type": "structure",
+      "members": {
+        "pool": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanZfsResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanZfsResultItem"
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanZfsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_scan#GetNodesByNodeScanZfsResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_scan#GetNodesByNodeScanZfs": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanZfsRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_scan#GetNodesByNodeScanZfsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/scan/zfs",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/scan/zfs",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "zfsscan"
+      }
+    }
+  }
+}

@@ -1,0 +1,429 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_config#GetNodesByNodeConfigRequestProperty": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "acme"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "acmedomain0"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "acmedomain1"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "acmedomain2"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "acmedomain3"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "acmedomain4"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "acmedomain5"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ballooning-target"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "description"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "location"
+          }
+        },
+        "Value10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "startall-onboot-delay"
+          }
+        },
+        "Value11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "wakeonlan"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_config#GetNodesByNodeConfigRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "property": {
+          "target": "proxmox.nodes_config#GetNodesByNodeConfigRequestProperty",
+          "traits": {
+            "smithy.api#httpQuery": "property"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_config#GetNodesByNodeConfigResult": {
+      "type": "structure",
+      "members": {
+        "acme": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": {
+              "account": {
+                "default": "default",
+                "format": "pve-configid",
+                "optional": 1,
+                "type": "string"
+              },
+              "domains": {
+                "format": "pve-acme-domain-list",
+                "optional": 1,
+                "type": "string"
+              }
+            }
+          }
+        },
+        "acmedomain[n]": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": {
+              "alias": {
+                "format": "pve-acme-alias",
+                "optional": 1,
+                "type": "string"
+              },
+              "domain": {
+                "default_key": 1,
+                "format": "pve-acme-domain",
+                "type": "string"
+              },
+              "plugin": {
+                "default": "standalone",
+                "format": "pve-configid",
+                "optional": 1,
+                "type": "string"
+              }
+            },
+            "proxmox.api#family": {
+              "pattern": "acmedomain[n]",
+              "schema": {
+                "format": {
+                  "alias": {
+                    "format": "pve-acme-alias",
+                    "optional": 1,
+                    "type": "string"
+                  },
+                  "domain": {
+                    "default_key": 1,
+                    "format": "pve-acme-domain",
+                    "type": "string"
+                  },
+                  "plugin": {
+                    "default": "standalone",
+                    "format": "pve-configid",
+                    "optional": 1,
+                    "type": "string"
+                  }
+                },
+                "optional": 1,
+                "type": "string"
+              }
+            }
+          }
+        },
+        "ballooning-target": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-node-location"
+          }
+        },
+        "startall-onboot-delay": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "wakeonlan": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": {
+              "bind-interface": {
+                "format": "pve-iface",
+                "optional": 1,
+                "type": "string"
+              },
+              "broadcast-address": {
+                "default": "255.255.255.255",
+                "format": "ipv4",
+                "optional": 1,
+                "type": "string"
+              },
+              "mac": {
+                "default_key": 1,
+                "format": "mac-addr",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "proxmox.nodes_config#GetNodesByNodeConfigResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_config#GetNodesByNodeConfigResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_config#GetNodesByNodeConfig": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_config#GetNodesByNodeConfigRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_config#GetNodesByNodeConfigResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/config",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/config",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "get_config"
+      }
+    },
+    "proxmox.nodes_config#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_config#GetNodesByNodeConfig"
+        },
+        {
+          "target": "proxmox.nodes_config#PutNodesByNodeConfig"
+        }
+      ]
+    },
+    "proxmox.nodes_config#PutNodesByNodeConfigRequest": {
+      "type": "structure",
+      "members": {
+        "acme": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": {
+              "account": {
+                "default": "default",
+                "format": "pve-configid",
+                "optional": 1,
+                "type": "string"
+              },
+              "domains": {
+                "format": "pve-acme-domain-list",
+                "optional": 1,
+                "type": "string"
+              }
+            }
+          }
+        },
+        "acmedomain[n]": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": {
+              "alias": {
+                "format": "pve-acme-alias",
+                "optional": 1,
+                "type": "string"
+              },
+              "domain": {
+                "default_key": 1,
+                "format": "pve-acme-domain",
+                "type": "string"
+              },
+              "plugin": {
+                "default": "standalone",
+                "format": "pve-configid",
+                "optional": 1,
+                "type": "string"
+              }
+            },
+            "proxmox.api#family": {
+              "pattern": "acmedomain[n]",
+              "schema": {
+                "format": {
+                  "alias": {
+                    "format": "pve-acme-alias",
+                    "optional": 1,
+                    "type": "string"
+                  },
+                  "domain": {
+                    "default_key": 1,
+                    "format": "pve-acme-domain",
+                    "type": "string"
+                  },
+                  "plugin": {
+                    "default": "standalone",
+                    "format": "pve-configid",
+                    "optional": 1,
+                    "type": "string"
+                  }
+                },
+                "optional": 1,
+                "type": "string"
+              }
+            }
+          }
+        },
+        "ballooning-target": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "delete": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-configid-list"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-node-location"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "startall-onboot-delay": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "wakeonlan": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": {
+              "bind-interface": {
+                "format": "pve-iface",
+                "optional": 1,
+                "type": "string"
+              },
+              "broadcast-address": {
+                "default": "255.255.255.255",
+                "format": "ipv4",
+                "optional": 1,
+                "type": "string"
+              },
+              "mac": {
+                "default_key": 1,
+                "format": "mac-addr",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "proxmox.nodes_config#PutNodesByNodeConfigResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_config#PutNodesByNodeConfig": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_config#PutNodesByNodeConfigRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_config#PutNodesByNodeConfigResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/nodes/{node}/config",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /nodes/{node}/config",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "set_options"
+      }
+    }
+  }
+}

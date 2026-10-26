@@ -1,0 +1,1735 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_disks#GetNodesByNodeDisksRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksResultItem": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksResultItem"
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisksResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisks": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/disks",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/disks",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_disks#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisks"
+        },
+        {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisksLvm"
+        },
+        {
+          "target": "proxmox.nodes_disks#PostNodesByNodeDisksLvm"
+        },
+        {
+          "target": "proxmox.nodes_disks#DeleteNodesByNodeDisksLvmByName"
+        },
+        {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisksLvmthin"
+        },
+        {
+          "target": "proxmox.nodes_disks#PostNodesByNodeDisksLvmthin"
+        },
+        {
+          "target": "proxmox.nodes_disks#DeleteNodesByNodeDisksLvmthinByName"
+        },
+        {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisksDirectory"
+        },
+        {
+          "target": "proxmox.nodes_disks#PostNodesByNodeDisksDirectory"
+        },
+        {
+          "target": "proxmox.nodes_disks#DeleteNodesByNodeDisksDirectoryByName"
+        },
+        {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisksZfs"
+        },
+        {
+          "target": "proxmox.nodes_disks#PostNodesByNodeDisksZfs"
+        },
+        {
+          "target": "proxmox.nodes_disks#DeleteNodesByNodeDisksZfsByName"
+        },
+        {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisksZfsByName"
+        },
+        {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisksList"
+        },
+        {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisksSmart"
+        },
+        {
+          "target": "proxmox.nodes_disks#PostNodesByNodeDisksInitgpt"
+        },
+        {
+          "target": "proxmox.nodes_disks#PutNodesByNodeDisksWipedisk"
+        }
+      ]
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksLvmRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksLvmResultChildrenItemChildrenItem": {
+      "type": "structure",
+      "members": {
+        "free": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "leaf": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksLvmResultChildrenItemChildren": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksLvmResultChildrenItemChildrenItem"
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksLvmResultChildrenItem": {
+      "type": "structure",
+      "members": {
+        "children": {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisksLvmResultChildrenItemChildren",
+          "traits": {}
+        },
+        "free": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "leaf": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksLvmResultChildren": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksLvmResultChildrenItem"
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksLvmResult": {
+      "type": "structure",
+      "members": {
+        "children": {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisksLvmResultChildren",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "leaf": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksLvmResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisksLvmResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksLvm": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksLvmRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksLvmResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/disks/lvm",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/disks/lvm",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_disks#PostNodesByNodeDisksLvmRequest": {
+      "type": "structure",
+      "members": {
+        "add_storage": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "device": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#PostNodesByNodeDisksLvmResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#PostNodesByNodeDisksLvm": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_disks#PostNodesByNodeDisksLvmRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_disks#PostNodesByNodeDisksLvmResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/disks/lvm",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/disks/lvm",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "create"
+      }
+    },
+    "proxmox.nodes_disks#DeleteNodesByNodeDisksLvmByNameRequest": {
+      "type": "structure",
+      "members": {
+        "cleanup-config": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "cleanup-config"
+          }
+        },
+        "cleanup-disks": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "cleanup-disks"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#DeleteNodesByNodeDisksLvmByNameResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#DeleteNodesByNodeDisksLvmByName": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_disks#DeleteNodesByNodeDisksLvmByNameRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_disks#DeleteNodesByNodeDisksLvmByNameResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/nodes/{node}/disks/lvm/{name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /nodes/{node}/disks/lvm/{name}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "delete"
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksLvmthinRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksLvmthinResultItem": {
+      "type": "structure",
+      "members": {
+        "lv": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "lv_size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_used": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "used": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "vg": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksLvmthinResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksLvmthinResultItem"
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksLvmthinResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisksLvmthinResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksLvmthin": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksLvmthinRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksLvmthinResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/disks/lvmthin",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/disks/lvmthin",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_disks#PostNodesByNodeDisksLvmthinRequest": {
+      "type": "structure",
+      "members": {
+        "add_storage": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "device": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#PostNodesByNodeDisksLvmthinResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#PostNodesByNodeDisksLvmthin": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_disks#PostNodesByNodeDisksLvmthinRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_disks#PostNodesByNodeDisksLvmthinResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/disks/lvmthin",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/disks/lvmthin",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "create"
+      }
+    },
+    "proxmox.nodes_disks#DeleteNodesByNodeDisksLvmthinByNameRequest": {
+      "type": "structure",
+      "members": {
+        "cleanup-config": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "cleanup-config"
+          }
+        },
+        "cleanup-disks": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "cleanup-disks"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "volume-group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpQuery": "volume-group"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#DeleteNodesByNodeDisksLvmthinByNameResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#DeleteNodesByNodeDisksLvmthinByName": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_disks#DeleteNodesByNodeDisksLvmthinByNameRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_disks#DeleteNodesByNodeDisksLvmthinByNameResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/nodes/{node}/disks/lvmthin/{name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /nodes/{node}/disks/lvmthin/{name}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "delete"
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksDirectoryRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksDirectoryResultItem": {
+      "type": "structure",
+      "members": {
+        "device": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "options": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "unitfile": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksDirectoryResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksDirectoryResultItem"
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksDirectoryResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisksDirectoryResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksDirectory": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksDirectoryRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksDirectoryResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/disks/directory",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/disks/directory",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_disks#PostNodesByNodeDisksDirectoryRequestFilesystem": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ext4"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "xfs"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#PostNodesByNodeDisksDirectoryRequest": {
+      "type": "structure",
+      "members": {
+        "add_storage": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "device": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filesystem": {
+          "target": "proxmox.nodes_disks#PostNodesByNodeDisksDirectoryRequestFilesystem",
+          "traits": {}
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#PostNodesByNodeDisksDirectoryResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#PostNodesByNodeDisksDirectory": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_disks#PostNodesByNodeDisksDirectoryRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_disks#PostNodesByNodeDisksDirectoryResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/disks/directory",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/disks/directory",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "create"
+      }
+    },
+    "proxmox.nodes_disks#DeleteNodesByNodeDisksDirectoryByNameRequest": {
+      "type": "structure",
+      "members": {
+        "cleanup-config": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "cleanup-config"
+          }
+        },
+        "cleanup-disks": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "cleanup-disks"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#DeleteNodesByNodeDisksDirectoryByNameResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#DeleteNodesByNodeDisksDirectoryByName": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_disks#DeleteNodesByNodeDisksDirectoryByNameRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_disks#DeleteNodesByNodeDisksDirectoryByNameResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/nodes/{node}/disks/directory/{name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /nodes/{node}/disks/directory/{name}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "delete"
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksZfsRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksZfsResultItem": {
+      "type": "structure",
+      "members": {
+        "alloc": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "dedup": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "frag": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "free": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "health": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksZfsResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksZfsResultItem"
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksZfsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisksZfsResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksZfs": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksZfsRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksZfsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/disks/zfs",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/disks/zfs",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_disks#PostNodesByNodeDisksZfsRequestCompression": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gzip"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lz4"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lzjb"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zle"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zstd"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#PostNodesByNodeDisksZfsRequestRaidlevel": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "single"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mirror"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "raid10"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "raidz"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "raidz2"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "raidz3"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "draid"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "draid2"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "draid3"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#PostNodesByNodeDisksZfsRequest": {
+      "type": "structure",
+      "members": {
+        "add_storage": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "ashift": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "compression": {
+          "target": "proxmox.nodes_disks#PostNodesByNodeDisksZfsRequestCompression",
+          "traits": {}
+        },
+        "devices": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "string-list"
+          }
+        },
+        "draid-config": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": {
+              "data": {
+                "minimum": 1,
+                "type": "integer"
+              },
+              "spares": {
+                "minimum": 0,
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "raidlevel": {
+          "target": "proxmox.nodes_disks#PostNodesByNodeDisksZfsRequestRaidlevel",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#PostNodesByNodeDisksZfsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#PostNodesByNodeDisksZfs": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_disks#PostNodesByNodeDisksZfsRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_disks#PostNodesByNodeDisksZfsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/disks/zfs",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/disks/zfs",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "create"
+      }
+    },
+    "proxmox.nodes_disks#DeleteNodesByNodeDisksZfsByNameRequest": {
+      "type": "structure",
+      "members": {
+        "cleanup-config": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "cleanup-config"
+          }
+        },
+        "cleanup-disks": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "cleanup-disks"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#DeleteNodesByNodeDisksZfsByNameResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#DeleteNodesByNodeDisksZfsByName": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_disks#DeleteNodesByNodeDisksZfsByNameRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_disks#DeleteNodesByNodeDisksZfsByNameResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/nodes/{node}/disks/zfs/{name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /nodes/{node}/disks/zfs/{name}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "delete"
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksZfsByNameRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksZfsByNameResultChildrenItem": {
+      "type": "structure",
+      "members": {
+        "cksum": {
+          "target": "smithy.api#Double",
+          "traits": {}
+        },
+        "msg": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "read": {
+          "target": "smithy.api#Double",
+          "traits": {}
+        },
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "write": {
+          "target": "smithy.api#Double",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksZfsByNameResultChildren": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksZfsByNameResultChildrenItem"
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksZfsByNameResult": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "children": {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisksZfsByNameResultChildren",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "errors": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "scan": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksZfsByNameResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisksZfsByNameResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksZfsByName": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksZfsByNameRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksZfsByNameResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/disks/zfs/{name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/disks/zfs/{name}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "detail"
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksListRequestType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unused"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "journal_disks"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksListRequest": {
+      "type": "structure",
+      "members": {
+        "include-partitions": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "include-partitions"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "skipsmart": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "skipsmart"
+          }
+        },
+        "type": {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisksListRequestType",
+          "traits": {
+            "smithy.api#httpQuery": "type"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksListResultItemOsdidList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksListResultItem": {
+      "type": "structure",
+      "members": {
+        "devpath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "gpt": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "health": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "mounted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "osdid": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "osdid-list": {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisksListResultItemOsdidList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "parent": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "serial": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "used": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "vendor": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "wwn": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksListResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksListResultItem"
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksListResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisksListResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksList": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksListRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/disks/list",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/disks/list",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "list"
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksSmartRequest": {
+      "type": "structure",
+      "members": {
+        "disk": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpQuery": "disk"
+          }
+        },
+        "healthonly": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "healthonly"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksSmartResultAttributes": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksSmartResult": {
+      "type": "structure",
+      "members": {
+        "attributes": {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisksSmartResultAttributes",
+          "traits": {}
+        },
+        "health": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksSmartResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_disks#GetNodesByNodeDisksSmartResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#GetNodesByNodeDisksSmart": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksSmartRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_disks#GetNodesByNodeDisksSmartResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/disks/smart",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/disks/smart",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "smart"
+      }
+    },
+    "proxmox.nodes_disks#PostNodesByNodeDisksInitgptRequest": {
+      "type": "structure",
+      "members": {
+        "disk": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "uuid": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_disks#PostNodesByNodeDisksInitgptResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#PostNodesByNodeDisksInitgpt": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_disks#PostNodesByNodeDisksInitgptRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_disks#PostNodesByNodeDisksInitgptResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/disks/initgpt",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/disks/initgpt",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "initgpt"
+      }
+    },
+    "proxmox.nodes_disks#PutNodesByNodeDisksWipediskRequest": {
+      "type": "structure",
+      "members": {
+        "disk": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#PutNodesByNodeDisksWipediskResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_disks#PutNodesByNodeDisksWipedisk": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_disks#PutNodesByNodeDisksWipediskRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_disks#PutNodesByNodeDisksWipediskResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/nodes/{node}/disks/wipedisk",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /nodes/{node}/disks/wipedisk",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "wipe_disk"
+      }
+    }
+  }
+}

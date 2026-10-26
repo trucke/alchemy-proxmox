@@ -1,0 +1,82 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_stopall#PostNodesByNodeStopallRequest": {
+      "type": "structure",
+      "members": {
+        "force-stop": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "max-workers": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "vms": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-vmid-list"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_stopall#PostNodesByNodeStopallResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_stopall#PostNodesByNodeStopall": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_stopall#PostNodesByNodeStopallRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_stopall#PostNodesByNodeStopallResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/stopall",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/stopall",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "stopall"
+      }
+    },
+    "proxmox.nodes_stopall#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_stopall#PostNodesByNodeStopall"
+        }
+      ]
+    }
+  }
+}

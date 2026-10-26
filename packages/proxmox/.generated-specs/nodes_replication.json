@@ -1,0 +1,378 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_replication#GetNodesByNodeReplicationRequest": {
+      "type": "structure",
+      "members": {
+        "guest": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "proxmox.api#format": "pve-vmid",
+            "smithy.api#httpQuery": "guest"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_replication#GetNodesByNodeReplicationResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_replication#GetNodesByNodeReplicationResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_replication#GetNodesByNodeReplicationResultItem"
+      }
+    },
+    "proxmox.nodes_replication#GetNodesByNodeReplicationResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_replication#GetNodesByNodeReplicationResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_replication#GetNodesByNodeReplication": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_replication#GetNodesByNodeReplicationRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_replication#GetNodesByNodeReplicationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/replication",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/replication",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "status"
+      }
+    },
+    "proxmox.nodes_replication#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_replication#GetNodesByNodeReplication"
+        },
+        {
+          "target": "proxmox.nodes_replication#GetNodesByNodeReplicationById"
+        },
+        {
+          "target": "proxmox.nodes_replication#GetNodesByNodeReplicationByIdStatus"
+        },
+        {
+          "target": "proxmox.nodes_replication#GetNodesByNodeReplicationByIdLog"
+        },
+        {
+          "target": "proxmox.nodes_replication#PostNodesByNodeReplicationByIdScheduleNow"
+        }
+      ]
+    },
+    "proxmox.nodes_replication#GetNodesByNodeReplicationByIdRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-replication-job-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_replication#GetNodesByNodeReplicationByIdResultItem": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_replication#GetNodesByNodeReplicationByIdResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_replication#GetNodesByNodeReplicationByIdResultItem"
+      }
+    },
+    "proxmox.nodes_replication#GetNodesByNodeReplicationByIdResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_replication#GetNodesByNodeReplicationByIdResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_replication#GetNodesByNodeReplicationById": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_replication#GetNodesByNodeReplicationByIdRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_replication#GetNodesByNodeReplicationByIdResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/replication/{id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/replication/{id}",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_replication#GetNodesByNodeReplicationByIdStatusRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-replication-job-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_replication#GetNodesByNodeReplicationByIdStatusResult": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_replication#GetNodesByNodeReplicationByIdStatusResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_replication#GetNodesByNodeReplicationByIdStatusResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_replication#GetNodesByNodeReplicationByIdStatus": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_replication#GetNodesByNodeReplicationByIdStatusRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_replication#GetNodesByNodeReplicationByIdStatusResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/replication/{id}/status",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/replication/{id}/status",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "job_status"
+      }
+    },
+    "proxmox.nodes_replication#GetNodesByNodeReplicationByIdLogRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-replication-job-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "start": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "start"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_replication#GetNodesByNodeReplicationByIdLogResultItem": {
+      "type": "structure",
+      "members": {
+        "n": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "t": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_replication#GetNodesByNodeReplicationByIdLogResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_replication#GetNodesByNodeReplicationByIdLogResultItem"
+      }
+    },
+    "proxmox.nodes_replication#GetNodesByNodeReplicationByIdLogResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_replication#GetNodesByNodeReplicationByIdLogResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_replication#GetNodesByNodeReplicationByIdLog": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_replication#GetNodesByNodeReplicationByIdLogRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_replication#GetNodesByNodeReplicationByIdLogResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/replication/{id}/log",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/replication/{id}/log",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "read_job_log"
+      }
+    },
+    "proxmox.nodes_replication#PostNodesByNodeReplicationByIdScheduleNowRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-replication-job-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_replication#PostNodesByNodeReplicationByIdScheduleNowResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_replication#PostNodesByNodeReplicationByIdScheduleNow": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_replication#PostNodesByNodeReplicationByIdScheduleNowRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_replication#PostNodesByNodeReplicationByIdScheduleNowResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/replication/{id}/schedule_now",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/replication/{id}/schedule_now",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "schedule_now"
+      }
+    }
+  }
+}

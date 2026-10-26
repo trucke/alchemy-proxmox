@@ -1,0 +1,142 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_journal#GetNodesByNodeJournalRequest": {
+      "type": "structure",
+      "members": {
+        "endcursor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "endcursor"
+          }
+        },
+        "identifiers": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "identifiers"
+          }
+        },
+        "kernel": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "kernel"
+          }
+        },
+        "lastentries": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "lastentries"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "priority"
+          }
+        },
+        "service": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "service"
+          }
+        },
+        "since": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "since"
+          }
+        },
+        "startcursor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "startcursor"
+          }
+        },
+        "structured": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "structured"
+          }
+        },
+        "unit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "unit"
+          }
+        },
+        "units": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "units"
+          }
+        },
+        "until": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "until"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_journal#GetNodesByNodeJournalResult": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "proxmox.nodes_journal#GetNodesByNodeJournalResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_journal#GetNodesByNodeJournalResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_journal#GetNodesByNodeJournal": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_journal#GetNodesByNodeJournalRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_journal#GetNodesByNodeJournalResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/journal",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/journal",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "journal"
+      }
+    },
+    "proxmox.nodes_journal#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_journal#GetNodesByNodeJournal"
+        }
+      ]
+    }
+  }
+}

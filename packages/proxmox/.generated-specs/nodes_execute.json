@@ -1,0 +1,86 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_execute#PostNodesByNodeExecuteRequest": {
+      "type": "structure",
+      "members": {
+        "commands": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-command-batch"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_execute#PostNodesByNodeExecuteResultItem": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_execute#PostNodesByNodeExecuteResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_execute#PostNodesByNodeExecuteResultItem"
+      }
+    },
+    "proxmox.nodes_execute#PostNodesByNodeExecuteResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_execute#PostNodesByNodeExecuteResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_execute#PostNodesByNodeExecute": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_execute#PostNodesByNodeExecuteRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_execute#PostNodesByNodeExecuteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/execute",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/execute",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "execute"
+      }
+    },
+    "proxmox.nodes_execute#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_execute#PostNodesByNodeExecute"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_termproxy#PostNodesByNodeTermproxyRequestCmd": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ceph_install"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "login"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "upgrade"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_termproxy#PostNodesByNodeTermproxyRequest": {
+      "type": "structure",
+      "members": {
+        "cmd": {
+          "target": "proxmox.nodes_termproxy#PostNodesByNodeTermproxyRequestCmd",
+          "traits": {}
+        },
+        "cmd-opts": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_termproxy#PostNodesByNodeTermproxyResult": {
+      "type": "structure",
+      "members": {
+        "port": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ticket": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "upid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "user": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_termproxy#PostNodesByNodeTermproxyResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_termproxy#PostNodesByNodeTermproxyResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_termproxy#PostNodesByNodeTermproxy": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_termproxy#PostNodesByNodeTermproxyRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_termproxy#PostNodesByNodeTermproxyResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/termproxy",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/termproxy",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "termproxy"
+      }
+    },
+    "proxmox.nodes_termproxy#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_termproxy#PostNodesByNodeTermproxy"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,1650 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_network#DeleteNodesByNodeNetworkRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#DeleteNodesByNodeNetworkResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#DeleteNodesByNodeNetwork": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_network#DeleteNodesByNodeNetworkRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_network#DeleteNodesByNodeNetworkResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/nodes/{node}/network",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /nodes/{node}/network",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "revert_network_changes"
+      }
+    },
+    "proxmox.nodes_network#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_network#DeleteNodesByNodeNetwork"
+        },
+        {
+          "target": "proxmox.nodes_network#GetNodesByNodeNetwork"
+        },
+        {
+          "target": "proxmox.nodes_network#PostNodesByNodeNetwork"
+        },
+        {
+          "target": "proxmox.nodes_network#PutNodesByNodeNetwork"
+        },
+        {
+          "target": "proxmox.nodes_network#DeleteNodesByNodeNetworkByIface"
+        },
+        {
+          "target": "proxmox.nodes_network#GetNodesByNodeNetworkByIface"
+        },
+        {
+          "target": "proxmox.nodes_network#PutNodesByNodeNetworkByIface"
+        }
+      ]
+    },
+    "proxmox.nodes_network#GetNodesByNodeNetworkRequestType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bridge"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bond"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eth"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alias"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vlan"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fabric"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OVSBridge"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OVSBond"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OVSPort"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OVSIntPort"
+          }
+        },
+        "Value10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vnet"
+          }
+        },
+        "Value11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "any_bridge"
+          }
+        },
+        "Value12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "any_local_bridge"
+          }
+        },
+        "Value13": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "include_sdn"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#GetNodesByNodeNetworkRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "type": {
+          "target": "proxmox.nodes_network#GetNodesByNodeNetworkRequestType",
+          "traits": {
+            "smithy.api#httpQuery": "type"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#GetNodesByNodeNetworkResultItemBondMode": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "balance-rr"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active-backup"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "balance-xor"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "broadcast"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "802.3ad"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "balance-tlb"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "balance-alb"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "balance-slb"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lacp-balance-slb"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lacp-balance-tcp"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#GetNodesByNodeNetworkResultItemBondXmitHashPolicy": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "layer2"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "layer2+3"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "layer3+4"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#GetNodesByNodeNetworkResultItemFamiliesItem": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inet"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inet6"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#GetNodesByNodeNetworkResultItemFamilies": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_network#GetNodesByNodeNetworkResultItemFamiliesItem"
+      }
+    },
+    "proxmox.nodes_network#GetNodesByNodeNetworkResultItemMethod": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "loopback"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dhcp"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "manual"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "static"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#GetNodesByNodeNetworkResultItemMethod6": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "loopback"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dhcp"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "manual"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "static"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#GetNodesByNodeNetworkResultItemOptions": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "proxmox.nodes_network#GetNodesByNodeNetworkResultItemOptions6": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "proxmox.nodes_network#GetNodesByNodeNetworkResultItemType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bridge"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bond"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eth"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alias"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vlan"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fabric"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OVSBridge"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OVSBond"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OVSPort"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OVSIntPort"
+          }
+        },
+        "Value10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vnet"
+          }
+        },
+        "Value11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#GetNodesByNodeNetworkResultItemVlanProtocol": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "802.1ad"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "802.1q"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#GetNodesByNodeNetworkResultItem": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ipv4"
+          }
+        },
+        "address6": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ipv6"
+          }
+        },
+        "autostart": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "bond-primary": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface"
+          }
+        },
+        "bond_mode": {
+          "target": "proxmox.nodes_network#GetNodesByNodeNetworkResultItemBondMode",
+          "traits": {}
+        },
+        "bond_xmit_hash_policy": {
+          "target": "proxmox.nodes_network#GetNodesByNodeNetworkResultItemBondXmitHashPolicy",
+          "traits": {}
+        },
+        "bridge-access": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "bridge-arp-nd-suppress": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "bridge-learning": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "bridge-multicast-flood": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "bridge-unicast-flood": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "bridge_ports": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface-list"
+          }
+        },
+        "bridge_vids": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-vlan-id-or-range-list"
+          }
+        },
+        "bridge_vlan_aware": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "CIDRv4"
+          }
+        },
+        "cidr6": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "CIDRv6"
+          }
+        },
+        "comments": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "comments6": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "exists": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "families": {
+          "target": "proxmox.nodes_network#GetNodesByNodeNetworkResultItemFamilies",
+          "traits": {}
+        },
+        "gateway": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ipv4"
+          }
+        },
+        "gateway6": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ipv6"
+          }
+        },
+        "iface": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-iface"
+          }
+        },
+        "link-type": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "method": {
+          "target": "proxmox.nodes_network#GetNodesByNodeNetworkResultItemMethod",
+          "traits": {}
+        },
+        "method6": {
+          "target": "proxmox.nodes_network#GetNodesByNodeNetworkResultItemMethod6",
+          "traits": {}
+        },
+        "mtu": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "netmask": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ipv4mask"
+          }
+        },
+        "netmask6": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "options": {
+          "target": "proxmox.nodes_network#GetNodesByNodeNetworkResultItemOptions",
+          "traits": {}
+        },
+        "options6": {
+          "target": "proxmox.nodes_network#GetNodesByNodeNetworkResultItemOptions6",
+          "traits": {}
+        },
+        "ovs_bonds": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface-list"
+          }
+        },
+        "ovs_bridge": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface"
+          }
+        },
+        "ovs_options": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "ovs_ports": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface-list"
+          }
+        },
+        "ovs_tag": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "priority": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "slaves": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface-list"
+          }
+        },
+        "type": {
+          "target": "proxmox.nodes_network#GetNodesByNodeNetworkResultItemType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "uplink-id": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "vlan-id": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "vlan-protocol": {
+          "target": "proxmox.nodes_network#GetNodesByNodeNetworkResultItemVlanProtocol",
+          "traits": {}
+        },
+        "vlan-raw-device": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface"
+          }
+        },
+        "vxlan-id": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "vxlan-local-tunnelip": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "vxlan-physdev": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "vxlan-svcnodeip": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_network#GetNodesByNodeNetworkResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_network#GetNodesByNodeNetworkResultItem"
+      }
+    },
+    "proxmox.nodes_network#GetNodesByNodeNetworkResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_network#GetNodesByNodeNetworkResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#GetNodesByNodeNetwork": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_network#GetNodesByNodeNetworkRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_network#GetNodesByNodeNetworkResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/network",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/network",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_network#PostNodesByNodeNetworkRequestBondMode": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "balance-rr"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active-backup"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "balance-xor"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "broadcast"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "802.3ad"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "balance-tlb"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "balance-alb"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "balance-slb"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lacp-balance-slb"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lacp-balance-tcp"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#PostNodesByNodeNetworkRequestBondXmitHashPolicy": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "layer2"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "layer2+3"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "layer3+4"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#PostNodesByNodeNetworkRequestType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bridge"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bond"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eth"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alias"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vlan"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fabric"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OVSBridge"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OVSBond"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OVSPort"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OVSIntPort"
+          }
+        },
+        "Value10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vnet"
+          }
+        },
+        "Value11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#PostNodesByNodeNetworkRequest": {
+      "type": "structure",
+      "members": {
+        "address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ipv4"
+          }
+        },
+        "address6": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ipv6"
+          }
+        },
+        "autostart": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "bond-primary": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface"
+          }
+        },
+        "bond_mode": {
+          "target": "proxmox.nodes_network#PostNodesByNodeNetworkRequestBondMode",
+          "traits": {}
+        },
+        "bond_xmit_hash_policy": {
+          "target": "proxmox.nodes_network#PostNodesByNodeNetworkRequestBondXmitHashPolicy",
+          "traits": {}
+        },
+        "bridge_ports": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface-list"
+          }
+        },
+        "bridge_vids": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-vlan-id-or-range-list"
+          }
+        },
+        "bridge_vlan_aware": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "CIDRv4"
+          }
+        },
+        "cidr6": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "CIDRv6"
+          }
+        },
+        "comments": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "comments6": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "gateway": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ipv4"
+          }
+        },
+        "gateway6": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ipv6"
+          }
+        },
+        "iface": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-iface"
+          }
+        },
+        "mtu": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "netmask": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ipv4mask"
+          }
+        },
+        "netmask6": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "ovs_bonds": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface-list"
+          }
+        },
+        "ovs_bridge": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface"
+          }
+        },
+        "ovs_options": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "ovs_ports": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface-list"
+          }
+        },
+        "ovs_tag": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "slaves": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface-list"
+          }
+        },
+        "type": {
+          "target": "proxmox.nodes_network#PostNodesByNodeNetworkRequestType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "vlan-id": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "vlan-raw-device": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#PostNodesByNodeNetworkResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#PostNodesByNodeNetwork": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_network#PostNodesByNodeNetworkRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_network#PostNodesByNodeNetworkResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/network",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/network",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "create_network"
+      }
+    },
+    "proxmox.nodes_network#PutNodesByNodeNetworkRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "regenerate-frr": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_network#PutNodesByNodeNetworkResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#PutNodesByNodeNetwork": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_network#PutNodesByNodeNetworkRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_network#PutNodesByNodeNetworkResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/nodes/{node}/network",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /nodes/{node}/network",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "reload_network_config"
+      }
+    },
+    "proxmox.nodes_network#DeleteNodesByNodeNetworkByIfaceRequest": {
+      "type": "structure",
+      "members": {
+        "iface": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-iface",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#DeleteNodesByNodeNetworkByIfaceResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#DeleteNodesByNodeNetworkByIface": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_network#DeleteNodesByNodeNetworkByIfaceRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_network#DeleteNodesByNodeNetworkByIfaceResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/nodes/{node}/network/{iface}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /nodes/{node}/network/{iface}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "delete_network"
+      }
+    },
+    "proxmox.nodes_network#GetNodesByNodeNetworkByIfaceRequest": {
+      "type": "structure",
+      "members": {
+        "iface": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-iface",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#GetNodesByNodeNetworkByIfaceResult": {
+      "type": "structure",
+      "members": {
+        "method": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#GetNodesByNodeNetworkByIfaceResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_network#GetNodesByNodeNetworkByIfaceResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#GetNodesByNodeNetworkByIface": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_network#GetNodesByNodeNetworkByIfaceRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_network#GetNodesByNodeNetworkByIfaceResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/network/{iface}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/network/{iface}",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "network_config"
+      }
+    },
+    "proxmox.nodes_network#PutNodesByNodeNetworkByIfaceRequestBondMode": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "balance-rr"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active-backup"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "balance-xor"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "broadcast"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "802.3ad"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "balance-tlb"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "balance-alb"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "balance-slb"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lacp-balance-slb"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lacp-balance-tcp"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#PutNodesByNodeNetworkByIfaceRequestBondXmitHashPolicy": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "layer2"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "layer2+3"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "layer3+4"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#PutNodesByNodeNetworkByIfaceRequestType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bridge"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bond"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eth"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alias"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vlan"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fabric"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OVSBridge"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OVSBond"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OVSPort"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OVSIntPort"
+          }
+        },
+        "Value10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vnet"
+          }
+        },
+        "Value11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#PutNodesByNodeNetworkByIfaceRequest": {
+      "type": "structure",
+      "members": {
+        "address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ipv4"
+          }
+        },
+        "address6": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ipv6"
+          }
+        },
+        "autostart": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "bond-primary": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface"
+          }
+        },
+        "bond_mode": {
+          "target": "proxmox.nodes_network#PutNodesByNodeNetworkByIfaceRequestBondMode",
+          "traits": {}
+        },
+        "bond_xmit_hash_policy": {
+          "target": "proxmox.nodes_network#PutNodesByNodeNetworkByIfaceRequestBondXmitHashPolicy",
+          "traits": {}
+        },
+        "bridge_ports": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface-list"
+          }
+        },
+        "bridge_vids": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-vlan-id-or-range-list"
+          }
+        },
+        "bridge_vlan_aware": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "CIDRv4"
+          }
+        },
+        "cidr6": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "CIDRv6"
+          }
+        },
+        "comments": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "comments6": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "delete": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-configid-list"
+          }
+        },
+        "gateway": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ipv4"
+          }
+        },
+        "gateway6": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ipv6"
+          }
+        },
+        "iface": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-iface",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "mtu": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "netmask": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ipv4mask"
+          }
+        },
+        "netmask6": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "ovs_bonds": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface-list"
+          }
+        },
+        "ovs_bridge": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface"
+          }
+        },
+        "ovs_options": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "ovs_ports": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface-list"
+          }
+        },
+        "ovs_tag": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "slaves": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface-list"
+          }
+        },
+        "type": {
+          "target": "proxmox.nodes_network#PutNodesByNodeNetworkByIfaceRequestType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "vlan-id": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "vlan-raw-device": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-iface"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#PutNodesByNodeNetworkByIfaceResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_network#PutNodesByNodeNetworkByIface": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_network#PutNodesByNodeNetworkByIfaceRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_network#PutNodesByNodeNetworkByIfaceResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/nodes/{node}/network/{iface}",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /nodes/{node}/network/{iface}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "update_network"
+      }
+    }
+  }
+}

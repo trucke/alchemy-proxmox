@@ -1,0 +1,319 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_subscription#DeleteNodesByNodeSubscriptionRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_subscription#DeleteNodesByNodeSubscriptionResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_subscription#DeleteNodesByNodeSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_subscription#DeleteNodesByNodeSubscriptionRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_subscription#DeleteNodesByNodeSubscriptionResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/nodes/{node}/subscription",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /nodes/{node}/subscription",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "delete"
+      }
+    },
+    "proxmox.nodes_subscription#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_subscription#DeleteNodesByNodeSubscription"
+        },
+        {
+          "target": "proxmox.nodes_subscription#GetNodesByNodeSubscription"
+        },
+        {
+          "target": "proxmox.nodes_subscription#PostNodesByNodeSubscription"
+        },
+        {
+          "target": "proxmox.nodes_subscription#PutNodesByNodeSubscription"
+        }
+      ]
+    },
+    "proxmox.nodes_subscription#GetNodesByNodeSubscriptionRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_subscription#GetNodesByNodeSubscriptionResultStatus": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "new"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notfound"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "invalid"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expired"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "suspended"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_subscription#GetNodesByNodeSubscriptionResult": {
+      "type": "structure",
+      "members": {
+        "checktime": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "level": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "nextduedate": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "productname": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "regdate": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "serverid": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "signature": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "sockets": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "status": {
+          "target": "proxmox.nodes_subscription#GetNodesByNodeSubscriptionResultStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_subscription#GetNodesByNodeSubscriptionResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_subscription#GetNodesByNodeSubscriptionResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_subscription#GetNodesByNodeSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_subscription#GetNodesByNodeSubscriptionRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_subscription#GetNodesByNodeSubscriptionResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/subscription",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/subscription",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "get"
+      }
+    },
+    "proxmox.nodes_subscription#PostNodesByNodeSubscriptionRequest": {
+      "type": "structure",
+      "members": {
+        "force": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_subscription#PostNodesByNodeSubscriptionResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_subscription#PostNodesByNodeSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_subscription#PostNodesByNodeSubscriptionRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_subscription#PostNodesByNodeSubscriptionResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/subscription",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/subscription",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "update"
+      }
+    },
+    "proxmox.nodes_subscription#PutNodesByNodeSubscriptionRequest": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_subscription#PutNodesByNodeSubscriptionResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_subscription#PutNodesByNodeSubscription": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_subscription#PutNodesByNodeSubscriptionRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_subscription#PutNodesByNodeSubscriptionResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/nodes/{node}/subscription",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /nodes/{node}/subscription",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "set"
+      }
+    }
+  }
+}

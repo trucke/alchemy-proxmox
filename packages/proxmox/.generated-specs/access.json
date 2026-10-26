@@ -1,0 +1,4238 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.access#GetAccessRequest": {
+      "type": "structure",
+      "members": {}
+    },
+    "proxmox.access#GetAccessResultItem": {
+      "type": "structure",
+      "members": {
+        "subdir": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.access#GetAccessResultItem"
+      }
+    },
+    "proxmox.access#GetAccessResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#GetAccessResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccess": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#GetAccessRequest"
+      },
+      "output": {
+        "target": "proxmox.access#GetAccessResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/access",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /access",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.access#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.access#GetAccess"
+        },
+        {
+          "target": "proxmox.access#GetAccessUsers"
+        },
+        {
+          "target": "proxmox.access#PostAccessUsers"
+        },
+        {
+          "target": "proxmox.access#DeleteAccessUsersByUserid"
+        },
+        {
+          "target": "proxmox.access#GetAccessUsersByUserid"
+        },
+        {
+          "target": "proxmox.access#PutAccessUsersByUserid"
+        },
+        {
+          "target": "proxmox.access#GetAccessUsersByUseridTfa"
+        },
+        {
+          "target": "proxmox.access#PutAccessUsersByUseridUnlockTfa"
+        },
+        {
+          "target": "proxmox.access#GetAccessUsersByUseridToken"
+        },
+        {
+          "target": "proxmox.access#DeleteAccessUsersByUseridTokenByTokenid"
+        },
+        {
+          "target": "proxmox.access#GetAccessUsersByUseridTokenByTokenid"
+        },
+        {
+          "target": "proxmox.access#PostAccessUsersByUseridTokenByTokenid"
+        },
+        {
+          "target": "proxmox.access#PutAccessUsersByUseridTokenByTokenid"
+        },
+        {
+          "target": "proxmox.access#GetAccessGroups"
+        },
+        {
+          "target": "proxmox.access#PostAccessGroups"
+        },
+        {
+          "target": "proxmox.access#DeleteAccessGroupsByGroupid"
+        },
+        {
+          "target": "proxmox.access#GetAccessGroupsByGroupid"
+        },
+        {
+          "target": "proxmox.access#PutAccessGroupsByGroupid"
+        },
+        {
+          "target": "proxmox.access#GetAccessRoles"
+        },
+        {
+          "target": "proxmox.access#PostAccessRoles"
+        },
+        {
+          "target": "proxmox.access#DeleteAccessRolesByRoleid"
+        },
+        {
+          "target": "proxmox.access#GetAccessRolesByRoleid"
+        },
+        {
+          "target": "proxmox.access#PutAccessRolesByRoleid"
+        },
+        {
+          "target": "proxmox.access#GetAccessAcl"
+        },
+        {
+          "target": "proxmox.access#PutAccessAcl"
+        },
+        {
+          "target": "proxmox.access#GetAccessDomains"
+        },
+        {
+          "target": "proxmox.access#PostAccessDomains"
+        },
+        {
+          "target": "proxmox.access#DeleteAccessDomainsByRealm"
+        },
+        {
+          "target": "proxmox.access#GetAccessDomainsByRealm"
+        },
+        {
+          "target": "proxmox.access#PutAccessDomainsByRealm"
+        },
+        {
+          "target": "proxmox.access#PostAccessDomainsByRealmSync"
+        },
+        {
+          "target": "proxmox.access#GetAccessOpenid"
+        },
+        {
+          "target": "proxmox.access#PostAccessOpenidAuthUrl"
+        },
+        {
+          "target": "proxmox.access#PostAccessOpenidLogin"
+        },
+        {
+          "target": "proxmox.access#GetAccessTfa"
+        },
+        {
+          "target": "proxmox.access#GetAccessTfaByUserid"
+        },
+        {
+          "target": "proxmox.access#PostAccessTfaByUserid"
+        },
+        {
+          "target": "proxmox.access#DeleteAccessTfaByUseridById"
+        },
+        {
+          "target": "proxmox.access#GetAccessTfaByUseridById"
+        },
+        {
+          "target": "proxmox.access#PutAccessTfaByUseridById"
+        },
+        {
+          "target": "proxmox.access#GetAccessTicket"
+        },
+        {
+          "target": "proxmox.access#PostAccessTicket"
+        },
+        {
+          "target": "proxmox.access#PostAccessVncticket"
+        },
+        {
+          "target": "proxmox.access#PutAccessPassword"
+        },
+        {
+          "target": "proxmox.access#GetAccessPermissions"
+        }
+      ]
+    },
+    "proxmox.access#GetAccessUsersRequest": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "enabled"
+          }
+        },
+        "full": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "full"
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessUsersResultItemTokensItem": {
+      "type": "structure",
+      "members": {
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "expire": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "privsep": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "tokenid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessUsersResultItemTokens": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.access#GetAccessUsersResultItemTokensItem"
+      }
+    },
+    "proxmox.access#GetAccessUsersResultItem": {
+      "type": "structure",
+      "members": {
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "email-opt"
+          }
+        },
+        "enable": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "expire": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "firstname": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "groups": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-groupid-list"
+          }
+        },
+        "keys": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "lastname": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "realm-type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-realm"
+          }
+        },
+        "tfa-locked-until": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "tokens": {
+          "target": "proxmox.access#GetAccessUsersResultItemTokens",
+          "traits": {}
+        },
+        "totp-locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "userid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-userid"
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessUsersResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.access#GetAccessUsersResultItem"
+      }
+    },
+    "proxmox.access#GetAccessUsersResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#GetAccessUsersResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessUsers": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#GetAccessUsersRequest"
+      },
+      "output": {
+        "target": "proxmox.access#GetAccessUsersResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/access/users",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /access/users",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.access#PostAccessUsersRequest": {
+      "type": "structure",
+      "members": {
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "email-opt"
+          }
+        },
+        "enable": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "expire": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "firstname": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "groups": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-groupid-list"
+          }
+        },
+        "keys": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "lastname": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "userid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-userid"
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessUsersResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessUsers": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#PostAccessUsersRequest"
+      },
+      "output": {
+        "target": "proxmox.access#PostAccessUsersResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/access/users",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /access/users",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "create_user"
+      }
+    },
+    "proxmox.access#DeleteAccessUsersByUseridRequest": {
+      "type": "structure",
+      "members": {
+        "userid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-userid",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#DeleteAccessUsersByUseridResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#DeleteAccessUsersByUserid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#DeleteAccessUsersByUseridRequest"
+      },
+      "output": {
+        "target": "proxmox.access#DeleteAccessUsersByUseridResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/access/users/{userid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /access/users/{userid}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "delete_user"
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridRequest": {
+      "type": "structure",
+      "members": {
+        "userid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-userid",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridResultGroups": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridResultTokens": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridResult": {
+      "type": "structure",
+      "members": {
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "email-opt"
+          }
+        },
+        "enable": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "expire": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "firstname": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "groups": {
+          "target": "proxmox.access#GetAccessUsersByUseridResultGroups",
+          "traits": {}
+        },
+        "keys": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "lastname": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "tokens": {
+          "target": "proxmox.access#GetAccessUsersByUseridResultTokens",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#GetAccessUsersByUseridResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessUsersByUserid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#GetAccessUsersByUseridRequest"
+      },
+      "output": {
+        "target": "proxmox.access#GetAccessUsersByUseridResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/access/users/{userid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /access/users/{userid}",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "read_user"
+      }
+    },
+    "proxmox.access#PutAccessUsersByUseridRequest": {
+      "type": "structure",
+      "members": {
+        "append": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "email-opt"
+          }
+        },
+        "enable": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "expire": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "firstname": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "groups": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-groupid-list"
+          }
+        },
+        "keys": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "lastname": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "userid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-userid",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PutAccessUsersByUseridResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PutAccessUsersByUserid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#PutAccessUsersByUseridRequest"
+      },
+      "output": {
+        "target": "proxmox.access#PutAccessUsersByUseridResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/access/users/{userid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /access/users/{userid}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "update_user"
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridTfaRequest": {
+      "type": "structure",
+      "members": {
+        "multiple": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "multiple"
+          }
+        },
+        "userid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-userid",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridTfaResultRealm": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oath"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yubico"
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridTfaResultTypesItem": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "totp"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "u2f"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yubico"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "webauthn"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "recovedry"
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridTfaResultTypes": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.access#GetAccessUsersByUseridTfaResultTypesItem"
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridTfaResultUser": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oath"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "u2f"
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridTfaResult": {
+      "type": "structure",
+      "members": {
+        "realm": {
+          "target": "proxmox.access#GetAccessUsersByUseridTfaResultRealm",
+          "traits": {}
+        },
+        "types": {
+          "target": "proxmox.access#GetAccessUsersByUseridTfaResultTypes",
+          "traits": {}
+        },
+        "user": {
+          "target": "proxmox.access#GetAccessUsersByUseridTfaResultUser",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridTfaResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#GetAccessUsersByUseridTfaResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridTfa": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#GetAccessUsersByUseridTfaRequest"
+      },
+      "output": {
+        "target": "proxmox.access#GetAccessUsersByUseridTfaResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/access/users/{userid}/tfa",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /access/users/{userid}/tfa",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "read_user_tfa_type"
+      }
+    },
+    "proxmox.access#PutAccessUsersByUseridUnlockTfaRequest": {
+      "type": "structure",
+      "members": {
+        "userid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-userid",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PutAccessUsersByUseridUnlockTfaResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PutAccessUsersByUseridUnlockTfa": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#PutAccessUsersByUseridUnlockTfaRequest"
+      },
+      "output": {
+        "target": "proxmox.access#PutAccessUsersByUseridUnlockTfaResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/access/users/{userid}/unlock-tfa",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /access/users/{userid}/unlock-tfa",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "unlock_tfa"
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridTokenRequest": {
+      "type": "structure",
+      "members": {
+        "userid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-userid",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridTokenResultItem": {
+      "type": "structure",
+      "members": {
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "expire": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "privsep": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "tokenid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridTokenResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.access#GetAccessUsersByUseridTokenResultItem"
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridTokenResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#GetAccessUsersByUseridTokenResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridToken": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#GetAccessUsersByUseridTokenRequest"
+      },
+      "output": {
+        "target": "proxmox.access#GetAccessUsersByUseridTokenResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/access/users/{userid}/token",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /access/users/{userid}/token",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "token_index"
+      }
+    },
+    "proxmox.access#DeleteAccessUsersByUseridTokenByTokenidRequest": {
+      "type": "structure",
+      "members": {
+        "tokenid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "userid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-userid",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#DeleteAccessUsersByUseridTokenByTokenidResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#DeleteAccessUsersByUseridTokenByTokenid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#DeleteAccessUsersByUseridTokenByTokenidRequest"
+      },
+      "output": {
+        "target": "proxmox.access#DeleteAccessUsersByUseridTokenByTokenidResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/access/users/{userid}/token/{tokenid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /access/users/{userid}/token/{tokenid}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "remove_token"
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridTokenByTokenidRequest": {
+      "type": "structure",
+      "members": {
+        "tokenid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "userid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-userid",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridTokenByTokenidResult": {
+      "type": "structure",
+      "members": {
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "expire": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "privsep": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridTokenByTokenidResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#GetAccessUsersByUseridTokenByTokenidResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessUsersByUseridTokenByTokenid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#GetAccessUsersByUseridTokenByTokenidRequest"
+      },
+      "output": {
+        "target": "proxmox.access#GetAccessUsersByUseridTokenByTokenidResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/access/users/{userid}/token/{tokenid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /access/users/{userid}/token/{tokenid}",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "read_token"
+      }
+    },
+    "proxmox.access#PostAccessUsersByUseridTokenByTokenidRequest": {
+      "type": "structure",
+      "members": {
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "expire": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "privsep": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "tokenid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "userid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-userid",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessUsersByUseridTokenByTokenidResultInfo": {
+      "type": "structure",
+      "members": {
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "expire": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "privsep": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.access#PostAccessUsersByUseridTokenByTokenidResult": {
+      "type": "structure",
+      "members": {
+        "full-tokenid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "info": {
+          "target": "proxmox.access#PostAccessUsersByUseridTokenByTokenidResultInfo",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessUsersByUseridTokenByTokenidResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#PostAccessUsersByUseridTokenByTokenidResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessUsersByUseridTokenByTokenid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#PostAccessUsersByUseridTokenByTokenidRequest"
+      },
+      "output": {
+        "target": "proxmox.access#PostAccessUsersByUseridTokenByTokenidResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/access/users/{userid}/token/{tokenid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /access/users/{userid}/token/{tokenid}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "generate_token"
+      }
+    },
+    "proxmox.access#PutAccessUsersByUseridTokenByTokenidRequest": {
+      "type": "structure",
+      "members": {
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "delete": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-configid-list"
+          }
+        },
+        "expire": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "privsep": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "regenerate": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "tokenid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "userid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-userid",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PutAccessUsersByUseridTokenByTokenidResult": {
+      "type": "structure",
+      "members": {
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "expire": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "full-tokenid": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "privsep": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.access#PutAccessUsersByUseridTokenByTokenidResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#PutAccessUsersByUseridTokenByTokenidResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PutAccessUsersByUseridTokenByTokenid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#PutAccessUsersByUseridTokenByTokenidRequest"
+      },
+      "output": {
+        "target": "proxmox.access#PutAccessUsersByUseridTokenByTokenidResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/access/users/{userid}/token/{tokenid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /access/users/{userid}/token/{tokenid}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "update_token_info"
+      }
+    },
+    "proxmox.access#GetAccessGroupsRequest": {
+      "type": "structure",
+      "members": {}
+    },
+    "proxmox.access#GetAccessGroupsResultItem": {
+      "type": "structure",
+      "members": {
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "groupid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-groupid"
+          }
+        },
+        "users": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-userid-list"
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessGroupsResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.access#GetAccessGroupsResultItem"
+      }
+    },
+    "proxmox.access#GetAccessGroupsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#GetAccessGroupsResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessGroups": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#GetAccessGroupsRequest"
+      },
+      "output": {
+        "target": "proxmox.access#GetAccessGroupsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/access/groups",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /access/groups",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.access#PostAccessGroupsRequest": {
+      "type": "structure",
+      "members": {
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "groupid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-groupid"
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessGroupsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessGroups": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#PostAccessGroupsRequest"
+      },
+      "output": {
+        "target": "proxmox.access#PostAccessGroupsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/access/groups",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /access/groups",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "create_group"
+      }
+    },
+    "proxmox.access#DeleteAccessGroupsByGroupidRequest": {
+      "type": "structure",
+      "members": {
+        "groupid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-groupid",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#DeleteAccessGroupsByGroupidResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#DeleteAccessGroupsByGroupid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#DeleteAccessGroupsByGroupidRequest"
+      },
+      "output": {
+        "target": "proxmox.access#DeleteAccessGroupsByGroupidResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/access/groups/{groupid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /access/groups/{groupid}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "delete_group"
+      }
+    },
+    "proxmox.access#GetAccessGroupsByGroupidRequest": {
+      "type": "structure",
+      "members": {
+        "groupid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-groupid",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessGroupsByGroupidResultMembers": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "proxmox.access#GetAccessGroupsByGroupidResult": {
+      "type": "structure",
+      "members": {
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "members": {
+          "target": "proxmox.access#GetAccessGroupsByGroupidResultMembers",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessGroupsByGroupidResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#GetAccessGroupsByGroupidResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessGroupsByGroupid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#GetAccessGroupsByGroupidRequest"
+      },
+      "output": {
+        "target": "proxmox.access#GetAccessGroupsByGroupidResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/access/groups/{groupid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /access/groups/{groupid}",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "read_group"
+      }
+    },
+    "proxmox.access#PutAccessGroupsByGroupidRequest": {
+      "type": "structure",
+      "members": {
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "groupid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-groupid",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PutAccessGroupsByGroupidResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PutAccessGroupsByGroupid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#PutAccessGroupsByGroupidRequest"
+      },
+      "output": {
+        "target": "proxmox.access#PutAccessGroupsByGroupidResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/access/groups/{groupid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /access/groups/{groupid}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "update_group"
+      }
+    },
+    "proxmox.access#GetAccessRolesRequest": {
+      "type": "structure",
+      "members": {}
+    },
+    "proxmox.access#GetAccessRolesResultItem": {
+      "type": "structure",
+      "members": {
+        "privs": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-priv-list"
+          }
+        },
+        "roleid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-roleid"
+          }
+        },
+        "special": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.access#GetAccessRolesResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.access#GetAccessRolesResultItem"
+      }
+    },
+    "proxmox.access#GetAccessRolesResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#GetAccessRolesResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessRoles": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#GetAccessRolesRequest"
+      },
+      "output": {
+        "target": "proxmox.access#GetAccessRolesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/access/roles",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /access/roles",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.access#PostAccessRolesRequest": {
+      "type": "structure",
+      "members": {
+        "privs": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-priv-list"
+          }
+        },
+        "roleid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-roleid"
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessRolesResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessRoles": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#PostAccessRolesRequest"
+      },
+      "output": {
+        "target": "proxmox.access#PostAccessRolesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/access/roles",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /access/roles",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "create_role"
+      }
+    },
+    "proxmox.access#DeleteAccessRolesByRoleidRequest": {
+      "type": "structure",
+      "members": {
+        "roleid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-roleid",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#DeleteAccessRolesByRoleidResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#DeleteAccessRolesByRoleid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#DeleteAccessRolesByRoleidRequest"
+      },
+      "output": {
+        "target": "proxmox.access#DeleteAccessRolesByRoleidResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/access/roles/{roleid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /access/roles/{roleid}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "delete_role"
+      }
+    },
+    "proxmox.access#GetAccessRolesByRoleidRequest": {
+      "type": "structure",
+      "members": {
+        "roleid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-roleid",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessRolesByRoleidResult": {
+      "type": "structure",
+      "members": {
+        "Datastore.Allocate": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "Datastore.AllocateSpace": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "Datastore.AllocateTemplate": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "Datastore.Audit": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "Group.Allocate": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "Mapping.Audit": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "Mapping.Modify": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "Mapping.Use": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "Permissions.Modify": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "Pool.Allocate": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "Pool.Audit": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "Realm.Allocate": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "Realm.AllocateUser": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "SDN.Allocate": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "SDN.Audit": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "SDN.Use": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "Sys.AccessNetwork": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "Sys.Audit": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "Sys.Console": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "Sys.Incoming": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "Sys.Modify": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "Sys.PowerMgmt": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "Sys.Syslog": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "User.Modify": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.Allocate": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.Audit": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.Backup": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.Clone": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.Config.CDROM": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.Config.CPU": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.Config.Cloudinit": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.Config.Disk": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.Config.HWType": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.Config.Memory": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.Config.Network": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.Config.Options": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.Console": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.GuestAgent.Audit": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.GuestAgent.FileRead": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.GuestAgent.FileSystemMgmt": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.GuestAgent.FileWrite": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.GuestAgent.Unrestricted": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.Migrate": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.PowerMgmt": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.Replicate": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.Snapshot": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "VM.Snapshot.Rollback": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.access#GetAccessRolesByRoleidResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#GetAccessRolesByRoleidResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessRolesByRoleid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#GetAccessRolesByRoleidRequest"
+      },
+      "output": {
+        "target": "proxmox.access#GetAccessRolesByRoleidResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/access/roles/{roleid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /access/roles/{roleid}",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "read_role"
+      }
+    },
+    "proxmox.access#PutAccessRolesByRoleidRequest": {
+      "type": "structure",
+      "members": {
+        "append": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "privs": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-priv-list"
+          }
+        },
+        "roleid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-roleid",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PutAccessRolesByRoleidResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PutAccessRolesByRoleid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#PutAccessRolesByRoleidRequest"
+      },
+      "output": {
+        "target": "proxmox.access#PutAccessRolesByRoleidResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/access/roles/{roleid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /access/roles/{roleid}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "update_role"
+      }
+    },
+    "proxmox.access#GetAccessAclRequest": {
+      "type": "structure",
+      "members": {}
+    },
+    "proxmox.access#GetAccessAclResultItemType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "user"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "group"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "token"
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessAclResultItem": {
+      "type": "structure",
+      "members": {
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "propagate": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "roleid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "proxmox.access#GetAccessAclResultItemType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ugid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessAclResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.access#GetAccessAclResultItem"
+      }
+    },
+    "proxmox.access#GetAccessAclResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#GetAccessAclResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessAcl": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#GetAccessAclRequest"
+      },
+      "output": {
+        "target": "proxmox.access#GetAccessAclResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/access/acl",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /access/acl",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "read_acl"
+      }
+    },
+    "proxmox.access#PutAccessAclRequest": {
+      "type": "structure",
+      "members": {
+        "delete": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "groups": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-groupid-list"
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "propagate": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "roles": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-roleid-list"
+          }
+        },
+        "tokens": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-tokenid-list"
+          }
+        },
+        "users": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-userid-list"
+          }
+        }
+      }
+    },
+    "proxmox.access#PutAccessAclResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PutAccessAcl": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#PutAccessAclRequest"
+      },
+      "output": {
+        "target": "proxmox.access#PutAccessAclResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/access/acl",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /access/acl",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "update_acl"
+      }
+    },
+    "proxmox.access#GetAccessDomainsRequest": {
+      "type": "structure",
+      "members": {}
+    },
+    "proxmox.access#GetAccessDomainsResultItemTfa": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yubico"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oath"
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessDomainsResultItem": {
+      "type": "structure",
+      "members": {
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "realm": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "tfa": {
+          "target": "proxmox.access#GetAccessDomainsResultItemTfa",
+          "traits": {}
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessDomainsResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.access#GetAccessDomainsResultItem"
+      }
+    },
+    "proxmox.access#GetAccessDomainsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#GetAccessDomainsResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessDomains": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#GetAccessDomainsRequest"
+      },
+      "output": {
+        "target": "proxmox.access#GetAccessDomainsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/access/domains",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /access/domains",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.access#PostAccessDomainsRequestMode": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ldap"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ldaps"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ldap+starttls"
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessDomainsRequestSslversion": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tlsv1"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tlsv1_1"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tlsv1_2"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tlsv1_3"
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessDomainsRequestType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ad"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ldap"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "openid"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pam"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve"
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessDomainsRequest": {
+      "type": "structure",
+      "members": {
+        "acr-values": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "audiences": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "autocreate": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "base_dn": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "bind_dn": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "capath": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "case-sensitive": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "cert": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "certkey": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "check-connection": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "client-id": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "client-key": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "default": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "domain": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "group_classes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ldap-simple-attr-list"
+          }
+        },
+        "group_dn": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "group_filter": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "group_name_attr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ldap-simple-attr"
+          }
+        },
+        "groups-autocreate": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "groups-claim": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "groups-overwrite": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "issuer-url": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "mode": {
+          "target": "proxmox.access#PostAccessDomainsRequestMode",
+          "traits": {}
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "port": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "prompt": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "query-userinfo": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "realm": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-realm"
+          }
+        },
+        "scopes": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "secure": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "server1": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "address"
+          }
+        },
+        "server2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "address"
+          }
+        },
+        "sslversion": {
+          "target": "proxmox.access#PostAccessDomainsRequestSslversion",
+          "traits": {}
+        },
+        "sync-defaults-options": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "realm-sync-options"
+          }
+        },
+        "sync_attributes": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "tfa": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-tfa-config"
+          }
+        },
+        "type": {
+          "target": "proxmox.access#PostAccessDomainsRequestType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "user_attr": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "user_classes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ldap-simple-attr-list"
+          }
+        },
+        "username-claim": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "verify": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.access#PostAccessDomainsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessDomains": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#PostAccessDomainsRequest"
+      },
+      "output": {
+        "target": "proxmox.access#PostAccessDomainsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/access/domains",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /access/domains",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "create"
+      }
+    },
+    "proxmox.access#DeleteAccessDomainsByRealmRequest": {
+      "type": "structure",
+      "members": {
+        "realm": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-realm",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#DeleteAccessDomainsByRealmResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#DeleteAccessDomainsByRealm": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#DeleteAccessDomainsByRealmRequest"
+      },
+      "output": {
+        "target": "proxmox.access#DeleteAccessDomainsByRealmResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/access/domains/{realm}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /access/domains/{realm}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "delete"
+      }
+    },
+    "proxmox.access#GetAccessDomainsByRealmRequest": {
+      "type": "structure",
+      "members": {
+        "realm": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-realm",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessDomainsByRealmResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessDomainsByRealm": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#GetAccessDomainsByRealmRequest"
+      },
+      "output": {
+        "target": "proxmox.access#GetAccessDomainsByRealmResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/access/domains/{realm}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /access/domains/{realm}",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "read"
+      }
+    },
+    "proxmox.access#PutAccessDomainsByRealmRequestMode": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ldap"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ldaps"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ldap+starttls"
+          }
+        }
+      }
+    },
+    "proxmox.access#PutAccessDomainsByRealmRequestSslversion": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tlsv1"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tlsv1_1"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tlsv1_2"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tlsv1_3"
+          }
+        }
+      }
+    },
+    "proxmox.access#PutAccessDomainsByRealmRequest": {
+      "type": "structure",
+      "members": {
+        "acr-values": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "audiences": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "autocreate": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "base_dn": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "bind_dn": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "capath": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "case-sensitive": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "cert": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "certkey": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "check-connection": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "client-id": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "client-key": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "default": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "delete": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-configid-list"
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "domain": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "group_classes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ldap-simple-attr-list"
+          }
+        },
+        "group_dn": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "group_filter": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "group_name_attr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ldap-simple-attr"
+          }
+        },
+        "groups-autocreate": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "groups-claim": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "groups-overwrite": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "issuer-url": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "mode": {
+          "target": "proxmox.access#PutAccessDomainsByRealmRequestMode",
+          "traits": {}
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "port": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "prompt": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "query-userinfo": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "realm": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-realm",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "scopes": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "secure": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "server1": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "address"
+          }
+        },
+        "server2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "address"
+          }
+        },
+        "sslversion": {
+          "target": "proxmox.access#PutAccessDomainsByRealmRequestSslversion",
+          "traits": {}
+        },
+        "sync-defaults-options": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "realm-sync-options"
+          }
+        },
+        "sync_attributes": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "tfa": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-tfa-config"
+          }
+        },
+        "user_attr": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "user_classes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ldap-simple-attr-list"
+          }
+        },
+        "verify": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.access#PutAccessDomainsByRealmResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PutAccessDomainsByRealm": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#PutAccessDomainsByRealmRequest"
+      },
+      "output": {
+        "target": "proxmox.access#PutAccessDomainsByRealmResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/access/domains/{realm}",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /access/domains/{realm}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "update"
+      }
+    },
+    "proxmox.access#PostAccessDomainsByRealmSyncRequestScope": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "users"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "groups"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "both"
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessDomainsByRealmSyncRequest": {
+      "type": "structure",
+      "members": {
+        "dry-run": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "enable-new": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "full": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "purge": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "realm": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-realm",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "remove-vanished": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "scope": {
+          "target": "proxmox.access#PostAccessDomainsByRealmSyncRequestScope",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.access#PostAccessDomainsByRealmSyncResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessDomainsByRealmSync": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#PostAccessDomainsByRealmSyncRequest"
+      },
+      "output": {
+        "target": "proxmox.access#PostAccessDomainsByRealmSyncResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/access/domains/{realm}/sync",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /access/domains/{realm}/sync",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "sync"
+      }
+    },
+    "proxmox.access#GetAccessOpenidRequest": {
+      "type": "structure",
+      "members": {}
+    },
+    "proxmox.access#GetAccessOpenidResultItem": {
+      "type": "structure",
+      "members": {
+        "subdir": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessOpenidResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.access#GetAccessOpenidResultItem"
+      }
+    },
+    "proxmox.access#GetAccessOpenidResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#GetAccessOpenidResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessOpenid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#GetAccessOpenidRequest"
+      },
+      "output": {
+        "target": "proxmox.access#GetAccessOpenidResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/access/openid",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /access/openid",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.access#PostAccessOpenidAuthUrlRequest": {
+      "type": "structure",
+      "members": {
+        "realm": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-realm"
+          }
+        },
+        "redirect-url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessOpenidAuthUrlResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessOpenidAuthUrl": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#PostAccessOpenidAuthUrlRequest"
+      },
+      "output": {
+        "target": "proxmox.access#PostAccessOpenidAuthUrlResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/access/openid/auth-url",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /access/openid/auth-url",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "auth_url"
+      }
+    },
+    "proxmox.access#PostAccessOpenidLoginRequest": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "redirect-url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessOpenidLoginResultCap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.access#PostAccessOpenidLoginResult": {
+      "type": "structure",
+      "members": {
+        "CSRFPreventionToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "cap": {
+          "target": "proxmox.access#PostAccessOpenidLoginResultCap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "clustername": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "ticket": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessOpenidLoginResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#PostAccessOpenidLoginResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessOpenidLogin": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#PostAccessOpenidLoginRequest"
+      },
+      "output": {
+        "target": "proxmox.access#PostAccessOpenidLoginResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/access/openid/login",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /access/openid/login",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "login"
+      }
+    },
+    "proxmox.access#GetAccessTfaRequest": {
+      "type": "structure",
+      "members": {}
+    },
+    "proxmox.access#GetAccessTfaResultItemEntriesItemType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "totp"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "u2f"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "webauthn"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "recovery"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yubico"
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessTfaResultItemEntriesItem": {
+      "type": "structure",
+      "members": {
+        "created": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "enable": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "proxmox.access#GetAccessTfaResultItemEntriesItemType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessTfaResultItemEntries": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.access#GetAccessTfaResultItemEntriesItem"
+      }
+    },
+    "proxmox.access#GetAccessTfaResultItem": {
+      "type": "structure",
+      "members": {
+        "entries": {
+          "target": "proxmox.access#GetAccessTfaResultItemEntries",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "tfa-locked-until": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "totp-locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "userid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessTfaResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.access#GetAccessTfaResultItem"
+      }
+    },
+    "proxmox.access#GetAccessTfaResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#GetAccessTfaResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessTfa": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#GetAccessTfaRequest"
+      },
+      "output": {
+        "target": "proxmox.access#GetAccessTfaResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/access/tfa",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /access/tfa",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "list_tfa"
+      }
+    },
+    "proxmox.access#GetAccessTfaByUseridRequest": {
+      "type": "structure",
+      "members": {
+        "userid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-userid",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessTfaByUseridResultItemType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "totp"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "u2f"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "webauthn"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "recovery"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yubico"
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessTfaByUseridResultItem": {
+      "type": "structure",
+      "members": {
+        "created": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "enable": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "proxmox.access#GetAccessTfaByUseridResultItemType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessTfaByUseridResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.access#GetAccessTfaByUseridResultItem"
+      }
+    },
+    "proxmox.access#GetAccessTfaByUseridResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#GetAccessTfaByUseridResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessTfaByUserid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#GetAccessTfaByUseridRequest"
+      },
+      "output": {
+        "target": "proxmox.access#GetAccessTfaByUseridResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/access/tfa/{userid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /access/tfa/{userid}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "list_user_tfa"
+      }
+    },
+    "proxmox.access#PostAccessTfaByUseridRequestType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "totp"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "u2f"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "webauthn"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "recovery"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yubico"
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessTfaByUseridRequest": {
+      "type": "structure",
+      "members": {
+        "challenge": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "totp": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "type": {
+          "target": "proxmox.access#PostAccessTfaByUseridRequestType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-userid",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.access#PostAccessTfaByUseridResultRecovery": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "proxmox.access#PostAccessTfaByUseridResult": {
+      "type": "structure",
+      "members": {
+        "challenge": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "recovery": {
+          "target": "proxmox.access#PostAccessTfaByUseridResultRecovery",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.access#PostAccessTfaByUseridResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#PostAccessTfaByUseridResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessTfaByUserid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#PostAccessTfaByUseridRequest"
+      },
+      "output": {
+        "target": "proxmox.access#PostAccessTfaByUseridResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/access/tfa/{userid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /access/tfa/{userid}",
+        "proxmox.api#access": {
+          "allowtoken": 0,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "add_tfa_entry"
+      }
+    },
+    "proxmox.access#DeleteAccessTfaByUseridByIdRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "password"
+          }
+        },
+        "userid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-userid",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#DeleteAccessTfaByUseridByIdResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#DeleteAccessTfaByUseridById": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#DeleteAccessTfaByUseridByIdRequest"
+      },
+      "output": {
+        "target": "proxmox.access#DeleteAccessTfaByUseridByIdResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/access/tfa/{userid}/{id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /access/tfa/{userid}/{id}",
+        "proxmox.api#access": {
+          "allowtoken": 0,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "delete_tfa"
+      }
+    },
+    "proxmox.access#GetAccessTfaByUseridByIdRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "userid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-userid",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessTfaByUseridByIdResultType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "totp"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "u2f"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "webauthn"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "recovery"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "yubico"
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessTfaByUseridByIdResult": {
+      "type": "structure",
+      "members": {
+        "created": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "enable": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "proxmox.access#GetAccessTfaByUseridByIdResultType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessTfaByUseridByIdResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#GetAccessTfaByUseridByIdResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessTfaByUseridById": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#GetAccessTfaByUseridByIdRequest"
+      },
+      "output": {
+        "target": "proxmox.access#GetAccessTfaByUseridByIdResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/access/tfa/{userid}/{id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /access/tfa/{userid}/{id}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "get_tfa_entry"
+      }
+    },
+    "proxmox.access#PutAccessTfaByUseridByIdRequest": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "enable": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "userid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-userid",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PutAccessTfaByUseridByIdResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PutAccessTfaByUseridById": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#PutAccessTfaByUseridByIdRequest"
+      },
+      "output": {
+        "target": "proxmox.access#PutAccessTfaByUseridByIdResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/access/tfa/{userid}/{id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /access/tfa/{userid}/{id}",
+        "proxmox.api#access": {
+          "allowtoken": 0,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "update_tfa_entry"
+      }
+    },
+    "proxmox.access#GetAccessTicketRequest": {
+      "type": "structure",
+      "members": {}
+    },
+    "proxmox.access#GetAccessTicketResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessTicket": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#GetAccessTicketRequest"
+      },
+      "output": {
+        "target": "proxmox.access#GetAccessTicketResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/access/ticket",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /access/ticket",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "get_ticket"
+      }
+    },
+    "proxmox.access#PostAccessTicketRequest": {
+      "type": "structure",
+      "members": {
+        "new-format": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "otp": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "privs": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-priv-list"
+          }
+        },
+        "realm": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-realm"
+          }
+        },
+        "tfa-challenge": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessTicketResult": {
+      "type": "structure",
+      "members": {
+        "CSRFPreventionToken": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "clustername": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "ticket": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessTicketResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#PostAccessTicketResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessTicket": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#PostAccessTicketRequest"
+      },
+      "output": {
+        "target": "proxmox.access#PostAccessTicketResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/access/ticket",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /access/ticket",
+        "proxmox.api#access": {
+          "allowtoken": 0,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "create_ticket"
+      }
+    },
+    "proxmox.access#PostAccessVncticketRequest": {
+      "type": "structure",
+      "members": {
+        "authid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "port": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "privs": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-priv-list"
+          }
+        },
+        "vncticket": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessVncticketResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PostAccessVncticket": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#PostAccessVncticketRequest"
+      },
+      "output": {
+        "target": "proxmox.access#PostAccessVncticketResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/access/vncticket",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /access/vncticket",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "verify_vnc_ticket"
+      }
+    },
+    "proxmox.access#PutAccessPasswordRequest": {
+      "type": "structure",
+      "members": {
+        "confirmation-password": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-userid"
+          }
+        }
+      }
+    },
+    "proxmox.access#PutAccessPasswordResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#PutAccessPassword": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#PutAccessPasswordRequest"
+      },
+      "output": {
+        "target": "proxmox.access#PutAccessPasswordResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/access/password",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /access/password",
+        "proxmox.api#access": {
+          "allowtoken": 0,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "change_password"
+      }
+    },
+    "proxmox.access#GetAccessPermissionsRequest": {
+      "type": "structure",
+      "members": {
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "path"
+          }
+        },
+        "userid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "userid"
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessPermissionsResult": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.access#GetAccessPermissionsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.access#GetAccessPermissionsResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.access#GetAccessPermissions": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.access#GetAccessPermissionsRequest"
+      },
+      "output": {
+        "target": "proxmox.access#GetAccessPermissionsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/access/permissions",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /access/permissions",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "permissions"
+      }
+    }
+  }
+}

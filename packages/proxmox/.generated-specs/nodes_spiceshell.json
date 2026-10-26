@@ -1,0 +1,136 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_spiceshell#PostNodesByNodeSpiceshellRequestCmd": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ceph_install"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "login"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "upgrade"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_spiceshell#PostNodesByNodeSpiceshellRequest": {
+      "type": "structure",
+      "members": {
+        "cmd": {
+          "target": "proxmox.nodes_spiceshell#PostNodesByNodeSpiceshellRequestCmd",
+          "traits": {}
+        },
+        "cmd-opts": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "proxy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "address"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_spiceshell#PostNodesByNodeSpiceshellResult": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "proxy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "tls-port": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_spiceshell#PostNodesByNodeSpiceshellResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_spiceshell#PostNodesByNodeSpiceshellResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_spiceshell#PostNodesByNodeSpiceshell": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_spiceshell#PostNodesByNodeSpiceshellRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_spiceshell#PostNodesByNodeSpiceshellResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/spiceshell",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/spiceshell",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "spiceshell"
+      }
+    },
+    "proxmox.nodes_spiceshell#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_spiceshell#PostNodesByNodeSpiceshell"
+        }
+      ]
+    }
+  }
+}

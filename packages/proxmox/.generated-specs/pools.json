@@ -1,0 +1,641 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.pools#DeletePoolsRequest": {
+      "type": "structure",
+      "members": {
+        "poolid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-poolid",
+            "smithy.api#httpQuery": "poolid"
+          }
+        }
+      }
+    },
+    "proxmox.pools#DeletePoolsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.pools#DeletePools": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.pools#DeletePoolsRequest"
+      },
+      "output": {
+        "target": "proxmox.pools#DeletePoolsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/pools",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /pools",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "delete_pool"
+      }
+    },
+    "proxmox.pools#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.pools#DeletePools"
+        },
+        {
+          "target": "proxmox.pools#GetPools"
+        },
+        {
+          "target": "proxmox.pools#PostPools"
+        },
+        {
+          "target": "proxmox.pools#PutPools"
+        },
+        {
+          "target": "proxmox.pools#DeletePoolsByPoolid"
+        },
+        {
+          "target": "proxmox.pools#GetPoolsByPoolid"
+        },
+        {
+          "target": "proxmox.pools#PutPoolsByPoolid"
+        }
+      ]
+    },
+    "proxmox.pools#GetPoolsRequestType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qemu"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lxc"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "storage"
+          }
+        }
+      }
+    },
+    "proxmox.pools#GetPoolsRequest": {
+      "type": "structure",
+      "members": {
+        "poolid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-poolid",
+            "smithy.api#httpQuery": "poolid"
+          }
+        },
+        "type": {
+          "target": "proxmox.pools#GetPoolsRequestType",
+          "traits": {
+            "smithy.api#httpQuery": "type"
+          }
+        }
+      }
+    },
+    "proxmox.pools#GetPoolsResultItemMembersItemType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qemu"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lxc"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "openvz"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "storage"
+          }
+        }
+      }
+    },
+    "proxmox.pools#GetPoolsResultItemMembersItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "type": {
+          "target": "proxmox.pools#GetPoolsResultItemMembersItemType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "vmid": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.pools#GetPoolsResultItemMembers": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.pools#GetPoolsResultItemMembersItem"
+      }
+    },
+    "proxmox.pools#GetPoolsResultItem": {
+      "type": "structure",
+      "members": {
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "members": {
+          "target": "proxmox.pools#GetPoolsResultItemMembers",
+          "traits": {}
+        },
+        "poolid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.pools#GetPoolsResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.pools#GetPoolsResultItem"
+      }
+    },
+    "proxmox.pools#GetPoolsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.pools#GetPoolsResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.pools#GetPools": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.pools#GetPoolsRequest"
+      },
+      "output": {
+        "target": "proxmox.pools#GetPoolsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/pools",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /pools",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.pools#PostPoolsRequest": {
+      "type": "structure",
+      "members": {
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "poolid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-poolid"
+          }
+        }
+      }
+    },
+    "proxmox.pools#PostPoolsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.pools#PostPools": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.pools#PostPoolsRequest"
+      },
+      "output": {
+        "target": "proxmox.pools#PostPoolsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/pools",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /pools",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "create_pool"
+      }
+    },
+    "proxmox.pools#PutPoolsRequest": {
+      "type": "structure",
+      "members": {
+        "allow-move": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "delete": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "poolid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-poolid"
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-id-list"
+          }
+        },
+        "vms": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-vmid-list"
+          }
+        }
+      }
+    },
+    "proxmox.pools#PutPoolsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.pools#PutPools": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.pools#PutPoolsRequest"
+      },
+      "output": {
+        "target": "proxmox.pools#PutPoolsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/pools",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /pools",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "update_pool"
+      }
+    },
+    "proxmox.pools#DeletePoolsByPoolidRequest": {
+      "type": "structure",
+      "members": {
+        "poolid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-poolid",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.pools#DeletePoolsByPoolidResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.pools#DeletePoolsByPoolid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.pools#DeletePoolsByPoolidRequest"
+      },
+      "output": {
+        "target": "proxmox.pools#DeletePoolsByPoolidResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/pools/{poolid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /pools/{poolid}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "delete_pool_deprecated"
+      }
+    },
+    "proxmox.pools#GetPoolsByPoolidRequestType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qemu"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lxc"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "storage"
+          }
+        }
+      }
+    },
+    "proxmox.pools#GetPoolsByPoolidRequest": {
+      "type": "structure",
+      "members": {
+        "poolid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-poolid",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "type": {
+          "target": "proxmox.pools#GetPoolsByPoolidRequestType",
+          "traits": {
+            "smithy.api#httpQuery": "type"
+          }
+        }
+      }
+    },
+    "proxmox.pools#GetPoolsByPoolidResultMembersItemType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qemu"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lxc"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "openvz"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "storage"
+          }
+        }
+      }
+    },
+    "proxmox.pools#GetPoolsByPoolidResultMembersItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "type": {
+          "target": "proxmox.pools#GetPoolsByPoolidResultMembersItemType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "vmid": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.pools#GetPoolsByPoolidResultMembers": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.pools#GetPoolsByPoolidResultMembersItem"
+      }
+    },
+    "proxmox.pools#GetPoolsByPoolidResult": {
+      "type": "structure",
+      "members": {
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "members": {
+          "target": "proxmox.pools#GetPoolsByPoolidResultMembers",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.pools#GetPoolsByPoolidResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.pools#GetPoolsByPoolidResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.pools#GetPoolsByPoolid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.pools#GetPoolsByPoolidRequest"
+      },
+      "output": {
+        "target": "proxmox.pools#GetPoolsByPoolidResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/pools/{poolid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /pools/{poolid}",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "read_pool"
+      }
+    },
+    "proxmox.pools#PutPoolsByPoolidRequest": {
+      "type": "structure",
+      "members": {
+        "allow-move": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "delete": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "poolid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-poolid",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-id-list"
+          }
+        },
+        "vms": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-vmid-list"
+          }
+        }
+      }
+    },
+    "proxmox.pools#PutPoolsByPoolidResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.pools#PutPoolsByPoolid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.pools#PutPoolsByPoolidRequest"
+      },
+      "output": {
+        "target": "proxmox.pools#PutPoolsByPoolidResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/pools/{poolid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /pools/{poolid}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "update_pool_deprecated"
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "alchemy-proxmox",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:live": "node --experimental-transform-types packages/alchemy-proxmox/live/run.ts",
+    "test:live:cleanup": "node --experimental-transform-types packages/alchemy-proxmox/live/run.ts --cleanup",
+    "lint": "oxlint",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "specs:fetch": "pnpm --filter @distilled.cloud/proxmox specs:fetch",
+    "convert": "pnpm --filter @distilled.cloud/proxmox convert",
+    "generate": "pnpm convert && pnpm --filter @distilled.cloud/proxmox generate && pnpm format && pnpm check:prose",
+    "check:prose": "pnpm --filter @distilled.cloud/proxmox check:prose",
+    "smoke": "pnpm --filter @distilled.cloud/proxmox smoke"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "oxfmt": "0.72.0",
+    "oxlint": "1.87.0",
+    "typescript": "7.0.2",
+    "vitest": "5.0.4"
+  },
+  "packageManager": "pnpm@12.15.0"
+}

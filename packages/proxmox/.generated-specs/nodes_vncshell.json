@@ -1,0 +1,146 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_vncshell#PostNodesByNodeVncshellRequestCmd": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ceph_install"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "login"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "upgrade"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_vncshell#PostNodesByNodeVncshellRequest": {
+      "type": "structure",
+      "members": {
+        "cmd": {
+          "target": "proxmox.nodes_vncshell#PostNodesByNodeVncshellRequestCmd",
+          "traits": {}
+        },
+        "cmd-opts": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "height": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "websocket": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "width": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_vncshell#PostNodesByNodeVncshellResult": {
+      "type": "structure",
+      "members": {
+        "cert": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "port": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ticket": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "upid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "user": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_vncshell#PostNodesByNodeVncshellResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_vncshell#PostNodesByNodeVncshellResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_vncshell#PostNodesByNodeVncshell": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_vncshell#PostNodesByNodeVncshellRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_vncshell#PostNodesByNodeVncshellResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/vncshell",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/vncshell",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "vncshell"
+      }
+    },
+    "proxmox.nodes_vncshell#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_vncshell#PostNodesByNodeVncshell"
+        }
+      ]
+    }
+  }
+}

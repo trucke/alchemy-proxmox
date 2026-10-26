@@ -1,0 +1,93 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_query_url_metadata#GetNodesByNodeQueryUrlMetadataRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpQuery": "url"
+          }
+        },
+        "verify-certificates": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "verify-certificates"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_query_url_metadata#GetNodesByNodeQueryUrlMetadataResult": {
+      "type": "structure",
+      "members": {
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "mimetype": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "size": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_query_url_metadata#GetNodesByNodeQueryUrlMetadataResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_query_url_metadata#GetNodesByNodeQueryUrlMetadataResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_query_url_metadata#GetNodesByNodeQueryUrlMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_query_url_metadata#GetNodesByNodeQueryUrlMetadataRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_query_url_metadata#GetNodesByNodeQueryUrlMetadataResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/query-url-metadata",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/query-url-metadata",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "query_url_metadata"
+      }
+    },
+    "proxmox.nodes_query_url_metadata#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_query_url_metadata#GetNodesByNodeQueryUrlMetadata"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "ignorePatterns": [
+    ".local/**",
+    "packages/*/specs/**",
+    "packages/*/.generated-specs/**",
+    "pnpm-lock.yaml"
+  ]
+}

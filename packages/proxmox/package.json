@@ -1,0 +1,23 @@
+{
+  "name": "@distilled.cloud/proxmox",
+  "version": "0.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "specs:fetch": "node scripts/fetch-specs.ts",
+    "convert": "node scripts/convert.ts",
+    "generate": "node scripts/generate.ts",
+    "check:prose": "node scripts/check-prose.ts",
+    "smoke": "node scripts/smoke.ts"
+  },
+  "dependencies": {
+    "@distilled.cloud/core": "1.0.0-rc.17",
+    "@effect/platform-node": "4.0.5",
+    "effect": "4.0.5"
+  }
+}

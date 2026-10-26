@@ -1,0 +1,142 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_time#GetNodesByNodeTimeRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_time#GetNodesByNodeTimeResult": {
+      "type": "structure",
+      "members": {
+        "localtime": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "time": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "timezone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_time#GetNodesByNodeTimeResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_time#GetNodesByNodeTimeResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_time#GetNodesByNodeTime": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_time#GetNodesByNodeTimeRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_time#GetNodesByNodeTimeResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/time",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/time",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "time"
+      }
+    },
+    "proxmox.nodes_time#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_time#GetNodesByNodeTime"
+        },
+        {
+          "target": "proxmox.nodes_time#PutNodesByNodeTime"
+        }
+      ]
+    },
+    "proxmox.nodes_time#PutNodesByNodeTimeRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "timezone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_time#PutNodesByNodeTimeResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_time#PutNodesByNodeTime": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_time#PutNodesByNodeTimeRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_time#PutNodesByNodeTimeResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/nodes/{node}/time",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /nodes/{node}/time",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "set_timezone"
+      }
+    }
+  }
+}

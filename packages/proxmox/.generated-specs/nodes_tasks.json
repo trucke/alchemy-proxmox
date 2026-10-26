@@ -1,0 +1,578 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_tasks#GetNodesByNodeTasksRequestSource": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "archive"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_tasks#GetNodesByNodeTasksRequest": {
+      "type": "structure",
+      "members": {
+        "errors": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "errors"
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "since": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "since"
+          }
+        },
+        "source": {
+          "target": "proxmox.nodes_tasks#GetNodesByNodeTasksRequestSource",
+          "traits": {
+            "smithy.api#httpQuery": "source"
+          }
+        },
+        "start": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "start"
+          }
+        },
+        "statusfilter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-task-status-type-list",
+            "smithy.api#httpQuery": "statusfilter"
+          }
+        },
+        "typefilter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "typefilter"
+          }
+        },
+        "until": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "until"
+          }
+        },
+        "userfilter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "userfilter"
+          }
+        },
+        "vmid": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "proxmox.api#format": "pve-vmid",
+            "smithy.api#httpQuery": "vmid"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_tasks#GetNodesByNodeTasksResultItem": {
+      "type": "structure",
+      "members": {
+        "endtime": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pid": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pstart": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "starttime": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "upid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "user": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_tasks#GetNodesByNodeTasksResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_tasks#GetNodesByNodeTasksResultItem"
+      }
+    },
+    "proxmox.nodes_tasks#GetNodesByNodeTasksResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_tasks#GetNodesByNodeTasksResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_tasks#GetNodesByNodeTasks": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_tasks#GetNodesByNodeTasksRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_tasks#GetNodesByNodeTasksResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/tasks",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/tasks",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "node_tasks"
+      }
+    },
+    "proxmox.nodes_tasks#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_tasks#GetNodesByNodeTasks"
+        },
+        {
+          "target": "proxmox.nodes_tasks#DeleteNodesByNodeTasksByUpid"
+        },
+        {
+          "target": "proxmox.nodes_tasks#GetNodesByNodeTasksByUpid"
+        },
+        {
+          "target": "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidLog"
+        },
+        {
+          "target": "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidStatus"
+        }
+      ]
+    },
+    "proxmox.nodes_tasks#DeleteNodesByNodeTasksByUpidRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "upid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_tasks#DeleteNodesByNodeTasksByUpidResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_tasks#DeleteNodesByNodeTasksByUpid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_tasks#DeleteNodesByNodeTasksByUpidRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_tasks#DeleteNodesByNodeTasksByUpidResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/nodes/{node}/tasks/{upid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /nodes/{node}/tasks/{upid}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "stop_task"
+      }
+    },
+    "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "upid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidResultItem": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidResultItem"
+      }
+    },
+    "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_tasks#GetNodesByNodeTasksByUpid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/tasks/{upid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/tasks/{upid}",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "upid_index"
+      }
+    },
+    "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidLogRequest": {
+      "type": "structure",
+      "members": {
+        "download": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "download"
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "start": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "start"
+          }
+        },
+        "upid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidLogResultItem": {
+      "type": "structure",
+      "members": {
+        "n": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "t": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidLogResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidLogResultItem"
+      }
+    },
+    "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidLogResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidLogResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidLog": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidLogRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidLogResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/tasks/{upid}/log",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/tasks/{upid}/log",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "read_task_log"
+      }
+    },
+    "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidStatusRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "upid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidStatusResultStatus": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stopped"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidStatusResult": {
+      "type": "structure",
+      "members": {
+        "exitstatus": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pid": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pstart": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "starttime": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidStatusResultStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "upid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "user": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidStatusResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidStatusResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidStatus": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidStatusRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_tasks#GetNodesByNodeTasksByUpidStatusResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/tasks/{upid}/status",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/tasks/{upid}/status",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "read_task_status"
+      }
+    }
+  }
+}

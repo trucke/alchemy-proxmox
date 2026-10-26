@@ -1,0 +1,86 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_version#GetNodesByNodeVersionRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_version#GetNodesByNodeVersionResult": {
+      "type": "structure",
+      "members": {
+        "release": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "repoid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_version#GetNodesByNodeVersionResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_version#GetNodesByNodeVersionResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_version#GetNodesByNodeVersion": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_version#GetNodesByNodeVersionRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_version#GetNodesByNodeVersionResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/version",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/version",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "version"
+      }
+    },
+    "proxmox.nodes_version#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_version#GetNodesByNodeVersion"
+        }
+      ]
+    }
+  }
+}

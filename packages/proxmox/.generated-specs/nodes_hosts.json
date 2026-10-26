@@ -1,0 +1,139 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_hosts#GetNodesByNodeHostsRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_hosts#GetNodesByNodeHostsResult": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_hosts#GetNodesByNodeHostsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_hosts#GetNodesByNodeHostsResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_hosts#GetNodesByNodeHosts": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_hosts#GetNodesByNodeHostsRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_hosts#GetNodesByNodeHostsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/hosts",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/hosts",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "get_etc_hosts"
+      }
+    },
+    "proxmox.nodes_hosts#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_hosts#GetNodesByNodeHosts"
+        },
+        {
+          "target": "proxmox.nodes_hosts#PostNodesByNodeHosts"
+        }
+      ]
+    },
+    "proxmox.nodes_hosts#PostNodesByNodeHostsRequest": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_hosts#PostNodesByNodeHostsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_hosts#PostNodesByNodeHosts": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_hosts#PostNodesByNodeHostsRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_hosts#PostNodesByNodeHostsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/hosts",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/hosts",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "write_etc_hosts"
+      }
+    }
+  }
+}

@@ -1,0 +1,2488 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_storage#GetNodesByNodeStorageRequest": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-content-list",
+            "smithy.api#httpQuery": "content"
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "enabled"
+          }
+        },
+        "format": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "format"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpQuery": "storage"
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpQuery": "target"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageResultItemFormatsDefault": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qcow2"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "raw"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "subvol"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vmdk"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageResultItemFormatsSupportedItem": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qcow2"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "raw"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "subvol"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vmdk"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageResultItemFormatsSupported": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageResultItemFormatsSupportedItem"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageResultItemFormats": {
+      "type": "structure",
+      "members": {
+        "default": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageResultItemFormatsDefault",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "supported": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageResultItemFormatsSupported",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageResultItem": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "avail": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-content-list"
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "formats": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageResultItemFormats",
+          "traits": {}
+        },
+        "select_existing": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "shared": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id"
+          }
+        },
+        "total": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "used": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "used_fraction": {
+          "target": "smithy.api#Double",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageResultItem"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorage": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/storage",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/storage",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_storage#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorage"
+        },
+        {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorage"
+        },
+        {
+          "target": "proxmox.nodes_storage#DeleteNodesByNodeStorageByStoragePrunebackups"
+        },
+        {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStoragePrunebackups"
+        },
+        {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageContent"
+        },
+        {
+          "target": "proxmox.nodes_storage#PostNodesByNodeStorageByStorageContent"
+        },
+        {
+          "target": "proxmox.nodes_storage#DeleteNodesByNodeStorageByStorageContentByVolume"
+        },
+        {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageContentByVolume"
+        },
+        {
+          "target": "proxmox.nodes_storage#PostNodesByNodeStorageByStorageContentByVolume"
+        },
+        {
+          "target": "proxmox.nodes_storage#PutNodesByNodeStorageByStorageContentByVolume"
+        },
+        {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageFileRestoreList"
+        },
+        {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageFileRestoreDownload"
+        },
+        {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageStatus"
+        },
+        {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrd"
+        },
+        {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrddata"
+        },
+        {
+          "target": "proxmox.nodes_storage#PostNodesByNodeStorageByStorageUpload"
+        },
+        {
+          "target": "proxmox.nodes_storage#PostNodesByNodeStorageByStorageDownloadUrl"
+        },
+        {
+          "target": "proxmox.nodes_storage#PostNodesByNodeStorageByStorageOciRegistryPull"
+        },
+        {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadata"
+        },
+        {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageIdentity"
+        }
+      ]
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageResultItem": {
+      "type": "structure",
+      "members": {
+        "subdir": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageResultItem"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorage": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/storage/{storage}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/storage/{storage}",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "diridx"
+      }
+    },
+    "proxmox.nodes_storage#DeleteNodesByNodeStorageByStoragePrunebackupsRequestType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qemu"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lxc"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#DeleteNodesByNodeStorageByStoragePrunebackupsRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "prune-backups": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "prune-backups",
+            "smithy.api#httpQuery": "prune-backups"
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "type": {
+          "target": "proxmox.nodes_storage#DeleteNodesByNodeStorageByStoragePrunebackupsRequestType",
+          "traits": {
+            "smithy.api#httpQuery": "type"
+          }
+        },
+        "vmid": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "proxmox.api#format": "pve-vmid",
+            "smithy.api#httpQuery": "vmid"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#DeleteNodesByNodeStorageByStoragePrunebackupsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#DeleteNodesByNodeStorageByStoragePrunebackups": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_storage#DeleteNodesByNodeStorageByStoragePrunebackupsRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_storage#DeleteNodesByNodeStorageByStoragePrunebackupsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/nodes/{node}/storage/{storage}/prunebackups",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /nodes/{node}/storage/{storage}/prunebackups",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "delete"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStoragePrunebackupsRequestType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qemu"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lxc"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStoragePrunebackupsRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "prune-backups": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "prune-backups",
+            "smithy.api#httpQuery": "prune-backups"
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "type": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStoragePrunebackupsRequestType",
+          "traits": {
+            "smithy.api#httpQuery": "type"
+          }
+        },
+        "vmid": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "proxmox.api#format": "pve-vmid",
+            "smithy.api#httpQuery": "vmid"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStoragePrunebackupsResultItemMark": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "keep"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "remove"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "protected"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "renamed"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStoragePrunebackupsResultItem": {
+      "type": "structure",
+      "members": {
+        "ctime": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "mark": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStoragePrunebackupsResultItemMark",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "vmid": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "volid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStoragePrunebackupsResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStoragePrunebackupsResultItem"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStoragePrunebackupsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStoragePrunebackupsResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStoragePrunebackups": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStoragePrunebackupsRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStoragePrunebackupsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/storage/{storage}/prunebackups",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/storage/{storage}/prunebackups",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "dryrun"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageContentRequest": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-content",
+            "smithy.api#httpQuery": "content"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "vmid": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "proxmox.api#format": "pve-vmid",
+            "smithy.api#httpQuery": "vmid"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageContentResultItemVerification": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "upid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageContentResultItem": {
+      "type": "structure",
+      "members": {
+        "approximate-size": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "ctime": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "encrypted": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "format": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "notes": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "parent": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "protected": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "size": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "used": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "verification": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageContentResultItemVerification",
+          "traits": {}
+        },
+        "vmid": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "volid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageContentResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageContentResultItem"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageContentResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageContentResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageContent": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageContentRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageContentResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/storage/{storage}/content",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/storage/{storage}/content",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_storage#PostNodesByNodeStorageByStorageContentRequestFormat": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "raw"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qcow2"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "subvol"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vmdk"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#PostNodesByNodeStorageByStorageContentRequest": {
+      "type": "structure",
+      "members": {
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "format": {
+          "target": "proxmox.nodes_storage#PostNodesByNodeStorageByStorageContentRequestFormat",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "vmid": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-vmid"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#PostNodesByNodeStorageByStorageContentResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#PostNodesByNodeStorageByStorageContent": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_storage#PostNodesByNodeStorageByStorageContentRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_storage#PostNodesByNodeStorageByStorageContentResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/storage/{storage}/content",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/storage/{storage}/content",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "create"
+      }
+    },
+    "proxmox.nodes_storage#DeleteNodesByNodeStorageByStorageContentByVolumeRequest": {
+      "type": "structure",
+      "members": {
+        "delay": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "delay"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "volume": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#DeleteNodesByNodeStorageByStorageContentByVolumeResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#DeleteNodesByNodeStorageByStorageContentByVolume": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_storage#DeleteNodesByNodeStorageByStorageContentByVolumeRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_storage#DeleteNodesByNodeStorageByStorageContentByVolumeResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/nodes/{node}/storage/{storage}/content/{volume}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /nodes/{node}/storage/{storage}/content/{volume}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "delete"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageContentByVolumeRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "volume": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageContentByVolumeResult": {
+      "type": "structure",
+      "members": {
+        "format": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "notes": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "protected": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "used": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageContentByVolumeResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageContentByVolumeResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageContentByVolume": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageContentByVolumeRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageContentByVolumeResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/storage/{storage}/content/{volume}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/storage/{storage}/content/{volume}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "info"
+      }
+    },
+    "proxmox.nodes_storage#PostNodesByNodeStorageByStorageContentByVolumeRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "target_node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-node"
+          }
+        },
+        "volume": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#PostNodesByNodeStorageByStorageContentByVolumeResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#PostNodesByNodeStorageByStorageContentByVolume": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_storage#PostNodesByNodeStorageByStorageContentByVolumeRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_storage#PostNodesByNodeStorageByStorageContentByVolumeResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/storage/{storage}/content/{volume}",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/storage/{storage}/content/{volume}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "copy"
+      }
+    },
+    "proxmox.nodes_storage#PutNodesByNodeStorageByStorageContentByVolumeRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "notes": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "protected": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "volume": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#PutNodesByNodeStorageByStorageContentByVolumeResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#PutNodesByNodeStorageByStorageContentByVolume": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_storage#PutNodesByNodeStorageByStorageContentByVolumeRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_storage#PutNodesByNodeStorageByStorageContentByVolumeResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/nodes/{node}/storage/{storage}/content/{volume}",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /nodes/{node}/storage/{storage}/content/{volume}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "updateattributes"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageFileRestoreListRequest": {
+      "type": "structure",
+      "members": {
+        "filepath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpQuery": "filepath"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "volume": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpQuery": "volume"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageFileRestoreListResultItem": {
+      "type": "structure",
+      "members": {
+        "filepath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "leaf": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "mtime": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "size": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageFileRestoreListResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageFileRestoreListResultItem"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageFileRestoreListResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageFileRestoreListResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageFileRestoreList": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageFileRestoreListRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageFileRestoreListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/storage/{storage}/file-restore/list",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/storage/{storage}/file-restore/list",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "list"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageFileRestoreDownloadRequest": {
+      "type": "structure",
+      "members": {
+        "filepath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpQuery": "filepath"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "tar": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "tar"
+          }
+        },
+        "volume": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpQuery": "volume"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageFileRestoreDownloadResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageFileRestoreDownload": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageFileRestoreDownloadRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageFileRestoreDownloadResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/storage/{storage}/file-restore/download",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/storage/{storage}/file-restore/download",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "download"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageStatusRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageStatusResult": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "avail": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-content-list"
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "shared": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "total": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "used": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageStatusResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageStatusResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageStatus": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageStatusRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageStatusResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/storage/{storage}/status",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/storage/{storage}/status",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "read_status"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrdRequestCf": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AVERAGE"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MAX"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrdRequestTimeframe": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hour"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "day"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "week"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "month"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "year"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrdRequest": {
+      "type": "structure",
+      "members": {
+        "cf": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrdRequestCf",
+          "traits": {
+            "smithy.api#httpQuery": "cf"
+          }
+        },
+        "ds": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-configid-list",
+            "smithy.api#httpQuery": "ds"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "timeframe": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrdRequestTimeframe",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpQuery": "timeframe"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrdResult": {
+      "type": "structure",
+      "members": {
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrdResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrdResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrd": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrdRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrdResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/storage/{storage}/rrd",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/storage/{storage}/rrd",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "rrd"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrddataRequestCf": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AVERAGE"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MAX"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrddataRequestTimeframe": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hour"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "day"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "week"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "month"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "year"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrddataRequest": {
+      "type": "structure",
+      "members": {
+        "cf": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrddataRequestCf",
+          "traits": {
+            "smithy.api#httpQuery": "cf"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "timeframe": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrddataRequestTimeframe",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpQuery": "timeframe"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrddataResultItem": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrddataResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrddataResultItem"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrddataResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrddataResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrddata": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrddataRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageRrddataResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/storage/{storage}/rrddata",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/storage/{storage}/rrddata",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "rrddata"
+      }
+    },
+    "proxmox.nodes_storage#PostNodesByNodeStorageByStorageUploadRequestChecksumAlgorithm": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "md5"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sha1"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sha224"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sha256"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sha384"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sha512"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#PostNodesByNodeStorageByStorageUploadRequestContent": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "iso"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vztmpl"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "import"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#PostNodesByNodeStorageByStorageUploadRequest": {
+      "type": "structure",
+      "members": {
+        "checksum": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "checksum-algorithm": {
+          "target": "proxmox.nodes_storage#PostNodesByNodeStorageByStorageUploadRequestChecksumAlgorithm",
+          "traits": {}
+        },
+        "content": {
+          "target": "proxmox.nodes_storage#PostNodesByNodeStorageByStorageUploadRequestContent",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-content"
+          }
+        },
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "tmpfilename": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_storage#PostNodesByNodeStorageByStorageUploadResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#PostNodesByNodeStorageByStorageUpload": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_storage#PostNodesByNodeStorageByStorageUploadRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_storage#PostNodesByNodeStorageByStorageUploadResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/storage/{storage}/upload",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/storage/{storage}/upload",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "upload"
+      }
+    },
+    "proxmox.nodes_storage#PostNodesByNodeStorageByStorageDownloadUrlRequestChecksumAlgorithm": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "md5"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sha1"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sha224"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sha256"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sha384"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sha512"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#PostNodesByNodeStorageByStorageDownloadUrlRequestContent": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "iso"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vztmpl"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "import"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#PostNodesByNodeStorageByStorageDownloadUrlRequest": {
+      "type": "structure",
+      "members": {
+        "checksum": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "checksum-algorithm": {
+          "target": "proxmox.nodes_storage#PostNodesByNodeStorageByStorageDownloadUrlRequestChecksumAlgorithm",
+          "traits": {}
+        },
+        "compression": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "content": {
+          "target": "proxmox.nodes_storage#PostNodesByNodeStorageByStorageDownloadUrlRequestContent",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-content"
+          }
+        },
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "verify-certificates": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_storage#PostNodesByNodeStorageByStorageDownloadUrlResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#PostNodesByNodeStorageByStorageDownloadUrl": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_storage#PostNodesByNodeStorageByStorageDownloadUrlRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_storage#PostNodesByNodeStorageByStorageDownloadUrlResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/storage/{storage}/download-url",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/storage/{storage}/download-url",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "download_url"
+      }
+    },
+    "proxmox.nodes_storage#PostNodesByNodeStorageByStorageOciRegistryPullRequest": {
+      "type": "structure",
+      "members": {
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "reference": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#PostNodesByNodeStorageByStorageOciRegistryPullResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#PostNodesByNodeStorageByStorageOciRegistryPull": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_storage#PostNodesByNodeStorageByStorageOciRegistryPullRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_storage#PostNodesByNodeStorageByStorageOciRegistryPullResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/storage/{storage}/oci-registry-pull",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/storage/{storage}/oci-registry-pull",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "oci_registry_pull"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "volume": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpQuery": "volume"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataResultCreateArgs": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataResultDisks": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataResultNet": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataResultSource": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "esxi"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataResultType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vm"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataResultWarningsItemType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdrom-image-ignored"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "efi-state-lost"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "guest-is-running"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nvme-unsupported"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ova-needs-extracting"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ovmf-with-lsi-unsupported"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "serial-port-socket-only"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataResultWarningsItem": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "type": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataResultWarningsItemType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataResultWarnings": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataResultWarningsItem"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataResult": {
+      "type": "structure",
+      "members": {
+        "create-args": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataResultCreateArgs",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "disks": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataResultDisks",
+          "traits": {}
+        },
+        "net": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataResultNet",
+          "traits": {}
+        },
+        "source": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataResultSource",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataResultType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "warnings": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataResultWarnings",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageImportMetadataResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/storage/{storage}/import-metadata",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/storage/{storage}/import-metadata",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "get_import_metadata"
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageIdentityRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-storage-id",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageIdentityResultType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "btrfs"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cephfs"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cifs"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dir"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "esxi"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "iscsi"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "iscsidirect"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lvm"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lvmthin"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nfs"
+          }
+        },
+        "Value10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pbs"
+          }
+        },
+        "Value11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rbd"
+          }
+        },
+        "Value12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zfs"
+          }
+        },
+        "Value13": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zfspool"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageIdentityResult": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageIdentityResultType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageIdentityResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageIdentityResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_storage#GetNodesByNodeStorageByStorageIdentity": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageIdentityRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_storage#GetNodesByNodeStorageByStorageIdentityResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/storage/{storage}/identity",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/storage/{storage}/identity",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "identity"
+      }
+    }
+  }
+}

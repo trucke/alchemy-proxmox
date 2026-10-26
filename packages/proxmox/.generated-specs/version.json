@@ -1,0 +1,110 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.version#GetVersionRequest": {
+      "type": "structure",
+      "members": {}
+    },
+    "proxmox.version#GetVersionResultConsole": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "applet"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vv"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "html5"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "xtermjs"
+          }
+        }
+      }
+    },
+    "proxmox.version#GetVersionResult": {
+      "type": "structure",
+      "members": {
+        "console": {
+          "target": "proxmox.version#GetVersionResultConsole",
+          "traits": {}
+        },
+        "release": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "repoid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.version#GetVersionResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.version#GetVersionResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.version#GetVersion": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.version#GetVersionRequest"
+      },
+      "output": {
+        "target": "proxmox.version#GetVersionResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/version",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /version",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "version"
+      }
+    },
+    "proxmox.version#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.version#GetVersion"
+        }
+      ]
+    }
+  }
+}

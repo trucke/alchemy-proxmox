@@ -1,0 +1,2010 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_services#GetNodesByNodeServicesRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#GetNodesByNodeServicesResultItemActiveState": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inactive"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "activating"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deactivating"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "maintenance"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reloading"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "refreshing"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#GetNodesByNodeServicesResultItemState": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dead"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "condition"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "start-pre"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "start"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "start-post"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "exited"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reload"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reload-signal"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reload-notify"
+          }
+        },
+        "Value10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mounting"
+          }
+        },
+        "Value11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stop"
+          }
+        },
+        "Value12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stop-watchdog"
+          }
+        },
+        "Value13": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stop-sigterm"
+          }
+        },
+        "Value14": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stop-sigkill"
+          }
+        },
+        "Value15": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stop-post"
+          }
+        },
+        "Value16": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "final-watchdog"
+          }
+        },
+        "Value17": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "final-sigterm"
+          }
+        },
+        "Value18": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "final-sigkill"
+          }
+        },
+        "Value19": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        },
+        "Value20": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dead-before-auto-restart"
+          }
+        },
+        "Value21": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed-before-auto-restart"
+          }
+        },
+        "Value22": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dead-resources-pinned"
+          }
+        },
+        "Value23": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto-restart"
+          }
+        },
+        "Value24": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto-restart-queued"
+          }
+        },
+        "Value25": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cleaning"
+          }
+        },
+        "Value26": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#GetNodesByNodeServicesResultItemUnitState": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled-runtime"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "linked"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "linked-runtime"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alias"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "masked"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "masked-runtime"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "static"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "indirect"
+          }
+        },
+        "Value10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "generated"
+          }
+        },
+        "Value11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "transient"
+          }
+        },
+        "Value12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bad"
+          }
+        },
+        "Value13": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "not-found"
+          }
+        },
+        "Value14": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#GetNodesByNodeServicesResultItem": {
+      "type": "structure",
+      "members": {
+        "active-state": {
+          "target": "proxmox.nodes_services#GetNodesByNodeServicesResultItemActiveState",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "desc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "service": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "proxmox.nodes_services#GetNodesByNodeServicesResultItemState",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "unit-state": {
+          "target": "proxmox.nodes_services#GetNodesByNodeServicesResultItemUnitState",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#GetNodesByNodeServicesResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_services#GetNodesByNodeServicesResultItem"
+      }
+    },
+    "proxmox.nodes_services#GetNodesByNodeServicesResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_services#GetNodesByNodeServicesResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#GetNodesByNodeServices": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_services#GetNodesByNodeServicesRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_services#GetNodesByNodeServicesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/services",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/services",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_services#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_services#GetNodesByNodeServices"
+        },
+        {
+          "target": "proxmox.nodes_services#GetNodesByNodeServicesByService"
+        },
+        {
+          "target": "proxmox.nodes_services#GetNodesByNodeServicesByServiceState"
+        },
+        {
+          "target": "proxmox.nodes_services#PostNodesByNodeServicesByServiceStart"
+        },
+        {
+          "target": "proxmox.nodes_services#PostNodesByNodeServicesByServiceStop"
+        },
+        {
+          "target": "proxmox.nodes_services#PostNodesByNodeServicesByServiceRestart"
+        },
+        {
+          "target": "proxmox.nodes_services#PostNodesByNodeServicesByServiceReload"
+        }
+      ]
+    },
+    "proxmox.nodes_services#GetNodesByNodeServicesByServiceRequestService": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "chrony"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "corosync"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cron"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ksmtuned"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lxcfs"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "postfix"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "proxmox-firewall"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-cluster"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-firewall"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-ha-crm"
+          }
+        },
+        "Value10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-ha-lrm"
+          }
+        },
+        "Value11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-lxc-syscalld"
+          }
+        },
+        "Value12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvedaemon"
+          }
+        },
+        "Value13": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvefw-logger"
+          }
+        },
+        "Value14": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pveproxy"
+          }
+        },
+        "Value15": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvescheduler"
+          }
+        },
+        "Value16": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvestatd"
+          }
+        },
+        "Value17": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qmeventd"
+          }
+        },
+        "Value18": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spiceproxy"
+          }
+        },
+        "Value19": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sshd"
+          }
+        },
+        "Value20": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syslog"
+          }
+        },
+        "Value21": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "systemd-journald"
+          }
+        },
+        "Value22": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "systemd-timesyncd"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#GetNodesByNodeServicesByServiceRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "service": {
+          "target": "proxmox.nodes_services#GetNodesByNodeServicesByServiceRequestService",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#GetNodesByNodeServicesByServiceResultItem": {
+      "type": "structure",
+      "members": {
+        "subdir": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#GetNodesByNodeServicesByServiceResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_services#GetNodesByNodeServicesByServiceResultItem"
+      }
+    },
+    "proxmox.nodes_services#GetNodesByNodeServicesByServiceResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_services#GetNodesByNodeServicesByServiceResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#GetNodesByNodeServicesByService": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_services#GetNodesByNodeServicesByServiceRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_services#GetNodesByNodeServicesByServiceResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/services/{service}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/services/{service}",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "srvcmdidx"
+      }
+    },
+    "proxmox.nodes_services#GetNodesByNodeServicesByServiceStateRequestService": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "chrony"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "corosync"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cron"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ksmtuned"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lxcfs"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "postfix"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "proxmox-firewall"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-cluster"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-firewall"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-ha-crm"
+          }
+        },
+        "Value10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-ha-lrm"
+          }
+        },
+        "Value11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-lxc-syscalld"
+          }
+        },
+        "Value12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvedaemon"
+          }
+        },
+        "Value13": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvefw-logger"
+          }
+        },
+        "Value14": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pveproxy"
+          }
+        },
+        "Value15": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvescheduler"
+          }
+        },
+        "Value16": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvestatd"
+          }
+        },
+        "Value17": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qmeventd"
+          }
+        },
+        "Value18": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spiceproxy"
+          }
+        },
+        "Value19": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sshd"
+          }
+        },
+        "Value20": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syslog"
+          }
+        },
+        "Value21": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "systemd-journald"
+          }
+        },
+        "Value22": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "systemd-timesyncd"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#GetNodesByNodeServicesByServiceStateRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "service": {
+          "target": "proxmox.nodes_services#GetNodesByNodeServicesByServiceStateRequestService",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#GetNodesByNodeServicesByServiceStateResultActiveState": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inactive"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "activating"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deactivating"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "maintenance"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reloading"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "refreshing"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#GetNodesByNodeServicesByServiceStateResultState": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dead"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "condition"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "start-pre"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "start"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "start-post"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "exited"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reload"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reload-signal"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reload-notify"
+          }
+        },
+        "Value10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mounting"
+          }
+        },
+        "Value11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stop"
+          }
+        },
+        "Value12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stop-watchdog"
+          }
+        },
+        "Value13": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stop-sigterm"
+          }
+        },
+        "Value14": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stop-sigkill"
+          }
+        },
+        "Value15": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stop-post"
+          }
+        },
+        "Value16": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "final-watchdog"
+          }
+        },
+        "Value17": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "final-sigterm"
+          }
+        },
+        "Value18": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "final-sigkill"
+          }
+        },
+        "Value19": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        },
+        "Value20": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dead-before-auto-restart"
+          }
+        },
+        "Value21": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed-before-auto-restart"
+          }
+        },
+        "Value22": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dead-resources-pinned"
+          }
+        },
+        "Value23": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto-restart"
+          }
+        },
+        "Value24": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto-restart-queued"
+          }
+        },
+        "Value25": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cleaning"
+          }
+        },
+        "Value26": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#GetNodesByNodeServicesByServiceStateResultUnitState": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled-runtime"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "linked"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "linked-runtime"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alias"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "masked"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "masked-runtime"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "static"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "indirect"
+          }
+        },
+        "Value10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "generated"
+          }
+        },
+        "Value11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "transient"
+          }
+        },
+        "Value12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bad"
+          }
+        },
+        "Value13": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "not-found"
+          }
+        },
+        "Value14": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#GetNodesByNodeServicesByServiceStateResult": {
+      "type": "structure",
+      "members": {
+        "active-state": {
+          "target": "proxmox.nodes_services#GetNodesByNodeServicesByServiceStateResultActiveState",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "desc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "service": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "proxmox.nodes_services#GetNodesByNodeServicesByServiceStateResultState",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "unit-state": {
+          "target": "proxmox.nodes_services#GetNodesByNodeServicesByServiceStateResultUnitState",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#GetNodesByNodeServicesByServiceStateResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_services#GetNodesByNodeServicesByServiceStateResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#GetNodesByNodeServicesByServiceState": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_services#GetNodesByNodeServicesByServiceStateRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_services#GetNodesByNodeServicesByServiceStateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/services/{service}/state",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/services/{service}/state",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "service_state"
+      }
+    },
+    "proxmox.nodes_services#PostNodesByNodeServicesByServiceStartRequestService": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "chrony"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "corosync"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cron"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ksmtuned"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lxcfs"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "postfix"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "proxmox-firewall"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-cluster"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-firewall"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-ha-crm"
+          }
+        },
+        "Value10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-ha-lrm"
+          }
+        },
+        "Value11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-lxc-syscalld"
+          }
+        },
+        "Value12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvedaemon"
+          }
+        },
+        "Value13": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvefw-logger"
+          }
+        },
+        "Value14": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pveproxy"
+          }
+        },
+        "Value15": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvescheduler"
+          }
+        },
+        "Value16": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvestatd"
+          }
+        },
+        "Value17": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qmeventd"
+          }
+        },
+        "Value18": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spiceproxy"
+          }
+        },
+        "Value19": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sshd"
+          }
+        },
+        "Value20": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syslog"
+          }
+        },
+        "Value21": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "systemd-journald"
+          }
+        },
+        "Value22": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "systemd-timesyncd"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#PostNodesByNodeServicesByServiceStartRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "service": {
+          "target": "proxmox.nodes_services#PostNodesByNodeServicesByServiceStartRequestService",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#PostNodesByNodeServicesByServiceStartResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#PostNodesByNodeServicesByServiceStart": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_services#PostNodesByNodeServicesByServiceStartRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_services#PostNodesByNodeServicesByServiceStartResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/services/{service}/start",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/services/{service}/start",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "service_start"
+      }
+    },
+    "proxmox.nodes_services#PostNodesByNodeServicesByServiceStopRequestService": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "chrony"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "corosync"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cron"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ksmtuned"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lxcfs"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "postfix"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "proxmox-firewall"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-cluster"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-firewall"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-ha-crm"
+          }
+        },
+        "Value10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-ha-lrm"
+          }
+        },
+        "Value11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-lxc-syscalld"
+          }
+        },
+        "Value12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvedaemon"
+          }
+        },
+        "Value13": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvefw-logger"
+          }
+        },
+        "Value14": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pveproxy"
+          }
+        },
+        "Value15": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvescheduler"
+          }
+        },
+        "Value16": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvestatd"
+          }
+        },
+        "Value17": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qmeventd"
+          }
+        },
+        "Value18": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spiceproxy"
+          }
+        },
+        "Value19": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sshd"
+          }
+        },
+        "Value20": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syslog"
+          }
+        },
+        "Value21": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "systemd-journald"
+          }
+        },
+        "Value22": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "systemd-timesyncd"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#PostNodesByNodeServicesByServiceStopRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "service": {
+          "target": "proxmox.nodes_services#PostNodesByNodeServicesByServiceStopRequestService",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#PostNodesByNodeServicesByServiceStopResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#PostNodesByNodeServicesByServiceStop": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_services#PostNodesByNodeServicesByServiceStopRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_services#PostNodesByNodeServicesByServiceStopResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/services/{service}/stop",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/services/{service}/stop",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "service_stop"
+      }
+    },
+    "proxmox.nodes_services#PostNodesByNodeServicesByServiceRestartRequestService": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "chrony"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "corosync"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cron"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ksmtuned"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lxcfs"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "postfix"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "proxmox-firewall"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-cluster"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-firewall"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-ha-crm"
+          }
+        },
+        "Value10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-ha-lrm"
+          }
+        },
+        "Value11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-lxc-syscalld"
+          }
+        },
+        "Value12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvedaemon"
+          }
+        },
+        "Value13": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvefw-logger"
+          }
+        },
+        "Value14": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pveproxy"
+          }
+        },
+        "Value15": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvescheduler"
+          }
+        },
+        "Value16": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvestatd"
+          }
+        },
+        "Value17": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qmeventd"
+          }
+        },
+        "Value18": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spiceproxy"
+          }
+        },
+        "Value19": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sshd"
+          }
+        },
+        "Value20": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syslog"
+          }
+        },
+        "Value21": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "systemd-journald"
+          }
+        },
+        "Value22": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "systemd-timesyncd"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#PostNodesByNodeServicesByServiceRestartRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "service": {
+          "target": "proxmox.nodes_services#PostNodesByNodeServicesByServiceRestartRequestService",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#PostNodesByNodeServicesByServiceRestartResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#PostNodesByNodeServicesByServiceRestart": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_services#PostNodesByNodeServicesByServiceRestartRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_services#PostNodesByNodeServicesByServiceRestartResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/services/{service}/restart",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/services/{service}/restart",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "service_restart"
+      }
+    },
+    "proxmox.nodes_services#PostNodesByNodeServicesByServiceReloadRequestService": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "chrony"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "corosync"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cron"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ksmtuned"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lxcfs"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "postfix"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "proxmox-firewall"
+          }
+        },
+        "Value7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-cluster"
+          }
+        },
+        "Value8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-firewall"
+          }
+        },
+        "Value9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-ha-crm"
+          }
+        },
+        "Value10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-ha-lrm"
+          }
+        },
+        "Value11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pve-lxc-syscalld"
+          }
+        },
+        "Value12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvedaemon"
+          }
+        },
+        "Value13": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvefw-logger"
+          }
+        },
+        "Value14": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pveproxy"
+          }
+        },
+        "Value15": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvescheduler"
+          }
+        },
+        "Value16": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pvestatd"
+          }
+        },
+        "Value17": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "qmeventd"
+          }
+        },
+        "Value18": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spiceproxy"
+          }
+        },
+        "Value19": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sshd"
+          }
+        },
+        "Value20": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "syslog"
+          }
+        },
+        "Value21": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "systemd-journald"
+          }
+        },
+        "Value22": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "systemd-timesyncd"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#PostNodesByNodeServicesByServiceReloadRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "service": {
+          "target": "proxmox.nodes_services#PostNodesByNodeServicesByServiceReloadRequestService",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#PostNodesByNodeServicesByServiceReloadResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_services#PostNodesByNodeServicesByServiceReload": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_services#PostNodesByNodeServicesByServiceReloadRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_services#PostNodesByNodeServicesByServiceReloadResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/services/{service}/reload",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/services/{service}/reload",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "service_reload"
+      }
+    }
+  }
+}

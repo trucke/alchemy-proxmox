@@ -1,0 +1,6 @@
+{
+  "ignorePatterns": [".local/**"],
+  "rules": {
+    "typescript/no-explicit-any": "error"
+  }
+}

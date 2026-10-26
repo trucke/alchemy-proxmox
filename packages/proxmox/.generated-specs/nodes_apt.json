@@ -1,0 +1,1083 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_apt#GetNodesByNodeAptRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_apt#GetNodesByNodeAptResultItem"
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeApt": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_apt#GetNodesByNodeAptRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_apt#GetNodesByNodeAptResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/apt",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/apt",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_apt#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_apt#GetNodesByNodeApt"
+        },
+        {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptUpdate"
+        },
+        {
+          "target": "proxmox.nodes_apt#PostNodesByNodeAptUpdate"
+        },
+        {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptChangelog"
+        },
+        {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositories"
+        },
+        {
+          "target": "proxmox.nodes_apt#PostNodesByNodeAptRepositories"
+        },
+        {
+          "target": "proxmox.nodes_apt#PutNodesByNodeAptRepositories"
+        },
+        {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptVersions"
+        }
+      ]
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptUpdateResultItemArch": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "armhf"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "arm64"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amd64"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ppc64el"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "risc64"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "s390x"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptUpdateResultItem": {
+      "type": "structure",
+      "members": {
+        "Arch": {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptUpdateResultItemArch",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "NotifyStatus": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "OldVersion": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "Origin": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Package": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Priority": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Section": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptUpdateResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_apt#GetNodesByNodeAptUpdateResultItem"
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptUpdateResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_apt#GetNodesByNodeAptUpdateRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_apt#GetNodesByNodeAptUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/apt/update",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/apt/update",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "list_updates"
+      }
+    },
+    "proxmox.nodes_apt#PostNodesByNodeAptUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "notify": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "quiet": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_apt#PostNodesByNodeAptUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#PostNodesByNodeAptUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_apt#PostNodesByNodeAptUpdateRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_apt#PostNodesByNodeAptUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/apt/update",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/apt/update",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "update_database"
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptChangelogRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpQuery": "name"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "version"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptChangelogResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptChangelog": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_apt#GetNodesByNodeAptChangelogRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_apt#GetNodesByNodeAptChangelogResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/apt/changelog",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/apt/changelog",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "changelog"
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultErrorsItem": {
+      "type": "structure",
+      "members": {
+        "error": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultErrors": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultErrorsItem"
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemDigest": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemFileType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "list"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sources"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositoriesItemComponents": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositoriesItemFileType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "list"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sources"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositoriesItemOptionsItemValues": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositoriesItemOptionsItem": {
+      "type": "structure",
+      "members": {
+        "Key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Values": {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositoriesItemOptionsItemValues",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositoriesItemOptions": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositoriesItemOptionsItem"
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositoriesItemSuites": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositoriesItemTypesItem": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deb"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deb-src"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositoriesItemTypes": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositoriesItemTypesItem"
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositoriesItemURIs": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositoriesItem": {
+      "type": "structure",
+      "members": {
+        "Comment": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "Components": {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositoriesItemComponents",
+          "traits": {}
+        },
+        "Enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "FileType": {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositoriesItemFileType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Options": {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositoriesItemOptions",
+          "traits": {}
+        },
+        "Suites": {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositoriesItemSuites",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Types": {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositoriesItemTypes",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "URIs": {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositoriesItemURIs",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositories": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositoriesItem"
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItem": {
+      "type": "structure",
+      "members": {
+        "digest": {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemDigest",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "file-type": {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemFileType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "repositories": {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItemRepositories",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFiles": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFilesItem"
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultInfosItem": {
+      "type": "structure",
+      "members": {
+        "index": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "property": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultInfos": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultInfosItem"
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultStandardReposItem": {
+      "type": "structure",
+      "members": {
+        "handle": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultStandardRepos": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultStandardReposItem"
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResult": {
+      "type": "structure",
+      "members": {
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "errors": {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultErrors",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "files": {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultFiles",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "infos": {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultInfos",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "standard-repos": {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResultStandardRepos",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptRepositories": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_apt#GetNodesByNodeAptRepositoriesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/apt/repositories",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/apt/repositories",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "repositories"
+      }
+    },
+    "proxmox.nodes_apt#PostNodesByNodeAptRepositoriesRequest": {
+      "type": "structure",
+      "members": {
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "index": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#PostNodesByNodeAptRepositoriesResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#PostNodesByNodeAptRepositories": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_apt#PostNodesByNodeAptRepositoriesRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_apt#PostNodesByNodeAptRepositoriesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/apt/repositories",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/apt/repositories",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "change_repository"
+      }
+    },
+    "proxmox.nodes_apt#PutNodesByNodeAptRepositoriesRequest": {
+      "type": "structure",
+      "members": {
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "handle": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#PutNodesByNodeAptRepositoriesResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#PutNodesByNodeAptRepositories": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_apt#PutNodesByNodeAptRepositoriesRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_apt#PutNodesByNodeAptRepositoriesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/nodes/{node}/apt/repositories",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /nodes/{node}/apt/repositories",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "add_repository"
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptVersionsRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptVersionsResultItemArch": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "armhf"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "arm64"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amd64"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ppc64el"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "risc64"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "s390x"
+          }
+        },
+        "Value6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptVersionsResultItemCurrentState": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Installed"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotInstalled"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UnPacked"
+          }
+        },
+        "Value3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HalfConfigured"
+          }
+        },
+        "Value4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HalfInstalled"
+          }
+        },
+        "Value5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ConfigFiles"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptVersionsResultItem": {
+      "type": "structure",
+      "members": {
+        "Arch": {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptVersionsResultItemArch",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "CurrentState": {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptVersionsResultItemCurrentState",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ManagerVersion": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "NotifyStatus": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "OldVersion": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "Origin": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Package": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Priority": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "RunningKernel": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "Section": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptVersionsResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_apt#GetNodesByNodeAptVersionsResultItem"
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptVersionsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_apt#GetNodesByNodeAptVersionsResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_apt#GetNodesByNodeAptVersions": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_apt#GetNodesByNodeAptVersionsRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_apt#GetNodesByNodeAptVersionsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/apt/versions",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/apt/versions",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "versions"
+      }
+    }
+  }
+}

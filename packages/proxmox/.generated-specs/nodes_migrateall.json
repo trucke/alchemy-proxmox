@@ -1,0 +1,89 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_migrateall#PostNodesByNodeMigrateallRequest": {
+      "type": "structure",
+      "members": {
+        "max-workers": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "maxworkers": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node"
+          }
+        },
+        "vms": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-vmid-list"
+          }
+        },
+        "with-local-disks": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_migrateall#PostNodesByNodeMigrateallResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_migrateall#PostNodesByNodeMigrateall": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_migrateall#PostNodesByNodeMigrateallRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_migrateall#PostNodesByNodeMigrateallResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/migrateall",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/migrateall",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "migrateall"
+      }
+    },
+    "proxmox.nodes_migrateall#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_migrateall#PostNodesByNodeMigrateall"
+        }
+      ]
+    }
+  }
+}

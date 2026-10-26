@@ -1,0 +1,555 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesResultItem": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesResultItem"
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilities": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/capabilities",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/capabilities",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_capabilities#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilities"
+        },
+        {
+          "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemu"
+        },
+        {
+          "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpu"
+        },
+        {
+          "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuFlags"
+        },
+        {
+          "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMachines"
+        },
+        {
+          "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMigration"
+        }
+      ]
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuResultItem": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuResultItem"
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemu": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/capabilities/qemu",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/capabilities/qemu",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "qemu_caps_index"
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuRequestArch": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "x86_64"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aarch64"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuRequest": {
+      "type": "structure",
+      "members": {
+        "arch": {
+          "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuRequestArch",
+          "traits": {
+            "smithy.api#httpQuery": "arch"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuResultItem": {
+      "type": "structure",
+      "members": {
+        "abstract": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "custom": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "vendor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuResultItem"
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpu": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/capabilities/qemu/cpu",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/capabilities/qemu/cpu",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuFlagsRequestAccel": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "kvm"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcg"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuFlagsRequestArch": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "x86_64"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aarch64"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuFlagsRequest": {
+      "type": "structure",
+      "members": {
+        "accel": {
+          "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuFlagsRequestAccel",
+          "traits": {
+            "smithy.api#httpQuery": "accel"
+          }
+        },
+        "arch": {
+          "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuFlagsRequestArch",
+          "traits": {
+            "smithy.api#httpQuery": "arch"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuFlagsResultItemSupportedOn": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuFlagsResultItem": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "supported-on": {
+          "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuFlagsResultItemSupportedOn",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuFlagsResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuFlagsResultItem"
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuFlagsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuFlagsResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuFlags": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuFlagsRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuCpuFlagsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/capabilities/qemu/cpu-flags",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/capabilities/qemu/cpu-flags",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMachinesRequestArch": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "x86_64"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aarch64"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMachinesRequest": {
+      "type": "structure",
+      "members": {
+        "arch": {
+          "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMachinesRequestArch",
+          "traits": {
+            "smithy.api#httpQuery": "arch"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMachinesResultItemType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "q35"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "i440fx"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMachinesResultItem": {
+      "type": "structure",
+      "members": {
+        "changes": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMachinesResultItemType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMachinesResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMachinesResultItem"
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMachinesResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMachinesResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMachines": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMachinesRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMachinesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/capabilities/qemu/machines",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/capabilities/qemu/machines",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "types"
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMigrationRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMigrationResult": {
+      "type": "structure",
+      "members": {
+        "has-dbus-vmstate": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMigrationResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMigrationResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMigration": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMigrationRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_capabilities#GetNodesByNodeCapabilitiesQemuMigrationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/capabilities/qemu/migration",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/capabilities/qemu/migration",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "capabilities"
+      }
+    }
+  }
+}

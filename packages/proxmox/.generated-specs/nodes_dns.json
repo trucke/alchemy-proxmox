@@ -1,0 +1,158 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_dns#GetNodesByNodeDnsRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_dns#GetNodesByNodeDnsResult": {
+      "type": "structure",
+      "members": {
+        "dns1": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "dns2": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "dns3": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_dns#GetNodesByNodeDnsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_dns#GetNodesByNodeDnsResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_dns#GetNodesByNodeDns": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_dns#GetNodesByNodeDnsRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_dns#GetNodesByNodeDnsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/dns",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/dns",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "dns"
+      }
+    },
+    "proxmox.nodes_dns#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_dns#GetNodesByNodeDns"
+        },
+        {
+          "target": "proxmox.nodes_dns#PutNodesByNodeDns"
+        }
+      ]
+    },
+    "proxmox.nodes_dns#PutNodesByNodeDnsRequest": {
+      "type": "structure",
+      "members": {
+        "dns1": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ip"
+          }
+        },
+        "dns2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ip"
+          }
+        },
+        "dns3": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ip"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_dns#PutNodesByNodeDnsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_dns#PutNodesByNodeDns": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_dns#PutNodesByNodeDnsRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_dns#PutNodesByNodeDnsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/nodes/{node}/dns",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /nodes/{node}/dns",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "update_dns"
+      }
+    }
+  }
+}

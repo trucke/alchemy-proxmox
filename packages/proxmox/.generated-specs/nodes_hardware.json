@@ -1,0 +1,500 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_hardware#GetNodesByNodeHardwareRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwareResultItem": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwareResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_hardware#GetNodesByNodeHardwareResultItem"
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwareResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_hardware#GetNodesByNodeHardwareResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardware": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_hardware#GetNodesByNodeHardwareRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_hardware#GetNodesByNodeHardwareResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/hardware",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/hardware",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_hardware#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_hardware#GetNodesByNodeHardware"
+        },
+        {
+          "target": "proxmox.nodes_hardware#GetNodesByNodeHardwarePci"
+        },
+        {
+          "target": "proxmox.nodes_hardware#GetNodesByNodeHardwarePciByPciIdOrMapping"
+        },
+        {
+          "target": "proxmox.nodes_hardware#GetNodesByNodeHardwarePciByPciIdOrMappingMdev"
+        },
+        {
+          "target": "proxmox.nodes_hardware#GetNodesByNodeHardwareUsb"
+        }
+      ]
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwarePciRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "pci-class-blacklist": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "string-list",
+            "smithy.api#httpQuery": "pci-class-blacklist"
+          }
+        },
+        "verbose": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "verbose"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwarePciResultItem": {
+      "type": "structure",
+      "members": {
+        "class": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "device": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "device_name": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "iommugroup": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "mdev": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "subsystem_device": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "subsystem_device_name": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "subsystem_vendor": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "subsystem_vendor_name": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "vendor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "vendor_name": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwarePciResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_hardware#GetNodesByNodeHardwarePciResultItem"
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwarePciResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_hardware#GetNodesByNodeHardwarePciResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwarePci": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_hardware#GetNodesByNodeHardwarePciRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_hardware#GetNodesByNodeHardwarePciResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/hardware/pci",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/hardware/pci",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "pci_scan"
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwarePciByPciIdOrMappingRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "pci-id-or-mapping": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwarePciByPciIdOrMappingResultItem": {
+      "type": "structure",
+      "members": {
+        "method": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwarePciByPciIdOrMappingResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_hardware#GetNodesByNodeHardwarePciByPciIdOrMappingResultItem"
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwarePciByPciIdOrMappingResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_hardware#GetNodesByNodeHardwarePciByPciIdOrMappingResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwarePciByPciIdOrMapping": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_hardware#GetNodesByNodeHardwarePciByPciIdOrMappingRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_hardware#GetNodesByNodeHardwarePciByPciIdOrMappingResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/hardware/pci/{pci-id-or-mapping}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/hardware/pci/{pci-id-or-mapping}",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "pci_index"
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwarePciByPciIdOrMappingMdevRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "pci-id-or-mapping": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwarePciByPciIdOrMappingMdevResultItem": {
+      "type": "structure",
+      "members": {
+        "available": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwarePciByPciIdOrMappingMdevResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_hardware#GetNodesByNodeHardwarePciByPciIdOrMappingMdevResultItem"
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwarePciByPciIdOrMappingMdevResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_hardware#GetNodesByNodeHardwarePciByPciIdOrMappingMdevResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwarePciByPciIdOrMappingMdev": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_hardware#GetNodesByNodeHardwarePciByPciIdOrMappingMdevRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_hardware#GetNodesByNodeHardwarePciByPciIdOrMappingMdevResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/hardware/pci/{pci-id-or-mapping}/mdev",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/hardware/pci/{pci-id-or-mapping}/mdev",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "mdevscan"
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwareUsbRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwareUsbResultItem": {
+      "type": "structure",
+      "members": {
+        "busnum": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "class": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "devnum": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "level": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "manufacturer": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "port": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "prodid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "product": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "serial": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "speed": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "usbpath": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "vendid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwareUsbResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_hardware#GetNodesByNodeHardwareUsbResultItem"
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwareUsbResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_hardware#GetNodesByNodeHardwareUsbResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_hardware#GetNodesByNodeHardwareUsb": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_hardware#GetNodesByNodeHardwareUsbRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_hardware#GetNodesByNodeHardwareUsbResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/hardware/usb",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/hardware/usb",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "usbscan"
+      }
+    }
+  }
+}

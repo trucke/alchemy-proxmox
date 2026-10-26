@@ -1,0 +1,1050 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_sdn#GetNodesByNodeSdnRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnResultItem": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnResultItem"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdn": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/sdn",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/sdn",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "sdnindex"
+      }
+    },
+    "proxmox.nodes_sdn#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdn"
+        },
+        {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabric"
+        },
+        {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricRoutes"
+        },
+        {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricNeighbors"
+        },
+        {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricInterfaces"
+        },
+        {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZones"
+        },
+        {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZone"
+        },
+        {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneContent"
+        },
+        {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneBridges"
+        },
+        {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneIpVrf"
+        },
+        {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnVnetsByVnet"
+        },
+        {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnVnetsByVnetMacVrf"
+        }
+      ]
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricRequest": {
+      "type": "structure",
+      "members": {
+        "fabric": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-sdn-fabric-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricResultItem": {
+      "type": "structure",
+      "members": {
+        "subdir": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricResultItem"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabric": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/sdn/fabrics/{fabric}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/sdn/fabrics/{fabric}",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "diridx"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricRoutesRequest": {
+      "type": "structure",
+      "members": {
+        "fabric": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-sdn-fabric-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricRoutesResultItemVia": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricRoutesResultItem": {
+      "type": "structure",
+      "members": {
+        "route": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "via": {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricRoutesResultItemVia",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricRoutesResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricRoutesResultItem"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricRoutesResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricRoutesResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricRoutes": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricRoutesRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricRoutesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/sdn/fabrics/{fabric}/routes",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/sdn/fabrics/{fabric}/routes",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "routes"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricNeighborsRequest": {
+      "type": "structure",
+      "members": {
+        "fabric": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-sdn-fabric-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricNeighborsResultItem": {
+      "type": "structure",
+      "members": {
+        "neighbor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "uptime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricNeighborsResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricNeighborsResultItem"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricNeighborsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricNeighborsResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricNeighbors": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricNeighborsRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricNeighborsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/sdn/fabrics/{fabric}/neighbors",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/sdn/fabrics/{fabric}/neighbors",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "neighbors"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricInterfacesRequest": {
+      "type": "structure",
+      "members": {
+        "fabric": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-sdn-fabric-id",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricInterfacesResultItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricInterfacesResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricInterfacesResultItem"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricInterfacesResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricInterfacesResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricInterfaces": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricInterfacesRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnFabricsByFabricInterfacesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/sdn/fabrics/{fabric}/interfaces",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/sdn/fabrics/{fabric}/interfaces",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "interfaces"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesResultItemStatus": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "available"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesResultItem": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesResultItemStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "zone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesResultItem"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZones": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/sdn/zones",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/sdn/zones",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "zone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneResultItem": {
+      "type": "structure",
+      "members": {
+        "subdir": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneResultItem"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZone": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/sdn/zones/{zone}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/sdn/zones/{zone}",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "diridx"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneContentRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "zone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneContentResultItem": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "statusmsg": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "vnet": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneContentResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneContentResultItem"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneContentResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneContentResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneContent": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneContentRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneContentResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/sdn/zones/{zone}/content",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/sdn/zones/{zone}/content",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneBridgesRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "zone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneBridgesResultItemPortsItemVlans": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneBridgesResultItemPortsItem": {
+      "type": "structure",
+      "members": {
+        "index": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "primary_vlan": {
+          "target": "smithy.api#Double",
+          "traits": {}
+        },
+        "vlans": {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneBridgesResultItemPortsItemVlans",
+          "traits": {}
+        },
+        "vmid": {
+          "target": "smithy.api#Double",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneBridgesResultItemPorts": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneBridgesResultItemPortsItem"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneBridgesResultItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ports": {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneBridgesResultItemPorts",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "vlan_filtering": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneBridgesResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneBridgesResultItem"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneBridgesResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneBridgesResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneBridges": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneBridgesRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneBridgesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/sdn/zones/{zone}/bridges",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/sdn/zones/{zone}/bridges",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "bridges"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneIpVrfRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "zone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneIpVrfResultItemNexthops": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneIpVrfResultItem": {
+      "type": "structure",
+      "members": {
+        "ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "CIDR"
+          }
+        },
+        "metric": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "nexthops": {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneIpVrfResultItemNexthops",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "protocol": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneIpVrfResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneIpVrfResultItem"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneIpVrfResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneIpVrfResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneIpVrf": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneIpVrfRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnZonesByZoneIpVrfResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/sdn/zones/{zone}/ip-vrf",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/sdn/zones/{zone}/ip-vrf",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "ip-vrf"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnVnetsByVnetRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "vnet": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnVnetsByVnetResultItem": {
+      "type": "structure",
+      "members": {
+        "subdir": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnVnetsByVnetResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnVnetsByVnetResultItem"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnVnetsByVnetResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnVnetsByVnetResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnVnetsByVnet": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnVnetsByVnetRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnVnetsByVnetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/sdn/vnets/{vnet}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/sdn/vnets/{vnet}",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "diridx"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnVnetsByVnetMacVrfRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "vnet": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnVnetsByVnetMacVrfResultItem": {
+      "type": "structure",
+      "members": {
+        "ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "ip"
+          }
+        },
+        "mac": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "mac-addr"
+          }
+        },
+        "nexthop": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "ip"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnVnetsByVnetMacVrfResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnVnetsByVnetMacVrfResultItem"
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnVnetsByVnetMacVrfResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_sdn#GetNodesByNodeSdnVnetsByVnetMacVrfResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_sdn#GetNodesByNodeSdnVnetsByVnetMacVrf": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnVnetsByVnetMacVrfRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_sdn#GetNodesByNodeSdnVnetsByVnetMacVrfResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/sdn/vnets/{vnet}/mac-vrf",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/sdn/vnets/{vnet}/mac-vrf",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "mac-vrf"
+      }
+    }
+  }
+}

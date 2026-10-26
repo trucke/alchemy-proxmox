@@ -1,0 +1,3789 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_ceph#GetNodesByNodeCephRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephResultItem": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephResultItem"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCeph": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_ceph#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCeph"
+        },
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephCfg"
+        },
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephCfgRaw"
+        },
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephCfgDb"
+        },
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephCfgValue"
+        },
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsd"
+        },
+        {
+          "target": "proxmox.nodes_ceph#PostNodesByNodeCephOsd"
+        },
+        {
+          "target": "proxmox.nodes_ceph#DeleteNodesByNodeCephOsdByOsdid"
+        },
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdid"
+        },
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidMetadata"
+        },
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidLvInfo"
+        },
+        {
+          "target": "proxmox.nodes_ceph#PostNodesByNodeCephOsdByOsdidIn"
+        },
+        {
+          "target": "proxmox.nodes_ceph#PostNodesByNodeCephOsdByOsdidOut"
+        },
+        {
+          "target": "proxmox.nodes_ceph#PostNodesByNodeCephOsdByOsdidScrub"
+        },
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephMds"
+        },
+        {
+          "target": "proxmox.nodes_ceph#DeleteNodesByNodeCephMdsByName"
+        },
+        {
+          "target": "proxmox.nodes_ceph#PostNodesByNodeCephMdsByName"
+        },
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephMgr"
+        },
+        {
+          "target": "proxmox.nodes_ceph#DeleteNodesByNodeCephMgrById"
+        },
+        {
+          "target": "proxmox.nodes_ceph#PostNodesByNodeCephMgrById"
+        },
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephMon"
+        },
+        {
+          "target": "proxmox.nodes_ceph#DeleteNodesByNodeCephMonByMonid"
+        },
+        {
+          "target": "proxmox.nodes_ceph#PostNodesByNodeCephMonByMonid"
+        },
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephFs"
+        },
+        {
+          "target": "proxmox.nodes_ceph#DeleteNodesByNodeCephFsByName"
+        },
+        {
+          "target": "proxmox.nodes_ceph#PostNodesByNodeCephFsByName"
+        },
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephPool"
+        },
+        {
+          "target": "proxmox.nodes_ceph#PostNodesByNodeCephPool"
+        },
+        {
+          "target": "proxmox.nodes_ceph#DeleteNodesByNodeCephPoolByName"
+        },
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephPoolByName"
+        },
+        {
+          "target": "proxmox.nodes_ceph#PutNodesByNodeCephPoolByName"
+        },
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameStatus"
+        },
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephReleases"
+        },
+        {
+          "target": "proxmox.nodes_ceph#PostNodesByNodeCephInit"
+        },
+        {
+          "target": "proxmox.nodes_ceph#PostNodesByNodeCephStop"
+        },
+        {
+          "target": "proxmox.nodes_ceph#PostNodesByNodeCephStart"
+        },
+        {
+          "target": "proxmox.nodes_ceph#PostNodesByNodeCephRestart"
+        },
+        {
+          "target": "proxmox.nodes_ceph#PostNodesByNodeCephRestartBulk"
+        },
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephStatus"
+        },
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephCrush"
+        },
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephLog"
+        },
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephRules"
+        },
+        {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephCmdSafety"
+        }
+      ]
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCfgRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCfgResultItem": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCfgResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephCfgResultItem"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCfgResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephCfgResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCfg": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephCfgRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephCfgResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph/cfg",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph/cfg",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCfgRawRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCfgRawResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCfgRaw": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephCfgRawRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephCfgRawResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph/cfg/raw",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph/cfg/raw",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "raw"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCfgDbRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCfgDbResultItemLevel": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "basic"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dev"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCfgDbResultItem": {
+      "type": "structure",
+      "members": {
+        "can_update_at_runtime": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "level": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephCfgDbResultItemLevel",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "mask": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "section": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCfgDbResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephCfgDbResultItem"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCfgDbResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephCfgDbResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCfgDb": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephCfgDbRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephCfgDbResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph/cfg/db",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph/cfg/db",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "db"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCfgValueRequest": {
+      "type": "structure",
+      "members": {
+        "config-keys": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpQuery": "config-keys"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCfgValueResult": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCfgValueResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephCfgValueResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCfgValue": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephCfgValueRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephCfgValueResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph/cfg/value",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph/cfg/value",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "value"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdResultRoot": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdResult": {
+      "type": "structure",
+      "members": {
+        "flags": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "root": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdResultRoot",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsd": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph/osd",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph/osd",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephOsdRequest": {
+      "type": "structure",
+      "members": {
+        "crush-device-class": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "db_dev": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "db_dev_size": {
+          "target": "smithy.api#Double",
+          "traits": {}
+        },
+        "dev": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "encrypted": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "osds-per-device": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "wal_dev": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "wal_dev_size": {
+          "target": "smithy.api#Double",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephOsdResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephOsd": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephOsdRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephOsdResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/ceph/osd",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/ceph/osd",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "createosd"
+      }
+    },
+    "proxmox.nodes_ceph#DeleteNodesByNodeCephOsdByOsdidRequest": {
+      "type": "structure",
+      "members": {
+        "cleanup": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "cleanup"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "osdid": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#DeleteNodesByNodeCephOsdByOsdidResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#DeleteNodesByNodeCephOsdByOsdid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#DeleteNodesByNodeCephOsdByOsdidRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#DeleteNodesByNodeCephOsdByOsdidResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/nodes/{node}/ceph/osd/{osdid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /nodes/{node}/ceph/osd/{osdid}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "destroyosd"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "osdid": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidResultItem": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidResultItem"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph/osd/{osdid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph/osd/{osdid}",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "osdindex"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidMetadataRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "osdid": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidMetadataResultDevicesItemDevice": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "db"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "wal"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidMetadataResultDevicesItem": {
+      "type": "structure",
+      "members": {
+        "dev_node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "device": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidMetadataResultDevicesItemDevice",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "physical_device": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "support_discard": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidMetadataResultDevices": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidMetadataResultDevicesItem"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidMetadataResultOsd": {
+      "type": "structure",
+      "members": {
+        "back_addr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "encrypted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "front_addr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hb_back_addr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hb_front_addr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "mem_usage": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "osd_data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "osd_objectstore": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pid": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidMetadataResult": {
+      "type": "structure",
+      "members": {
+        "devices": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidMetadataResultDevices",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "osd": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidMetadataResultOsd",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidMetadataResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidMetadataResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidMetadata": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidMetadataRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidMetadataResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph/osd/{osdid}/metadata",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph/osd/{osdid}/metadata",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "osddetails"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidLvInfoRequestType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "db"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "wal"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidLvInfoRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "osdid": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "type": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidLvInfoRequestType",
+          "traits": {
+            "smithy.api#httpQuery": "type"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidLvInfoResult": {
+      "type": "structure",
+      "members": {
+        "creation_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "lv_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "lv_path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "lv_size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "lv_uuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "vg_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidLvInfoResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidLvInfoResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidLvInfo": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidLvInfoRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephOsdByOsdidLvInfoResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph/osd/{osdid}/lv-info",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph/osd/{osdid}/lv-info",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "osdvolume"
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephOsdByOsdidInRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "osdid": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephOsdByOsdidInResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephOsdByOsdidIn": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephOsdByOsdidInRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephOsdByOsdidInResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/ceph/osd/{osdid}/in",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/ceph/osd/{osdid}/in",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "in"
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephOsdByOsdidOutRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "osdid": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephOsdByOsdidOutResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephOsdByOsdidOut": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephOsdByOsdidOutRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephOsdByOsdidOutResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/ceph/osd/{osdid}/out",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/ceph/osd/{osdid}/out",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "out"
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephOsdByOsdidScrubRequest": {
+      "type": "structure",
+      "members": {
+        "deep": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "osdid": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephOsdByOsdidScrubResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephOsdByOsdidScrub": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephOsdByOsdidScrubRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephOsdByOsdidScrubResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/ceph/osd/{osdid}/scrub",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/ceph/osd/{osdid}/scrub",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "scrub"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephMdsRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephMdsResultItem": {
+      "type": "structure",
+      "members": {
+        "addr": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "ceph_version": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "ceph_version_short": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "direxists": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "fs_name": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rank": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "service": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "standby_replay": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephMdsResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephMdsResultItem"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephMdsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephMdsResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephMds": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephMdsRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephMdsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph/mds",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph/mds",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_ceph#DeleteNodesByNodeCephMdsByNameRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#DeleteNodesByNodeCephMdsByNameResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#DeleteNodesByNodeCephMdsByName": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#DeleteNodesByNodeCephMdsByNameRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#DeleteNodesByNodeCephMdsByNameResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/nodes/{node}/ceph/mds/{name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /nodes/{node}/ceph/mds/{name}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "destroymds"
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephMdsByNameRequest": {
+      "type": "structure",
+      "members": {
+        "hotstandby": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephMdsByNameResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephMdsByName": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephMdsByNameRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephMdsByNameResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/ceph/mds/{name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/ceph/mds/{name}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "createmds"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephMgrRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephMgrResultItem": {
+      "type": "structure",
+      "members": {
+        "addr": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "ceph_version": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "ceph_version_short": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "direxists": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "service": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephMgrResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephMgrResultItem"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephMgrResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephMgrResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephMgr": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephMgrRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephMgrResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph/mgr",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph/mgr",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_ceph#DeleteNodesByNodeCephMgrByIdRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#DeleteNodesByNodeCephMgrByIdResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#DeleteNodesByNodeCephMgrById": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#DeleteNodesByNodeCephMgrByIdRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#DeleteNodesByNodeCephMgrByIdResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/nodes/{node}/ceph/mgr/{id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /nodes/{node}/ceph/mgr/{id}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "destroymgr"
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephMgrByIdRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephMgrByIdResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephMgrById": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephMgrByIdRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephMgrByIdResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/ceph/mgr/{id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/ceph/mgr/{id}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "createmgr"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephMonRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephMonResultItem": {
+      "type": "structure",
+      "members": {
+        "addr": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "ceph_version": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "ceph_version_short": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "direxists": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "quorum": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "rank": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "service": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephMonResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephMonResultItem"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephMonResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephMonResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephMon": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephMonRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephMonResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph/mon",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph/mon",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "listmon"
+      }
+    },
+    "proxmox.nodes_ceph#DeleteNodesByNodeCephMonByMonidRequest": {
+      "type": "structure",
+      "members": {
+        "monid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#DeleteNodesByNodeCephMonByMonidResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#DeleteNodesByNodeCephMonByMonid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#DeleteNodesByNodeCephMonByMonidRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#DeleteNodesByNodeCephMonByMonidResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/nodes/{node}/ceph/mon/{monid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /nodes/{node}/ceph/mon/{monid}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "destroymon"
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephMonByMonidRequest": {
+      "type": "structure",
+      "members": {
+        "mon-address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "ip-list"
+          }
+        },
+        "monid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephMonByMonidResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephMonByMonid": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephMonByMonidRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephMonByMonidResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/ceph/mon/{monid}",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/ceph/mon/{monid}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "createmon"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephFsRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephFsResultItemDataPoolIds": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephFsResultItemDataPools": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephFsResultItem": {
+      "type": "structure",
+      "members": {
+        "data_pool": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "data_pool_ids": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephFsResultItemDataPoolIds",
+          "traits": {}
+        },
+        "data_pools": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephFsResultItemDataPools",
+          "traits": {}
+        },
+        "metadata_pool": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_pool_id": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephFsResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephFsResultItem"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephFsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephFsResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephFs": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephFsRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephFsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph/fs",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph/fs",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_ceph#DeleteNodesByNodeCephFsByNameRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "remove-pools": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "remove-pools"
+          }
+        },
+        "remove-storages": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "remove-storages"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#DeleteNodesByNodeCephFsByNameResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#DeleteNodesByNodeCephFsByName": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#DeleteNodesByNodeCephFsByNameRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#DeleteNodesByNodeCephFsByNameResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/nodes/{node}/ceph/fs/{name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /nodes/{node}/ceph/fs/{name}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "destroyfs"
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephFsByNameRequest": {
+      "type": "structure",
+      "members": {
+        "add-storage": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "pg_num": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephFsByNameResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephFsByName": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephFsByNameRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephFsByNameResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/ceph/fs/{name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/ceph/fs/{name}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "createfs"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPoolRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPoolResultItemApplicationMetadata": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPoolResultItemAutoscaleStatus": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPoolResultItemType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "replicated"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "erasure"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPoolResultItem": {
+      "type": "structure",
+      "members": {
+        "application_metadata": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephPoolResultItemApplicationMetadata",
+          "traits": {}
+        },
+        "autoscale_status": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephPoolResultItemAutoscaleStatus",
+          "traits": {}
+        },
+        "bytes_used": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "crush_rule": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "crush_rule_name": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "min_size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "percent_used": {
+          "target": "smithy.api#Double",
+          "traits": {}
+        },
+        "pg_autoscale_mode": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "pg_num": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pg_num_final": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "pg_num_min": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "pool": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pool_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "target_size": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "target_size_ratio": {
+          "target": "smithy.api#Double",
+          "traits": {}
+        },
+        "type": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephPoolResultItemType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPoolResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephPoolResultItem"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPoolResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephPoolResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPool": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephPoolRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephPoolResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph/pool",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph/pool",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "lspools"
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephPoolRequestApplication": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rbd"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cephfs"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rgw"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephPoolRequestPgAutoscaleMode": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warn"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephPoolRequest": {
+      "type": "structure",
+      "members": {
+        "add_storages": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "application": {
+          "target": "proxmox.nodes_ceph#PostNodesByNodeCephPoolRequestApplication",
+          "traits": {}
+        },
+        "crush_rule": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "erasure-coding": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": {
+              "device-class": {
+                "optional": 1,
+                "type": "string"
+              },
+              "failure-domain": {
+                "default": "host",
+                "optional": 1,
+                "type": "string"
+              },
+              "k": {
+                "minimum": 2,
+                "type": "integer"
+              },
+              "m": {
+                "minimum": 1,
+                "type": "integer"
+              },
+              "profile": {
+                "optional": 1,
+                "type": "string"
+              }
+            }
+          }
+        },
+        "min_size": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "pg_autoscale_mode": {
+          "target": "proxmox.nodes_ceph#PostNodesByNodeCephPoolRequestPgAutoscaleMode",
+          "traits": {}
+        },
+        "pg_num": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "pg_num_min": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "size": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "target_size": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "target_size_ratio": {
+          "target": "smithy.api#Double",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephPoolResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephPool": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephPoolRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephPoolResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/ceph/pool",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/ceph/pool",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "createpool"
+      }
+    },
+    "proxmox.nodes_ceph#DeleteNodesByNodeCephPoolByNameRequest": {
+      "type": "structure",
+      "members": {
+        "force": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "force"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "remove_ecprofile": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "remove_ecprofile"
+          }
+        },
+        "remove_storages": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "remove_storages"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#DeleteNodesByNodeCephPoolByNameResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#DeleteNodesByNodeCephPoolByName": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#DeleteNodesByNodeCephPoolByNameRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#DeleteNodesByNodeCephPoolByNameResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/nodes/{node}/ceph/pool/{name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /nodes/{node}/ceph/pool/{name}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "destroypool"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameResultItem": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameResultItem"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPoolByName": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph/pool/{name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph/pool/{name}",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "poolindex"
+      }
+    },
+    "proxmox.nodes_ceph#PutNodesByNodeCephPoolByNameRequestApplication": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rbd"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cephfs"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rgw"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PutNodesByNodeCephPoolByNameRequestPgAutoscaleMode": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warn"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PutNodesByNodeCephPoolByNameRequest": {
+      "type": "structure",
+      "members": {
+        "application": {
+          "target": "proxmox.nodes_ceph#PutNodesByNodeCephPoolByNameRequestApplication",
+          "traits": {}
+        },
+        "crush_rule": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "min_size": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "pg_autoscale_mode": {
+          "target": "proxmox.nodes_ceph#PutNodesByNodeCephPoolByNameRequestPgAutoscaleMode",
+          "traits": {}
+        },
+        "pg_num": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "pg_num_min": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "size": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "target_size": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "target_size_ratio": {
+          "target": "smithy.api#Double",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PutNodesByNodeCephPoolByNameResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PutNodesByNodeCephPoolByName": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#PutNodesByNodeCephPoolByNameRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#PutNodesByNodeCephPoolByNameResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/nodes/{node}/ceph/pool/{name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /nodes/{node}/ceph/pool/{name}",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "setpool"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameStatusRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "verbose": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "verbose"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameStatusResultApplication": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rbd"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cephfs"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rgw"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameStatusResultApplicationList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameStatusResultAutoscaleStatus": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameStatusResultPgAutoscaleMode": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warn"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameStatusResultStatistics": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameStatusResult": {
+      "type": "structure",
+      "members": {
+        "application": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameStatusResultApplication",
+          "traits": {}
+        },
+        "application_list": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameStatusResultApplicationList",
+          "traits": {}
+        },
+        "autoscale_status": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameStatusResultAutoscaleStatus",
+          "traits": {}
+        },
+        "crush_rule": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "fast_read": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hashpspool": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "min_size": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "nodeep-scrub": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "nodelete": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "nopgchange": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "noscrub": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "nosizechange": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pg_autoscale_mode": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameStatusResultPgAutoscaleMode",
+          "traits": {}
+        },
+        "pg_num": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "pg_num_min": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "pgp_num": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "size": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "statistics": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameStatusResultStatistics",
+          "traits": {}
+        },
+        "target_size": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "target_size_ratio": {
+          "target": "smithy.api#Double",
+          "traits": {}
+        },
+        "use_gmt_hitset": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "write_fadvise_dontneed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameStatusResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameStatusResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameStatus": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameStatusRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephPoolByNameStatusResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph/pool/{name}/status",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph/pool/{name}/status",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "getpool"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephReleasesRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephReleasesResultItem": {
+      "type": "structure",
+      "members": {
+        "available": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "is-default": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "release": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "unsupported": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephReleasesResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephReleasesResultItem"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephReleasesResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephReleasesResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephReleases": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephReleasesRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephReleasesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph/releases",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph/releases",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "releases"
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephInitRequest": {
+      "type": "structure",
+      "members": {
+        "cluster-network": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "CIDR"
+          }
+        },
+        "disable_cephx": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "min_size": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "network": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "CIDR"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "pg_bits": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "size": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephInitResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephInit": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephInitRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephInitResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/ceph/init",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/ceph/init",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "init"
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephStopRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "service": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephStopResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephStop": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephStopRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephStopResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/ceph/stop",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/ceph/stop",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "stop"
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephStartRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "service": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephStartResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephStart": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephStartRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephStartResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/ceph/start",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/ceph/start",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "start"
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephRestartRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "service": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephRestartResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephRestart": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephRestartRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephRestartResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/ceph/restart",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/ceph/restart",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "restart"
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephRestartBulkRequestServiceType": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "osd"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephRestartBulkRequest": {
+      "type": "structure",
+      "members": {
+        "dry-run": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "force": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "only-outdated": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "resume": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "service-type": {
+          "target": "proxmox.nodes_ceph#PostNodesByNodeCephRestartBulkRequestServiceType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "set-noout": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephRestartBulkResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#PostNodesByNodeCephRestartBulk": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephRestartBulkRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#PostNodesByNodeCephRestartBulkResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/ceph/restart-bulk",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/ceph/restart-bulk",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "restart_bulk"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephStatusRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephStatusResult": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephStatusResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephStatusResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephStatus": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephStatusRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephStatusResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph/status",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph/status",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "status"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCrushRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCrushResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCrush": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephCrushRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephCrushResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph/crush",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph/crush",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "crush"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephLogRequest": {
+      "type": "structure",
+      "members": {
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "start": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "start"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephLogResultItem": {
+      "type": "structure",
+      "members": {
+        "n": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "t": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephLogResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephLogResultItem"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephLogResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephLogResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephLog": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephLogRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephLogResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph/log",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph/log",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "log"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephRulesRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephRulesResultItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephRulesResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephRulesResultItem"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephRulesResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephRulesResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephRules": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephRulesRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephRulesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph/rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph/rules",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "rules"
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCmdSafetyRequestAction": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stop"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "destroy"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCmdSafetyRequestService": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "osd"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mon"
+          }
+        },
+        "Value2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mds"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCmdSafetyRequest": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephCmdSafetyRequestAction",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpQuery": "action"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpQuery": "id"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "service": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephCmdSafetyRequestService",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#httpQuery": "service"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCmdSafetyResult": {
+      "type": "structure",
+      "members": {
+        "safe": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCmdSafetyResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_ceph#GetNodesByNodeCephCmdSafetyResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_ceph#GetNodesByNodeCephCmdSafety": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephCmdSafetyRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_ceph#GetNodesByNodeCephCmdSafetyResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/ceph/cmd-safety",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/ceph/cmd-safety",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "cmd_safety"
+      }
+    }
+  }
+}

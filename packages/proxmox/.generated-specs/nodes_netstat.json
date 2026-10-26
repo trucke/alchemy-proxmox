@@ -1,0 +1,78 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_netstat#GetNodesByNodeNetstatRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_netstat#GetNodesByNodeNetstatResultItem": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_netstat#GetNodesByNodeNetstatResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_netstat#GetNodesByNodeNetstatResultItem"
+      }
+    },
+    "proxmox.nodes_netstat#GetNodesByNodeNetstatResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_netstat#GetNodesByNodeNetstatResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_netstat#GetNodesByNodeNetstat": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_netstat#GetNodesByNodeNetstatRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_netstat#GetNodesByNodeNetstatResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/netstat",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/netstat",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "netstat"
+      }
+    },
+    "proxmox.nodes_netstat#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_netstat#GetNodesByNodeNetstat"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,343 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_status#GetNodesByNodeStatusRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_status#GetNodesByNodeStatusResultBootInfoMode": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "efi"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "legacy-bios"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_status#GetNodesByNodeStatusResultBootInfo": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "proxmox.nodes_status#GetNodesByNodeStatusResultBootInfoMode",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "secureboot": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_status#GetNodesByNodeStatusResultCpuinfo": {
+      "type": "structure",
+      "members": {
+        "cores": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "cpus": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sockets": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_status#GetNodesByNodeStatusResultCurrentKernel": {
+      "type": "structure",
+      "members": {
+        "machine": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "release": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sysname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_status#GetNodesByNodeStatusResultLoadavg": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "proxmox.nodes_status#GetNodesByNodeStatusResultMemory": {
+      "type": "structure",
+      "members": {
+        "available": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "free": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "used": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_status#GetNodesByNodeStatusResultRootfs": {
+      "type": "structure",
+      "members": {
+        "avail": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "free": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "used": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_status#GetNodesByNodeStatusResult": {
+      "type": "structure",
+      "members": {
+        "boot-info": {
+          "target": "proxmox.nodes_status#GetNodesByNodeStatusResultBootInfo",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "cpu": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "cpuinfo": {
+          "target": "proxmox.nodes_status#GetNodesByNodeStatusResultCpuinfo",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "current-kernel": {
+          "target": "proxmox.nodes_status#GetNodesByNodeStatusResultCurrentKernel",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "loadavg": {
+          "target": "proxmox.nodes_status#GetNodesByNodeStatusResultLoadavg",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "memory": {
+          "target": "proxmox.nodes_status#GetNodesByNodeStatusResultMemory",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pveversion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rootfs": {
+          "target": "proxmox.nodes_status#GetNodesByNodeStatusResultRootfs",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_status#GetNodesByNodeStatusResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_status#GetNodesByNodeStatusResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_status#GetNodesByNodeStatus": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_status#GetNodesByNodeStatusRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_status#GetNodesByNodeStatusResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/status",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/status",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "status"
+      }
+    },
+    "proxmox.nodes_status#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_status#GetNodesByNodeStatus"
+        },
+        {
+          "target": "proxmox.nodes_status#PostNodesByNodeStatus"
+        }
+      ]
+    },
+    "proxmox.nodes_status#PostNodesByNodeStatusRequestCommand": {
+      "type": "enum",
+      "members": {
+        "Value0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reboot"
+          }
+        },
+        "Value1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "shutdown"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_status#PostNodesByNodeStatusRequest": {
+      "type": "structure",
+      "members": {
+        "command": {
+          "target": "proxmox.nodes_status#PostNodesByNodeStatusRequestCommand",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_status#PostNodesByNodeStatusResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_status#PostNodesByNodeStatus": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_status#PostNodesByNodeStatusRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_status#PostNodesByNodeStatusResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/status",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/status",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "node_cmd"
+      }
+    }
+  }
+}

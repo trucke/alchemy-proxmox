@@ -1,0 +1,588 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_certificates#GetNodesByNodeCertificatesRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_certificates#GetNodesByNodeCertificatesResultItem": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_certificates#GetNodesByNodeCertificatesResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_certificates#GetNodesByNodeCertificatesResultItem"
+      }
+    },
+    "proxmox.nodes_certificates#GetNodesByNodeCertificatesResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_certificates#GetNodesByNodeCertificatesResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_certificates#GetNodesByNodeCertificates": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_certificates#GetNodesByNodeCertificatesRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_certificates#GetNodesByNodeCertificatesResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/certificates",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/certificates",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_certificates#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_certificates#GetNodesByNodeCertificates"
+        },
+        {
+          "target": "proxmox.nodes_certificates#GetNodesByNodeCertificatesAcme"
+        },
+        {
+          "target": "proxmox.nodes_certificates#DeleteNodesByNodeCertificatesAcmeCertificate"
+        },
+        {
+          "target": "proxmox.nodes_certificates#PostNodesByNodeCertificatesAcmeCertificate"
+        },
+        {
+          "target": "proxmox.nodes_certificates#PutNodesByNodeCertificatesAcmeCertificate"
+        },
+        {
+          "target": "proxmox.nodes_certificates#GetNodesByNodeCertificatesInfo"
+        },
+        {
+          "target": "proxmox.nodes_certificates#DeleteNodesByNodeCertificatesCustom"
+        },
+        {
+          "target": "proxmox.nodes_certificates#PostNodesByNodeCertificatesCustom"
+        }
+      ]
+    },
+    "proxmox.nodes_certificates#GetNodesByNodeCertificatesAcmeRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_certificates#GetNodesByNodeCertificatesAcmeResultItem": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "proxmox.nodes_certificates#GetNodesByNodeCertificatesAcmeResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_certificates#GetNodesByNodeCertificatesAcmeResultItem"
+      }
+    },
+    "proxmox.nodes_certificates#GetNodesByNodeCertificatesAcmeResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_certificates#GetNodesByNodeCertificatesAcmeResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_certificates#GetNodesByNodeCertificatesAcme": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_certificates#GetNodesByNodeCertificatesAcmeRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_certificates#GetNodesByNodeCertificatesAcmeResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/certificates/acme",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/certificates/acme",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "index"
+      }
+    },
+    "proxmox.nodes_certificates#DeleteNodesByNodeCertificatesAcmeCertificateRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_certificates#DeleteNodesByNodeCertificatesAcmeCertificateResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_certificates#DeleteNodesByNodeCertificatesAcmeCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_certificates#DeleteNodesByNodeCertificatesAcmeCertificateRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_certificates#DeleteNodesByNodeCertificatesAcmeCertificateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/nodes/{node}/certificates/acme/certificate",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /nodes/{node}/certificates/acme/certificate",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "revoke_certificate"
+      }
+    },
+    "proxmox.nodes_certificates#PostNodesByNodeCertificatesAcmeCertificateRequest": {
+      "type": "structure",
+      "members": {
+        "force": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_certificates#PostNodesByNodeCertificatesAcmeCertificateResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_certificates#PostNodesByNodeCertificatesAcmeCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_certificates#PostNodesByNodeCertificatesAcmeCertificateRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_certificates#PostNodesByNodeCertificatesAcmeCertificateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/certificates/acme/certificate",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/certificates/acme/certificate",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "new_certificate"
+      }
+    },
+    "proxmox.nodes_certificates#PutNodesByNodeCertificatesAcmeCertificateRequest": {
+      "type": "structure",
+      "members": {
+        "force": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_certificates#PutNodesByNodeCertificatesAcmeCertificateResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_certificates#PutNodesByNodeCertificatesAcmeCertificate": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_certificates#PutNodesByNodeCertificatesAcmeCertificateRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_certificates#PutNodesByNodeCertificatesAcmeCertificateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/nodes/{node}/certificates/acme/certificate",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /nodes/{node}/certificates/acme/certificate",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "renew_certificate"
+      }
+    },
+    "proxmox.nodes_certificates#GetNodesByNodeCertificatesInfoRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_certificates#GetNodesByNodeCertificatesInfoResultItemSan": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "proxmox.nodes_certificates#GetNodesByNodeCertificatesInfoResultItem": {
+      "type": "structure",
+      "members": {
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "fingerprint": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "issuer": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "notafter": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "notbefore": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "pem": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pem-certificate"
+          }
+        },
+        "public-key-bits": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "public-key-type": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "san": {
+          "target": "proxmox.nodes_certificates#GetNodesByNodeCertificatesInfoResultItemSan",
+          "traits": {}
+        },
+        "subject": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_certificates#GetNodesByNodeCertificatesInfoResult": {
+      "type": "list",
+      "member": {
+        "target": "proxmox.nodes_certificates#GetNodesByNodeCertificatesInfoResultItem"
+      }
+    },
+    "proxmox.nodes_certificates#GetNodesByNodeCertificatesInfoResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_certificates#GetNodesByNodeCertificatesInfoResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_certificates#GetNodesByNodeCertificatesInfo": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_certificates#GetNodesByNodeCertificatesInfoRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_certificates#GetNodesByNodeCertificatesInfoResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/nodes/{node}/certificates/info",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /nodes/{node}/certificates/info",
+        "proxmox.api#access": {
+          "allowtoken": 1
+        },
+        "proxmox.api#upstreamName": "info"
+      }
+    },
+    "proxmox.nodes_certificates#DeleteNodesByNodeCertificatesCustomRequest": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "restart": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "restart"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_certificates#DeleteNodesByNodeCertificatesCustomResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_certificates#DeleteNodesByNodeCertificatesCustom": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_certificates#DeleteNodesByNodeCertificatesCustomRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_certificates#DeleteNodesByNodeCertificatesCustomResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/nodes/{node}/certificates/custom",
+          "code": 200
+        },
+        "smithy.api#documentation": "DELETE /nodes/{node}/certificates/custom",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "remove_custom_cert"
+      }
+    },
+    "proxmox.nodes_certificates#PostNodesByNodeCertificatesCustomRequest": {
+      "type": "structure",
+      "members": {
+        "certificates": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pem-certificate-chain"
+          }
+        },
+        "force": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pem-string"
+          }
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "restart": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_certificates#PostNodesByNodeCertificatesCustomResultSan": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "proxmox.nodes_certificates#PostNodesByNodeCertificatesCustomResult": {
+      "type": "structure",
+      "members": {
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "fingerprint": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "issuer": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "notafter": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "notbefore": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "pem": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pem-certificate"
+          }
+        },
+        "public-key-bits": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "public-key-type": {
+          "target": "smithy.api#String",
+          "traits": {}
+        },
+        "san": {
+          "target": "proxmox.nodes_certificates#PostNodesByNodeCertificatesCustomResultSan",
+          "traits": {}
+        },
+        "subject": {
+          "target": "smithy.api#String",
+          "traits": {}
+        }
+      }
+    },
+    "proxmox.nodes_certificates#PostNodesByNodeCertificatesCustomResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "proxmox.nodes_certificates#PostNodesByNodeCertificatesCustomResult",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_certificates#PostNodesByNodeCertificatesCustom": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_certificates#PostNodesByNodeCertificatesCustomRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_certificates#PostNodesByNodeCertificatesCustomResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/certificates/custom",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/certificates/custom",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "upload_custom_cert"
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "source": "pve-docs 9.2.4"
+  },
+  "shapes": {
+    "proxmox.nodes_startall#PostNodesByNodeStartallRequest": {
+      "type": "structure",
+      "members": {
+        "force": {
+          "target": "smithy.api#Boolean",
+          "traits": {}
+        },
+        "max-workers": {
+          "target": "smithy.api#Integer",
+          "traits": {}
+        },
+        "node": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "proxmox.api#format": "pve-node",
+            "smithy.api#httpLabel": {}
+          }
+        },
+        "vms": {
+          "target": "smithy.api#String",
+          "traits": {
+            "proxmox.api#format": "pve-vmid-list"
+          }
+        }
+      }
+    },
+    "proxmox.nodes_startall#PostNodesByNodeStartallResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#rawResponse": {}
+          }
+        }
+      }
+    },
+    "proxmox.nodes_startall#PostNodesByNodeStartall": {
+      "type": "operation",
+      "input": {
+        "target": "proxmox.nodes_startall#PostNodesByNodeStartallRequest"
+      },
+      "output": {
+        "target": "proxmox.nodes_startall#PostNodesByNodeStartallResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/nodes/{node}/startall",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /nodes/{node}/startall",
+        "proxmox.api#access": {
+          "allowtoken": 1,
+          "protected": 1
+        },
+        "proxmox.api#upstreamName": "startall"
+      }
+    },
+    "proxmox.nodes_startall#Service": {
+      "type": "service",
+      "version": "9.2.4",
+      "operations": [
+        {
+          "target": "proxmox.nodes_startall#PostNodesByNodeStartall"
+        }
+      ]
+    }
+  }
+}
