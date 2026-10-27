@@ -190,6 +190,7 @@ importers:
       '@distilled.cloud/core':
         specifier: 1.0.0-rc.17
         version: 1.0.0-rc.17(effect@4.0.5)
+    devDependencies:
       '@distilled.cloud/proxmox':
         specifier: workspace:*
         version: link:../proxmox
@@ -208,6 +209,7 @@ importers:
       '@distilled.cloud/core':
         specifier: 1.0.0-rc.17
         version: 1.0.0-rc.17(effect@4.0.5)
+    devDependencies:
       '@effect/platform-node':
         specifier: 4.0.5
         version: 4.0.5(effect@4.0.5)(redis@6.3.0)

@@ -4,7 +4,8 @@ Manage Proxmox VE containers, virtual machines and downloaded templates as code 
 [Alchemy](https://alchemy.run).
 
 > [!WARNING]
-> Early and unreleased. Nothing is published to npm yet, and the API can still change.
+> Early. Nothing is published to npm, and the API can still change. Tagged releases on GitHub can
+> be [installed as tarballs](docs/RELEASING.md#install-a-release).
 
 | Package                                                      | Contents                                                         |
 | ------------------------------------------------------------ | ---------------------------------------------------------------- |
@@ -117,7 +118,8 @@ pnpm specs:fetch && pnpm generate                               # regenerate the
 
 [Develop and regenerate](packages/proxmox/README.md#develop-and-regenerate) explains the client
 generation, and [docs/TESTING.md](docs/TESTING.md) the tests, including the live suite.
-[docs/DESIGN.md](docs/DESIGN.md) explains the design decisions.
+[docs/DESIGN.md](docs/DESIGN.md) explains the design decisions, and
+[docs/RELEASING.md](docs/RELEASING.md) describes how to create and install a release.
 
 ## License
 

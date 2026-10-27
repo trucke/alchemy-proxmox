@@ -8,8 +8,9 @@ client:
 - `Proxmox.StorageDownload` downloads container templates, ISO images and disk images onto a
   node's storage.
 
-Requires `alchemy` 2.0.0-beta.84, Effect 4.0.5 and Proxmox VE 9.2. The package is not on npm yet;
-see [Try it](../../README.md#try-it) for using it from source.
+Requires `alchemy` 2.0.0-beta.84, Effect 4.0.5 and Proxmox VE 9.2. The package is not on npm.
+[Install a release](../../docs/RELEASING.md#install-a-release), or see
+[Try it](../../README.md#try-it) for using it from source.
 
 ## Authentication
 

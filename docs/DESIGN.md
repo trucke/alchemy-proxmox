@@ -21,6 +21,28 @@ Node 24, TypeScript, Effect v4, vitest and pnpm 12.15.0, as in `distilled` and `
 Dependencies are pinned exactly: `@distilled.cloud/core` 1.0.0-rc.17 for the runtime and the code
 generator, Effect 4.0.5 and `alchemy` 2.0.0-beta.84.
 
+## Packaging
+
+Inside the repository, both packages export their TypeScript sources from `src/`. Vitest, `tsc`,
+the scripts and the Alchemy CLI load these sources directly, so nothing needs a build first.
+Node does not strip types from files under `node_modules`, so an installed package needs
+JavaScript. Each package's `prepack` script compiles `src/` into `lib/` with
+`tsconfig.build.json`, which rewrites the `.ts` import specifiers to `.js` and emits declarations.
+`publishConfig.exports` points the packed `package.json` at `lib/`. pnpm applies it only when it
+packs a package, so the repository itself never resolves `lib/`. A custom export condition for the
+sources would also work, but every tool that loads them would have to pass the condition,
+including the Alchemy CLI that the live suite starts.
+
+pnpm refuses tarball and Git sources in dependencies of dependencies. The provider therefore
+declares the client as a peer dependency with the exact version, and a project lists both
+tarballs. Inside the workspace, a `workspace:*` dev dependency links the client.
+
+`alchemy`, `effect` and `@effect/platform-node` are peer dependencies as well, as in Alchemy's own
+providers. A project that upgrades Alchemy then keeps one copy of it; two copies would give the
+provider and the stack different service keys. Inside the workspace, dev dependencies pin the
+tested versions.
+[RELEASING.md](RELEASING.md) describes how to create and install a release.
+
 ## The client
 
 **Source of truth.** Proxmox publishes its API as JSON Schema in the API viewer's `apidoc.js`

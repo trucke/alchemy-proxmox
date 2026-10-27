@@ -4,6 +4,7 @@
   "license": "Apache-2.0",
   "type": "module",
   "scripts": {
+    "build": "pnpm -r build",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:live": "node --experimental-transform-types packages/alchemy-proxmox/live/run.ts",
@@ -15,7 +16,8 @@
     "convert": "pnpm --filter @distilled.cloud/proxmox convert",
     "generate": "pnpm convert && pnpm --filter @distilled.cloud/proxmox generate && pnpm format && pnpm check:prose",
     "check:prose": "pnpm --filter @distilled.cloud/proxmox check:prose",
-    "smoke": "pnpm --filter @distilled.cloud/proxmox smoke"
+    "smoke": "pnpm --filter @distilled.cloud/proxmox smoke",
+    "release:pack": "rm -rf release && pnpm -r pack --pack-destination release"
   },
   "devDependencies": {
     "@types/node": "26.6.5",

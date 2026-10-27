@@ -1,14 +1,32 @@
 {
   "name": "@distilled.cloud/proxmox",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "license": "Apache-2.0",
+  "files": [
+    "lib",
+    "NOTICE"
+  ],
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
     "./*": "./src/*.ts"
   },
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "types": "./lib/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "./*": {
+        "types": "./lib/*.d.ts",
+        "default": "./lib/*.js"
+      }
+    }
+  },
   "scripts": {
+    "build": "rm -rf lib && tsc -p tsconfig.build.json",
+    "prepack": "pnpm build && cp ../../LICENSE ../../NOTICE .",
     "specs:fetch": "node scripts/fetch-specs.ts",
     "convert": "node scripts/convert.ts",
     "generate": "node scripts/generate.ts",
@@ -16,8 +34,19 @@
     "smoke": "node scripts/smoke.ts"
   },
   "dependencies": {
-    "@distilled.cloud/core": "1.0.0-rc.17",
+    "@distilled.cloud/core": "1.0.0-rc.17"
+  },
+  "devDependencies": {
     "@effect/platform-node": "4.0.5",
     "effect": "4.0.5"
+  },
+  "peerDependencies": {
+    "@effect/platform-node": "^4.0.5",
+    "effect": "^4.0.5"
+  },
+  "peerDependenciesMeta": {
+    "@effect/platform-node": {
+      "optional": true
+    }
   }
 }

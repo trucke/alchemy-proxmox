@@ -2,12 +2,12 @@
 
 Effect v4 client for the Proxmox VE API, generated from the API schema in Proxmox's `pve-docs`
 9.2.4 package: 678 operations in 49 modules, with typed codecs for property strings. It is not on
-npm yet. The [Alchemy provider](../alchemy-proxmox/README.md) builds on it.
+npm. The [Alchemy provider](../alchemy-proxmox/README.md) builds on it.
 
 ## Use the client
 
-The package is not on npm yet, so use it from a clone of the repository (see
-[Try it](../../README.md#try-it)). This program lists all guests and counts the settings in each
+The package is not on npm. [Install a release](../../docs/RELEASING.md#install-a-release) or
+use it from a clone of the repository (see [Try it](../../README.md#try-it)). This program lists all guests and counts the settings in each
 guest's configuration:
 
 ```ts

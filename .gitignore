@@ -1,5 +1,11 @@
 .local/
 node_modules/
 .alchemy/
+# Build output and the release tarballs from `pnpm release:pack`.
+packages/*/lib/
+release/
+# Copied from the repository root when a package is packed.
+packages/*/LICENSE
+packages/*/NOTICE
 # Downloaded and verified by `pnpm specs:fetch`; not redistributed.
 packages/proxmox/specs/spec-mirror-proxmox/specs/api-schema.json
