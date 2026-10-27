@@ -1,167 +1,13 @@
 # @distilled.cloud/proxmox
 
-Effect v4 client generated from Proxmox VE's `pve-docs` 9.2.4 API schema.
-The client contains 678 operations across 49 API-area modules. It is not published to npm yet.
-Inline property-string schemas generate typed codecs. The Alchemy provider lives in
-[`../alchemy-proxmox`](../alchemy-proxmox/README.md).
-
-## Develop and regenerate
-
-Requires Node 24 and pnpm 12.15.0. `pnpm specs:fetch` also requires `gpgv` (GnuPG), `ar` and
-a `tar` that supports the Debian package's compression. Run these commands from the repository
-root:
-
-1. Install the pinned dependencies:
-
-   ```sh
-   pnpm install --frozen-lockfile
-   ```
-
-2. Fetch the pinned schema. It is not committed, and `convert` and `generate` need it:
-
-   ```sh
-   pnpm specs:fetch
-   ```
-
-   `download.proxmox.com` has no valid HTTPS certificate, so the script authenticates the
-   repository through its signed release file instead:
-
-   1. It fetches Proxmox's trixie release key over HTTPS from `enterprise.proxmox.com`.
-   2. It verifies `dists/trixie/InRelease` with `gpgv` and accepts it only when the signing
-      key's fingerprint matches the one pinned in `scripts/fetch-specs.ts`
-      (`24B30F06ECC1836A4E5EFECBA7BCD1420BFE778E`, as listed on Proxmox's ISO download
-      pages). It reads only the signed text.
-   3. It checks the `trixie/pve-no-subscription` package index, compressed and uncompressed,
-      against the SHA256 and size listed in `InRelease`.
-   4. It finds `pve-docs` 9.2.4 in that index and checks the `.deb` against the entry's SHA256.
-
-   The script then extracts the JSON array from `apidoc.js` without executing JavaScript and
-   checks for 678 operations. It writes `api-schema.json` and `provenance.json` to
-   `specs/spec-mirror-proxmox/specs/`. Git ignores `api-schema.json`; only `provenance.json`
-   is committed. It records the URLs, the verified `InRelease` (SHA256, date, key URL and
-   fingerprint), the package index entry and SHA256 checksums of the index, package,
-   `apidoc.js` and JSON payload. Re-running the script reproduces `api-schema.json` byte for
-   byte. The `release` fields and the index checksum change whenever Proxmox publishes a new
-   package index.
-
-3. Convert and generate:
-
-   ```sh
-   pnpm convert
-   pnpm generate
-   ```
-
-   `convert` writes Smithy models to `.generated-specs/`. It stops with an instruction to run
-   `pnpm specs:fetch` when the schema is missing or its SHA256 differs from `schemaSha256` in
-   `provenance.json`. `generate` repeats conversion, compiles those models with the pinned
-   `@distilled.cloud/core` codegen and formats the TypeScript output in `src/services/`. It
-   ends with `pnpm check:prose` (see [Doc comments](#doc-comments)). Never edit generated
-   files. Regenerating from the same schema leaves every generated file unchanged.
-
-   The models and services are committed, so installation and the checks below need neither
-   the schema nor network access to Proxmox.
-
-4. Check the result:
-
-   ```sh
-   pnpm typecheck
-   pnpm lint
-   pnpm format:check
-   pnpm test
-   ```
-
-   Typechecking includes every generated service. Tests use a mocked HTTP client and
-   constructed responses, not a live node.
-
-### Doc comments
-
-Generated operations carry structural doc comments that name the HTTP method and path, for
-example `/** POST /nodes/{node}/lxc */`. Request and response members have none. Proxmox's
-descriptions are written in its own sources and published as its documentation, and this
-repository does not redistribute them. Look up a call in Proxmox's
-[API viewer](https://pve.proxmox.com/pve-docs/api-viewer/) by its path.
-
-`scripts/convert.ts` copies only structural schema keywords into the models: types, formats,
-enums, defaults, constraints and flags. `pnpm check:prose` collects every schema string with at
-least four words and fails if one appears in a file that Git tracks or would track. It prints
-the number of strings and files scanned and the number of matches. Run it after editing docs:
-
-```sh
-pnpm check:prose
-```
-
-It needs the fetched schema. See [the design](../../docs/DESIGN.md#proxmox-schema-text) for the
-reasoning.
-
-## Run a read-only smoke check
-
-Use a token with permission to list guests and read their configurations. The script makes
-only GET requests. It does not start tasks or modify guests.
-
-1. Inject `PROXMOX_TOKEN_ID` and `PROXMOX_TOKEN_SECRET` through your secret manager.
-   Do not put their values in command-line arguments or source files.
-2. Set the endpoint and optional CA:
-
-   ```sh
-   export PROXMOX_ENDPOINT='https://pve.example.com:8006/api2/json'
-   export PROXMOX_CA_CERT="$(< /path/to/ca.pem)"
-   ```
-
-   `PROXMOX_CA_CERT` contains PEM text, not a filename. Omit it for a publicly trusted
-   certificate. Use the DNS name covered by the certificate, not the node's IP address.
-
-3. Run the script:
-
-   ```sh
-   pnpm smoke
-   ```
-
-The script lists guests with `/cluster/resources?type=vm` and reads each LXC or QEMU config.
-It prints VMID, type, name, node, status, cores, memory and the number of config keys.
-Memory is reported in the config API's units (MiB). It never prints whole configs.
-Successful completion prints the number of configs read.
-
-On failure, the script prints only the error tag, the transport reason and the HTTP status
-when known, for example `Smoke failed: Forbidden (HTTP 403)` or
-`Smoke failed: HttpClientError (TransportError)`. It never prints requests, headers, response
-bodies, messages or credentials. `describeError` in `src/errors.ts` produces this summary.
-
-### Live validation
-
-On 2026-10-25 the smoke check ran against a Proxmox VE 9.2.11 node with a pool-scoped API token. It
-listed every guest (containers and VMs) and read every config, using GET requests only.
-
-Recorded responses from the same node:
-
-| Request                                                | Response                                                                                                                                                                          | Client result              |
-| ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
-| Invalid enum value (`/cluster/resources?type=invalid`) | HTTP 400, body `{"errors":{"type":"value 'invalid' does not have a value in the enumeration 'vm, storage, node, sdn'"},"data":null,"message":"Parameter verification failed.\n"}` | `ParameterValidationError` |
-| Config of a missing container                          | HTTP 500, body `{"data":null,"message":"Configuration file 'nodes/<node>/lxc/<vmid>.conf' does not exist\n"}`                                                                     | Generic server error       |
-| Config of a missing VM                                 | HTTP 500, same shape with `qemu-server/<vmid>.conf`                                                                                                                               | Generic server error       |
-| Unknown node name                                      | HTTP 500, message `hostname lookup '<node>' failed - ...`                                                                                                                         | Generic server error       |
-
-Proxmox reports a missing guest as HTTP 500, not 404. The client now maps HTTP 500 with
-`data: null` and the guest-configuration message shape above to `GuestNotFound`.
-Other 500 responses retain core's server error. Matching happens in the protocol alongside
-parameter-validation mapping and is included in every generated operation's typed error union.
-The table records the milestone 1 result before that mapping was added.
-
-The messages in this table and the error messages in the tests, such as
-`Parameter verification failed.`, `Configuration file '...' does not exist` and the 403
-`Permission check failed (...)` text, are recorded API responses. They stay verbatim because
-the client and the tests match them.
-
-Value types differ between guest kinds: a VM's `memory` arrives as a string (`"8192"`, it is a
-property string), a container's as a number. Array encoding with repeated keys is still
-unconfirmed: the networkless live VM did not have an available guest agent, so the array-valued
-exec request could not be exercised. The completed lifecycle verified scalar forms, boolean
-`0`/`1`, property strings, semicolon-separated tags and comma-separated `delete` values.
-A `delete` list is a schema string, not an array.
+Effect v4 client for the Proxmox VE API, generated from the API schema in Proxmox's `pve-docs`
+9.2.4 package. It has 678 operations in 49 modules and typed codecs for property strings. The
+package is not published to npm yet. The [Alchemy provider](../alchemy-proxmox/README.md) builds
+on it.
 
 ## Use the client
 
-Run this from the workspace with the environment above. The generated names include HTTP
-method and path segments to avoid collisions between Proxmox's repeated operation names.
+This program lists all guests and counts the keys in each guest's configuration:
 
 ```ts
 import * as Effect from "effect/Effect";
@@ -187,17 +33,55 @@ const config = await Effect.runPromise(Proxmox.configFromEnv);
 await Effect.runPromise(program.pipe(Effect.provide(nodeLayer(config))));
 ```
 
-`credentials(config)` accepts an endpoint, redacted token ID, redacted token secret and optional
-CA PEM. `CredentialsFromEnv` provides the same service using Effect's redacted config reader.
-`nodeLayer(config)` additionally provides a scoped Node HTTP client with certificate and hostname
-verification enabled. A custom HTTP client must configure CA trust itself. Protocol selection is
-attached to generated operations, so callers do not need to provide `ProxmoxProtocol` separately.
+Operation names combine the HTTP method and the path, because Proxmox reuses the same operation
+names on unrelated paths. Each operation's doc comment names its method and path, so you can
+look it up in Proxmox's [API viewer](https://pve.proxmox.com/pve-docs/api-viewer/).
+
+`Proxmox.configFromEnv` reads `PROXMOX_ENDPOINT`, `PROXMOX_TOKEN_ID`, `PROXMOX_TOKEN_SECRET` and
+the optional `PROXMOX_CA_CERT` (PEM contents, not a file name). `credentials(config)` accepts the
+same values directly: an endpoint, a redacted token ID, a redacted token secret and an optional CA
+PEM. `CredentialsFromEnv` provides the credentials service from the environment.
+
+`nodeLayer(config)` also provides a Node HTTP client with certificate and hostname verification
+enabled. A custom HTTP client must configure CA trust itself. Callers do not need to provide
+`ProxmoxProtocol`; each generated operation carries it.
+
+## Run a read-only smoke check
+
+The smoke script checks a token and a node with GET requests only. It does not start tasks or
+change guests. The token needs permission to list guests and read their configurations.
+
+1. Set `PROXMOX_TOKEN_ID` and `PROXMOX_TOKEN_SECRET` from your secret manager. Do not put their
+   values in command arguments or source files.
+2. Set the endpoint and, for a private CA, the CA certificate:
+
+   ```sh
+   export PROXMOX_ENDPOINT='https://pve.example.com:8006'
+   export PROXMOX_CA_CERT="$(< /path/to/ca.pem)"
+   ```
+
+   Use the DNS name that the node's certificate covers, not its IP address.
+
+3. From the repository root, run the script:
+
+   ```sh
+   pnpm smoke
+   ```
+
+The script lists guests with `/cluster/resources?type=vm` and reads each container or VM
+configuration. For each guest, it prints the VMID, type, name, node, status, cores, memory in MiB
+and the number of configuration keys. It never prints whole configurations. At the end, it prints
+the number of configurations read.
+
+On failure, the script prints only the error tag, the transport reason and the HTTP status, for
+example `Smoke failed: Forbidden (HTTP 403)`. It never prints requests, headers, response bodies
+or credentials.
 
 ## Property-string codecs
 
-`pnpm generate` also emits `src/property-strings.ts` from the inline `format` traits.
-Codecs are grouped by service, operation shape and field. Indexed families share one codec
-for every index:
+`pnpm generate` also emits `src/property-strings.ts` from the schema's inline `format`
+definitions. Codecs are grouped by service, operation shape and field. Indexed families such as
+`net[n]` share one codec for every index:
 
 ```ts
 import { nodes_lxc, nodes_qemu } from "@distilled.cloud/proxmox/property-strings";
@@ -209,85 +93,158 @@ const memory = nodes_qemu.PutNodesByNodeQemuByVmidConfigRequest.memory.decode("2
 // memory.current === 2048
 ```
 
-One runtime codec handles required and optional keys, numeric values, booleans, unnamed
-`default_key` values and aliases, including network model aliases such as `virtio=<MAC>`.
-Encoding uses canonical names. Duplicate keys, malformed scalars and ambiguous delimiters
-fail without including values in errors. Omitted defaults are not materialized. Constraints
-such as Perl regexes, numeric ranges and supported family indexes remain server-validated.
+The codecs handle required and optional keys, numbers, booleans, unnamed default keys and
+aliases, including network model aliases such as `virtio=<MAC>`. Encoding uses the canonical key
+names. Duplicate keys, malformed values and ambiguous delimiters fail, and the errors do not
+include the values. Omitted defaults are not filled in. The server still validates patterns,
+numeric ranges and supported indexes.
 
-The viewer exposes several formats only by name, not as a sub-schema. These cannot yet
-produce typed codecs without supplemental metadata. `scripts/property-formats.ts` supplies a
-hand-written structure for `pve-qm-ipconfig` (keys `ip`, `gw`, `ip6` and `gw6`, all optional
-strings). It uses the same generated codec as inline formats. The reference is
-[pinned qemu-server source](https://git.proxmox.com/?p=qemu-server.git;a=blob;f=src/PVE/QemuServer/Network.pm;hb=71ea0ac7192bb935f63cb64beb59e87d6cecd3bf).
-Named formats such as `pve-qm-cicustom`,
-`pve-vm-cpu-conf` and `pve-startup-order` remain strings. The provider compares their declared
-properties with a shared tokenizer. IP syntax and gateway dependencies remain server-validated.
+The schema describes some formats only by name. These stay plain strings, with one exception:
+`scripts/property-formats.ts` adds the structure of `pve-qm-ipconfig` (the optional string keys
+`ip`, `gw`, `ip6` and `gw6`), taken from
+[qemu-server's source](https://git.proxmox.com/?p=qemu-server.git;a=blob;f=src/PVE/QemuServer/Network.pm;hb=71ea0ac7192bb935f63cb64beb59e87d6cecd3bf).
+It uses the same codec as the inline formats. Formats such as `pve-qm-cicustom`,
+`pve-vm-cpu-conf` and `pve-startup-order` remain strings.
+
+## Errors
+
+| Proxmox response                                                                | Client error                                            |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| HTTP 400 with an `errors` object                                                | `ParameterValidationError`, with per-parameter messages |
+| HTTP 500 with the message `Configuration file '...' does not exist` for a guest | `GuestNotFound`                                         |
+| Other HTTP error statuses                                                       | Core's tagged status errors, such as `Forbidden`        |
+| Unknown status                                                                  | `UnknownProxmoxError`                                   |
+| Response that fails the optional strict validation                              | `ProxmoxParseError`                                     |
+
+Proxmox reports a missing guest as HTTP 500, not 404. Other HTTP 500 responses keep core's
+server error.
+
+API responses can contain secrets, so do not log error bodies. `describeError(error)` returns a
+log-safe summary with only the error tag and the HTTP status.
+
+Response validation is lenient by default. Core's `ResponseValidation.strict` and
+`ResponseValidation.additionalProperties` layers make it stricter. Enums accept unknown values at
+runtime, so new Proxmox values do not break responses.
 
 ## Wire behavior and limits
 
-- Authentication is `Authorization: PVEAPIToken=<token-id>=<secret>`.
-- Bodies are form encoded. Boolean inputs become `0` or `1`, including query parameters.
-  Arrays use repeated keys; this convention has only been checked offline.
-- Successful responses unwrap `{ "data": ... }`. Response flags retain their wire representation:
-  `boolean | 0 | 1`. Property strings remain raw strings.
-- Indexed parameters have template-key types such as `net${number}`, not a literal `net[n]` field.
-  Their property-string schemas and named formats remain in Smithy traits.
-  The viewer omits machine-readable family bounds, so the server enforces supported indexes.
-- HTTP failures use core's tagged status errors. HTTP 400 with an `errors` object becomes
-  `ParameterValidationError`, preserving per-parameter messages. Unknown statuses become
-  `UnknownProxmoxError`. Do not log error bodies indiscriminately: API responses can contain secrets.
-  `describeError(error)` returns a log-safe summary with tag and HTTP status only.
-- Core's optional `ResponseValidation.strict` and `ResponseValidation.additionalProperties`
-  layers produce `ProxmoxParseError`. Default validation is lenient, matching distilled.
-  Schema enums use core's forward-compatible string schemas at runtime.
-- `waitForTask(node, upid, { timeout })` polls with 500ms exponential backoff capped at 5s until
-  a wall-clock deadline, 2 minutes unless `timeout` says otherwise. `OK` succeeds with
-  `warnings: 0`; `WARNINGS: <n>` succeeds with that count. Other terminal results fail with
-  `TaskFailed`; the deadline fails with `TaskTimeout`. Transport errors propagate rather than
-  being silently retried.
-- The schema includes writes, root-only operations, uploads and console endpoints. Generation
-  does not imply token permission or transport support. Multipart uploads, binary RRD responses
-  and WebSocket upgrades are not implemented or validated by this JSON/form client. Do not use
-  them until dedicated transport support exists. Guest create, config update, resize, start,
-  stop and delete were exercised by the guarded provider live suite. Storage `download-url` and
-  volume deletion back `Proxmox.StorageDownload` and passed the guarded live download phase,
-  including deletion with a URL-encoded volume ID.
+- Requests authenticate with `Authorization: PVEAPIToken=<token-id>=<secret>`.
+- Request bodies are form encoded. Booleans become `0` or `1`, also in query parameters. Arrays
+  use repeated keys, which has not been tested against a live node yet. A `delete` list is a
+  comma-separated string, not an array.
+- Responses are unwrapped from `{ "data": ... }`. Boolean flags in responses keep their wire form,
+  `boolean | 0 | 1`. Property strings stay raw strings; decode them with the codecs above.
+- Value types can differ between guest types: a VM's `memory` is a string (it is a property
+  string), a container's is a number.
+- Indexed parameters have template-key types such as `net${number}`. The schema does not state
+  how many indexes each family supports, so the server enforces that.
+- `waitForTask(node, upid, { timeout })` polls a task with exponential backoff from 500 ms up to
+  5 s, until the timeout (default 2 minutes). `OK` succeeds with `warnings: 0`, and
+  `WARNINGS: <n>` succeeds with that count. Other results fail with `TaskFailed`, and the timeout
+  fails with `TaskTimeout`. Transport errors are not retried.
+- The client includes every operation in the schema, including root-only operations. Having an
+  operation does not mean a token may call it. Multipart uploads, binary RRD responses and
+  WebSocket connections are not supported by this JSON and form client.
 
-## Opt-in provider live tests
+## Develop and regenerate
 
-Run `pnpm test:live` only with a dedicated test pool and an explicit allowed VMID range.
-Configuration comes entirely from environment variables. See the
-[provider setup](../alchemy-proxmox/README.md#run-the-live-suite) for the variables, safety guard
-and `pnpm test:live:cleanup` command. This suite never runs as part of `pnpm test`.
+Requires Node 24 and pnpm 12.15.0. `pnpm specs:fetch` also requires `gpgv` (GnuPG), `ar` and a
+`tar` that supports the Debian package's compression. Run these commands from the repository
+root:
 
-The milestone 3 node reported `pve-manager` 9.2.21, `qemu-server` 9.2.11, `pve-container`
-6.1.14 and `libpve-guest-common-perl` 6.0.5. The client remains pinned to `pve-docs` 9.2.4.
+1. Install the pinned dependencies:
 
-The suite passed create/start, default retain, updates, disk growth, pending settings, tag-only
-adoption, plan errors, protection and destroy for both guest types. Follow-up GETs found the
-pool and test-range storage empty. Creation is deliberately untagged in the pool, followed by
-a tag-only config update to work around [Proxmox bug 7864](https://bugzilla.proxmox.com/show_bug.cgi?id=7864).
+   ```sh
+   pnpm install --frozen-lockfile
+   ```
 
-Comma-separated `delete=tags,description` removed both fields on containers and VMs. No form
-encoding change was needed. Repeated-key arrays and guest-agent cloud-init completion remain
-unverified live because the networkless VM's agent was unavailable. Offline tests cover that
-path. The provider normalizes the trailing newline Proxmox adds to descriptions, preventing
-perpetual diffs. No schema repin was needed.
+2. Fetch the pinned schema. It is not committed, and `convert` and `generate` need it:
 
-## Differences from distilled
+   ```sh
+   pnpm specs:fetch
+   ```
 
-The spec mirror is neither a committed directory nor an external Git submodule:
-`pnpm specs:fetch` writes it locally, and only its `provenance.json` is committed. Codegen
-comes from `@distilled.cloud/core@1.0.0-rc.17`; newer distilled checkouts move it to an
-unpublished dev package. No upstream source is vendored. pnpm 12.15.0 is pinned instead of
-upstream's 12.9.1.
-The Node platform shared package is overridden to 4.0.5 to match Effect and avoid a newer peer
-requirement. The provider pins `alchemy@2.0.0-beta.84` and shares the same Effect and core versions.
+   `download.proxmox.com` has no valid HTTPS certificate, so the script authenticates the
+   repository through its signed release file instead:
 
-Core does not model Proxmox indexed families directly. The generator lowers those members to
-TypeScript template-key signatures and `StructWithRest` schemas in its final emission pass.
-It also replaces core's generated `as any as` assertions with `as unknown as`. The protocol
-wraps core's encoder to form-encode requests and retains core's decoder and response validation.
-Operation names are deliberately path-derived rather than guessed from upstream's ambiguous
-names. These are converter and generator policies, not hand edits to generated services.
+   1. It fetches Proxmox's trixie release key over HTTPS from `enterprise.proxmox.com`.
+   2. It verifies `dists/trixie/InRelease` with `gpgv` and accepts it only when the signing
+      key's fingerprint matches the one pinned in `scripts/fetch-specs.ts`
+      (`24B30F06ECC1836A4E5EFECBA7BCD1420BFE778E`, as listed on Proxmox's ISO download pages).
+      It reads only the signed text.
+   3. It checks the `trixie/pve-no-subscription` package index, compressed and uncompressed,
+      against the SHA256 and size listed in `InRelease`.
+   4. It finds `pve-docs` 9.2.4 in that index and checks the `.deb` against the entry's SHA256.
+
+   The script then extracts the JSON array from `apidoc.js` without executing JavaScript and
+   checks that it contains 678 operations. It writes `api-schema.json` and `provenance.json` to
+   `specs/spec-mirror-proxmox/specs/`. Git ignores `api-schema.json`; only `provenance.json` is
+   committed. It records the URLs, the verified `InRelease` (SHA256, date, key URL and
+   fingerprint), the package index entry and the SHA256 checksums of the index, the package,
+   `apidoc.js` and the JSON payload. Running the script again produces the same
+   `api-schema.json`. The `release` fields and the index checksum change whenever Proxmox
+   publishes a new package index.
+
+3. Convert and generate:
+
+   ```sh
+   pnpm convert
+   pnpm generate
+   ```
+
+   `convert` writes Smithy models to `.generated-specs/`. It stops with an instruction to run
+   `pnpm specs:fetch` when the schema is missing or its SHA256 differs from `schemaSha256` in
+   `provenance.json`. `generate` runs the conversion again, compiles the models with the pinned
+   `@distilled.cloud/core` code generator and formats the TypeScript output in `src/services/`.
+   It ends with `pnpm check:prose` (see [Doc comments](#doc-comments)). Never edit generated
+   files. Regenerating from the same schema leaves every generated file unchanged.
+
+   The models and services are committed, so installing and the checks below need neither the
+   schema nor network access to Proxmox.
+
+4. Check the result:
+
+   ```sh
+   pnpm typecheck
+   pnpm lint
+   pnpm format:check
+   pnpm test
+   ```
+
+   Typechecking includes every generated service. Tests use a mocked HTTP client, not a live
+   node.
+
+The provider's [live suite](../alchemy-proxmox/README.md#run-the-live-suite) tests against a real
+node. It never runs as part of `pnpm test`.
+
+### Doc comments
+
+Generated operations have doc comments that name only the HTTP method and path, for example
+`/** POST /nodes/{node}/lxc */`. Request and response members have none. Proxmox's descriptions
+are part of its own documentation, and this repository does not redistribute them.
+
+`scripts/convert.ts` copies only structural schema keywords into the models: types, formats,
+enums, defaults, constraints and flags. `pnpm check:prose` collects every schema string with at
+least four words and fails if one appears in a file that Git tracks or would track. It prints the
+number of strings and files it scanned and the number of matches. It needs the fetched schema.
+Run it after editing docs:
+
+```sh
+pnpm check:prose
+```
+
+Tests and the error mapping contain a few verbatim Proxmox API error messages, such as
+`Parameter verification failed.`, because the client matches them. See
+[the design](../../docs/DESIGN.md#proxmox-schema-text) for the reasoning.
+
+### Generator notes
+
+- The code generator is `@distilled.cloud/core` 1.0.0-rc.17. Effect and
+  `@effect/platform-node` are pinned to 4.0.5.
+- Core does not model Proxmox's indexed families such as `net[n]`. The generator emits them as
+  TypeScript template-key signatures and `StructWithRest` schemas.
+- The generator replaces core's `as any as` assertions with `as unknown as`.
+- The protocol wraps core's encoder to form-encode requests and uses core's decoder and response
+  validation.
+- These are rules in the converter and the generator. Generated services are never edited by
+  hand.

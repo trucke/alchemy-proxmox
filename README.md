@@ -74,8 +74,8 @@ Requires Node 24, pnpm 12.15.0 and a Proxmox VE 9.2 node.
    | `PROXMOX_TOKEN_SECRET` | Token secret                                             |
    | `PROXMOX_CA_CERT`      | Optional: PEM contents (not a file name) of a private CA |
 
-   An Alchemy profile can store the credentials instead. See the
-   [authentication reference](packages/alchemy-proxmox/README.md#authentication-reference).
+   An Alchemy profile can store the credentials instead. See
+   [Store the token in a profile](packages/alchemy-proxmox/README.md#store-the-token-in-a-profile).
 
 4. Save the example as `packages/alchemy-proxmox/alchemy.run.ts`. Replace the node, pool,
    VMID and storage names with your own.
