@@ -303,7 +303,9 @@ holds a root password or root SSH key for the node, so it would need its own des
   the node, the VMID range and pool membership before every write, from both direct client calls
   and the Alchemy CLI. An optional phase downloads one `alchemy-test-` container template to a
   dedicated storage and deletes it; the proxy allows no other storage writes. Read requests after
-  teardown confirm that the pool and the test storage are empty.
+  teardown confirm that the pool is empty and no disks from the VMID range remain.
+
+[TESTING.md](TESTING.md) describes how to run the tests.
 
 ## Open questions
 

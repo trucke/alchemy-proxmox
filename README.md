@@ -6,10 +6,10 @@ Manage Proxmox VE containers, virtual machines and downloaded templates as code 
 > [!WARNING]
 > Early and unreleased. Nothing is published to npm yet, and the API can still change.
 
-| Package                                                      | Contents                                                                                      |
-| ------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
-| [`@alchemy.run/proxmox`](packages/alchemy-proxmox/README.md) | Alchemy resources `Proxmox.Container`, `Proxmox.VirtualMachine` and `Proxmox.StorageDownload` |
-| [`@distilled.cloud/proxmox`](packages/proxmox/README.md)     | Effect client for the Proxmox VE API, generated from Proxmox's API schema (678 operations)    |
+| Package                                                      | Contents                                                         |
+| ------------------------------------------------------------ | ---------------------------------------------------------------- |
+| [`@alchemy.run/proxmox`](packages/alchemy-proxmox/README.md) | Alchemy resources for containers, virtual machines and downloads |
+| [`@distilled.cloud/proxmox`](packages/proxmox/README.md)     | Effect client for the Proxmox VE API, generated from its schema  |
 
 ## Example
 
@@ -48,13 +48,21 @@ export default Alchemy.Stack(
 ```
 
 `alchemy deploy` downloads the template, and Proxmox verifies its checksum. The provider then
-creates container 200 in the pool `apps`, tags it as owned by this stack and starts it.
+creates container 200 in the pool `apps`, tags it as owned by this stack and starts it. The
+container has no network interface: adding one needs an extra permission and has not been tested
+yet (see [Limitations](#limitations)).
+
+A stack groups resources. `"alpine"` and `"web"` are the names Alchemy uses for the resources in
+the stack, not names on the node. Alchemy records what it created in the `.alchemy/` directory
+next to the stack file; keep that directory, because it is how Alchemy recognizes its own
+downloaded files. Each stage (`--stage`, by default `live_<your user name>`) is a separate
+deployment with its own state.
 
 ## Try it
 
 Requires Node 24, pnpm 12.15.0 and a Proxmox VE 9.2 node.
 
-1. Clone the repository and install the pinned dependencies:
+1. Clone the repository and install the dependencies:
 
    ```sh
    git clone https://github.com/trucke/alchemy-proxmox.git
@@ -62,88 +70,59 @@ Requires Node 24, pnpm 12.15.0 and a Proxmox VE 9.2 node.
    pnpm install --frozen-lockfile
    ```
 
-2. Create an API token. For a token that can change only the guests in one pool, follow
-   [Configure a pool-scoped token](packages/alchemy-proxmox/README.md#configure-a-pool-scoped-token).
-3. Provide the credentials through the environment, for example from a secret manager.
-   Never put the token in the stack or in command arguments.
-
-   | Variable               | Value                                                    |
-   | ---------------------- | -------------------------------------------------------- |
-   | `PROXMOX_ENDPOINT`     | API address, for example `https://pve.example.com:8006`  |
-   | `PROXMOX_TOKEN_ID`     | Token ID, for example `alchemy@pve!deploy`               |
-   | `PROXMOX_TOKEN_SECRET` | Token secret                                             |
-   | `PROXMOX_CA_CERT`      | Optional: PEM contents (not a file name) of a private CA |
-
-   An Alchemy profile can store the credentials instead. See
-   [Store the token in a profile](packages/alchemy-proxmox/README.md#store-the-token-in-a-profile).
-
-4. Save the example as `packages/alchemy-proxmox/alchemy.run.ts`. Replace the node, pool,
-   VMID and storage names with your own.
-5. Preview the changes. Planning makes only read requests:
+2. Save the example as `packages/alchemy-proxmox/alchemy.run.ts`, with your own node, pool, VMID
+   and storage names. Run the remaining commands from that directory:
 
    ```sh
    cd packages/alchemy-proxmox
-   pnpm exec alchemy plan
    ```
 
-   The plan lists the download and the container as new resources.
-
-6. Apply the changes:
+3. Create an API token. To limit it to the guests in one pool, follow
+   [Configure a pool-scoped token](packages/alchemy-proxmox/README.md#configure-a-pool-scoped-token).
+4. Provide the token through the
+   [environment variables or an Alchemy profile](packages/alchemy-proxmox/README.md#authentication).
+5. Preview and apply the changes. `plan` only reads; it lists the download and the container as
+   new resources.
 
    ```sh
+   pnpm exec alchemy plan
    pnpm exec alchemy deploy
    ```
 
 ## Safety defaults
 
-- **Retained by default.** Removing a guest or downloaded file from the stack makes Alchemy
-  forget it but leaves it on the node. Deleting it requires `.pipe(RemovalPolicy.destroy())` on
-  the resource, with `RemovalPolicy` imported from `alchemy/RemovalPolicy`.
-- **No replacements.** A change that would require recreating a guest fails the plan instead.
-- **Explicit ownership.** Guests created by a stack carry the tags `alchemy`, the stack name and
-  the stage name. The provider deletes only guests with this stack's tags and refuses guests
-  with `protection` set.
-- **Adoption on request.** Alchemy takes over an existing guest or file only with
-  `alchemy deploy --adopt`, and `alchemy plan --adopt` previews the takeover. Adopting a guest
-  adds the ownership tags and changes nothing else.
-- **No automatic reboots.** Changes that take effect only after a reboot, such as VM memory,
-  are written and reported as pending.
-
-[docs/DESIGN.md](docs/DESIGN.md) explains these decisions.
+- **Nothing is deleted by accident.** Removing a guest or file from the stack makes Alchemy forget
+  it and leaves it on the node. Deleting needs an explicit `RemovalPolicy.destroy()`, and the
+  provider deletes only guests that carry this stack's ownership tags.
+- **No replacements.** A change that would require recreating a guest fails the plan.
+- **No silent takeovers.** An existing guest or file becomes part of a stack only with
+  `--adopt`, and adopting a guest only adds the ownership tags.
+- **No reboots.** Changes that apply only after a reboot are written and reported as pending.
 
 ## Limitations
 
-- Changing a guest's address, gateway or bridge, moving a disk and renaming a cloud-init VM
-  are not supported yet. Such changes fail the plan.
-- Settings that Proxmox allows only for `root@pam`, such as device passthrough and snippet
-  references, are compared but never written.
-- Waiting for cloud-init (`waitForCloudInit`) has not been tested against a live node.
+- Changing a guest's network address, gateway or bridge, or moving a disk to other storage, fails
+  the plan. These changes are not supported yet.
+- API tokens cannot configure device passthrough, so set it up outside the provider. Snippet
+  files must be created outside the provider; a VM can reference an existing snippet at creation.
+- Network interfaces and the cloud-init wait have not been tested against a live node.
 - Only Proxmox VE 9.2 has been tested.
 
 ## Development
 
-Run these commands from the repository root:
+```sh
+pnpm typecheck && pnpm lint && pnpm format:check && pnpm test   # offline checks
+pnpm specs:fetch && pnpm generate                               # regenerate the client
+```
 
-| Command                                                         | Purpose                                                                                     |
-| --------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `pnpm typecheck`, `pnpm lint`, `pnpm format:check`, `pnpm test` | Offline checks; none of them need a Proxmox node or the schema                              |
-| `pnpm specs:fetch`                                              | Download the pinned Proxmox API schema and verify it against Proxmox's signed package index |
-| `pnpm generate`                                                 | Regenerate the client from the schema and check for Proxmox schema text                     |
-| `pnpm smoke`                                                    | Read-only check against a real node                                                         |
-| `pnpm test:live`                                                | Opt-in suite that creates and deletes guests in a dedicated test pool                       |
-
-The [client README](packages/proxmox/README.md#develop-and-regenerate) describes regeneration.
-The [provider README](packages/alchemy-proxmox/README.md#run-the-live-suite) describes the live
-suite and the permissions it needs.
+[Develop and regenerate](packages/proxmox/README.md#develop-and-regenerate) explains the client
+generation, and [docs/TESTING.md](docs/TESTING.md) the tests, including the live suite.
+[docs/DESIGN.md](docs/DESIGN.md) explains the design decisions.
 
 ## License
 
-Apache-2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
-
-The client is generated from the API schema in Proxmox's `pve-docs` package
-(AGPL-3.0-or-later). This repository keeps only the schema's structure (paths, methods,
-parameter names, types and constraints) and none of Proxmox's documentation text.
-`pnpm specs:fetch` downloads the schema at build time. See
-[Proxmox schema text](docs/DESIGN.md#proxmox-schema-text) for the reasoning.
+Apache-2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE). The client is generated from Proxmox's
+API schema (AGPL-3.0-or-later) but contains only its structure, no Proxmox text; see
+[Proxmox schema text](docs/DESIGN.md#proxmox-schema-text).
 
 This is an independent project, not affiliated with Proxmox Server Solutions GmbH or Alchemy.
