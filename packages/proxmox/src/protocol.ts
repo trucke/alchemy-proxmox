@@ -3,9 +3,10 @@ import { makeRestProtocol } from "@distilled.cloud/core/protocol-rest";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
-import type * as HttpClient from "effect/http/HttpClient";
-import type * as HttpClientError from "effect/http/HttpClientError";
+import * as HttpClient from "effect/http/HttpClient";
+import * as HttpClientError from "effect/http/HttpClientError";
 import * as Request from "effect/http/HttpClientRequest";
+import * as Response from "effect/http/HttpClientResponse";
 import { Credentials, type ProxmoxConfig } from "./credentials.ts";
 import {
   UnknownProxmoxError,
@@ -46,14 +47,59 @@ const rest = makeRestProtocol({
   parseError: ({ body, cause }) => new ProxmoxParseError({ body, cause }),
 });
 
+/**
+ * Rebuilds an HTTP client error without the Authorization header. Effect redacts the header only
+ * through its own inspect hooks, and Node's crash output bypasses them, so the request that an
+ * error keeps would print the token. A response keeps the request and the raw socket as well, so
+ * only its status and headers are kept.
+ */
+export function withoutCredentials(
+  error: HttpClientError.HttpClientError,
+): HttpClientError.HttpClientError {
+  const { reason } = error;
+  const request = Request.removeHeader(reason.request, "authorization");
+  const fields = { request, cause: reason.cause, description: reason.description };
+  const statusOnly = (response: Response.HttpClientResponse) =>
+    Response.fromWeb(
+      request,
+      new globalThis.Response(null, { status: response.status, headers: response.headers }),
+    );
+  const rebuilt = (): HttpClientError.HttpClientErrorReason => {
+    switch (reason._tag) {
+      case "TransportError":
+        return new HttpClientError.TransportError(fields);
+      case "EncodeError":
+        return new HttpClientError.EncodeError(fields);
+      case "InvalidUrlError":
+        return new HttpClientError.InvalidUrlError(fields);
+      case "StatusCodeError":
+        return new HttpClientError.StatusCodeError({
+          ...fields,
+          response: statusOnly(reason.response),
+        });
+      case "DecodeError":
+        return new HttpClientError.DecodeError({
+          ...fields,
+          response: statusOnly(reason.response),
+        });
+      case "EmptyBodyError":
+        return new HttpClientError.EmptyBodyError({
+          ...fields,
+          response: statusOnly(reason.response),
+        });
+    }
+  };
+  return new HttpClientError.HttpClientError({ reason: rebuilt() });
+}
+
 // Adapt core's JSON REST encoder, retaining its label/query binding, response
-// validation, key mapping and status errors. Do not retain its optimized `call`,
-// which would bypass this encoder.
+// validation, key mapping and status errors. Core's optimized `call` would bypass
+// this encoder, so `call` below runs it instead.
 export const ProxmoxProtocol: Layer.Layer<API.Protocol> = Layer.effect(
   API.Protocol,
   Effect.gen(function* () {
     const base = yield* API.Protocol;
-    return API.Protocol.of({
+    const protocol = API.Protocol.of({
       encode: (args) =>
         base.encode(args).pipe(
           Effect.map((request) => {
@@ -123,5 +169,24 @@ export const ProxmoxProtocol: Layer.Layer<API.Protocol> = Layer.effect(
           return yield* base.decode(args);
         }),
     });
+    // Core's encode -> execute -> decode path, with the token removed from failures. Core turns
+    // a failed body read into a defect, hence `catchDefect`. Like core's own `call`, this reads
+    // the HttpClient from the calling fiber and erases the error channel; ProxmoxOpContext and
+    // ProxmoxOpError restore both for callers.
+    const call = (operation: API.PreparedOperation, input: unknown) =>
+      Effect.gen(function* () {
+        const client = yield* HttpClient.HttpClient;
+        const { inputAst, outputAst, errors, config } = operation;
+        const request = yield* protocol.encode({ input, inputAst, config });
+        const response = yield* client.execute(request).pipe(Effect.mapError(withoutCredentials));
+        return yield* protocol.decode({ response, outputAst, errors, config });
+      }).pipe(
+        Effect.catchDefect((defect) =>
+          Effect.die(
+            HttpClientError.isHttpClientError(defect) ? withoutCredentials(defect) : defect,
+          ),
+        ),
+      ) as Effect.Effect<unknown>;
+    return API.Protocol.of({ ...protocol, call });
   }).pipe(Effect.provide(rest)),
 );

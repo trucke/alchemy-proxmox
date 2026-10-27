@@ -38,7 +38,7 @@ const exit = await Effect.runPromiseExit(
   ),
 );
 if (Exit.isFailure(exit)) {
-  // A raw HTTP error contains the request, including the token. Print only a summary.
+  // Raw errors can contain values you sent. Print only a summary.
   console.error(Proxmox.describeError(Cause.squash(exit.cause)));
   process.exitCode = 1;
 }
@@ -97,9 +97,9 @@ formats that the schema describes only by name, such as `pve-vm-cpu-conf`, stay 
 | Other error statuses                     | Tagged status errors, such as `Forbidden`          |
 | Unknown status                           | `UnknownProxmoxError`                              |
 
-Do not print or log raw errors: an HTTP error contains the request with the token in its
-`Authorization` header, and response bodies can contain secrets. `describeError(error)` returns a
-safe summary with only the error type and HTTP status, as in the example above.
+HTTP errors keep the failed request, but without its `Authorization` header. Messages and response
+bodies can still contain values you sent, so log `describeError(error)` instead of raw errors. It
+returns only the error type and HTTP status, as in the example above.
 
 Most write operations return a task ID. `waitForTask(node, upid, { timeout })` waits for the task
 (by default up to 2 minutes) and fails with `TaskFailed` or `TaskTimeout`.

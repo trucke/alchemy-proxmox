@@ -42,7 +42,7 @@ export type DefaultErrors =
 
 /**
  * A log-safe failure summary: tag, transport reason and HTTP status when known. HTTP client
- * errors retain the request with its Authorization header, and messages or bodies can echo
+ * errors retain the request (without its Authorization header), and messages or bodies can echo
  * submitted values, so none of them are included.
  */
 export function describeError(error: unknown): string {
